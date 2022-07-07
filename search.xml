@@ -86,6 +86,277 @@
       </tags>
   </entry>
   <entry>
+    <title>vue面试题</title>
+    <url>/2022/07/07/vue%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
+    <content><![CDATA[<p>echars 使用步骤</p>
+<p>1. 创建一个存放图表的容器，往往使用一个 div 作为容器</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;container&quot;</span> <span class="attr">style</span>=<span class="string">&quot;height: 100%&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>2. 图表初始化，Echarts 绘图时调用 echarts.init () API 实现图表初始化。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> dom = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;container&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> myChart = echarts.<span class="title function_">init</span>(dom);</span><br></pre></td></tr></table></figure>
+<p>3. 设置图表配置项，传入数据</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> option = &#123;</span><br><span class="line">    <span class="attr">xAxis</span>: &#123;</span><br><span class="line">        <span class="attr">type</span>: <span class="string">&#x27;category&#x27;</span>,</span><br><span class="line">        <span class="attr">data</span>: [<span class="string">&#x27;Mon&#x27;</span>, <span class="string">&#x27;Tue&#x27;</span>, <span class="string">&#x27;Wed&#x27;</span>, <span class="string">&#x27;Thu&#x27;</span>, <span class="string">&#x27;Fri&#x27;</span>, <span class="string">&#x27;Sat&#x27;</span>, <span class="string">&#x27;Sun&#x27;</span>]</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">yAxis</span>: &#123;</span><br><span class="line">        <span class="attr">type</span>: <span class="string">&#x27;value&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">series</span>: [&#123;</span><br><span class="line">        <span class="attr">data</span>: [<span class="number">820</span>, <span class="number">932</span>, <span class="number">901</span>, <span class="number">934</span>, <span class="number">1290</span>, <span class="number">1330</span>, <span class="number">1320</span>],<span class="comment">//在这里修改数据</span></span><br><span class="line">        <span class="attr">type</span>: <span class="string">&#x27;line&#x27;</span></span><br><span class="line">    &#125;]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>4. 绘制图表。调用 setOption () API 实现图表绘制。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (option &amp;&amp; <span class="keyword">typeof</span> option === <span class="string">&quot;object&quot;</span>) &#123;</span><br><span class="line">    myChart.<span class="title function_">setOption</span>(option, <span class="literal">true</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>html 块级元素  div 、p、h1-h5、br----------------------<br>
+ 行内元素 a、span、strong、b、img、input、select、</p>
+<h4 id="1flex布局"><a class="markdownIt-Anchor" href="#1flex布局">#</a> 1.flex 布局</h4>
+<p>flex 是弹性布局，我们设置为 flex 的元素成为容器，容器内的其他子元素成为项目，容器默认是有两根轴，一个是水平的主轴 main aixs，一个是垂直的交叉轴 cross axis</p>
+<p>容器的属性有 flex-direction：设置项目的排列方向 row row-reserve column column-reverse</p>
+<p>flex-wrap：当子元素超过父容器的长度时，是否换行，wrap nowrap wrap-reverse</p>
+<p>flex-flow 是 flex-direction 和 flex-wrap 的简写</p>
+<p>justify-content：设置项目主轴上对齐方式，flex-start ，flex-end，center，space-between 两端对齐，space-around 中间是边的二倍，space-evenly 间距相等</p>
+<p>align-items：设置项目交叉轴的对齐方式，默认是 stretch，flex-start，flex-end，center，baseline</p>
+<p>align-content：当交叉轴有多余空间时，调整内容的对齐方式。</p>
+<p>项目属性有 order：设置显示顺序，序号越小。排在越前</p>
+<p>flex-grow 项目的放大比例，默认 0 ，</p>
+<p>flex-shrink 项目的缩小比例，默认 1</p>
+<p>flex-basis 项目的默认宽度</p>
+<p>flex 是 flex-grow 和 flex-shrink 和 flex-basis 的简写默认 0 1 auto</p>
+<p>align-self 可以单独设置项目的对齐方式，可覆盖 align-items</p>
+<h4 id="2promise"><a class="markdownIt-Anchor" href="#2promise">#</a> 2.promise</h4>
+<p>promise 是 es6 新增的语法，它是解决异步编程的一种方案，他支持链式调用，可以解决回调地狱问题，promise 有三种状态，padding 进行中，fulfilled 已成功。rejected 已失败。promise 对象他是一个构造函数，他的参数有两个，第一个 resolve 可以把 padding 状态改变为 fulfilled，第二个 reject 他可以把 padding 改成 rejected 状态。promise 对象的实例有三个方法，第一个是 then ()，他是当 promise 的状态改变的时候就会执行这个回调，第二个是 catch () 他是用来捕获错误的回调函数，第三个是 finally 他不管 promise 最后的状态如何，都会执行。promise 还有 all 和 race 方法，他们都是多个 promise 对象组成的一个新的 promise 实例，all 是当所有的请求都成功的时候才会返回成功，race 只要有一个请求成功就会返回成功。</p>
+<h4 id="3组件间的传值"><a class="markdownIt-Anchor" href="#3组件间的传值">#</a> 3. 组件间的传值</h4>
+<p>我们常用的父子组件之间传值是 props，子组件也可以向父组件传值，子组件用 emit 发送，父组件用 on 接受，还有常用的就是 vuex 和全局事件总线在任意组件之间都可以传值，还有就是插槽也可以进行传值，默认和具名插槽可以实现父组件向子组件传值，作用域插槽可以实现子组件向父组件传值。最后 ref 也可以通过属性传值，父组件可以改变子组件中的数据。</p>
+<h4 id="4axios"><a class="markdownIt-Anchor" href="#4axios">#</a> 4.axios</h4>
+<p>axios 的原理就是 ajax，是对 ajax 的封装，他是基于 promise 实现的，符合 es6 语法，我们在项目中可以配置一个全局的 axios，在 main.js 中引入 axios 的包，然后配置</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">axios.defaults.baseURL</span><br></pre></td></tr></table></figure>
+<p>之后在 vue 的原型上给他添加一个属性，</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vue.prototype.$http = axios</span><br></pre></td></tr></table></figure>
+<p>然后我们在组件中就可以使用</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">this.$http.请求方式</span><br></pre></td></tr></table></figure>
+<p>然后还可以配置请求拦截器 request。我们通常的用的请求方式就是 get 和 post，我们也可以把 axios 封装成自己的 api，方便我们以后的调用和修改。比如说就是用户没有登录的时候添加商品，当它点击他添加，先是请求拦截器就是在请求发送之前，在其请求头里给添加一个 token，然后得到服务器相应之后，响应拦截器判断这个 token 是否有值，如果没有，那路由跳转到登录页面。</p>
+<p>原生 ajax，先 new 一个 XMLHttpRequest，然后 open 打开请求地址和方式，然后 onreadystatechange =function（），最后发送 send</p>
+<h4 id="5vuex"><a class="markdownIt-Anchor" href="#5vuex">#</a> 5.vuex</h4>
+<p>vuex 是对 vue 中数据集中管理的一个插件，他一共有 5 个属性，分别是 state，用来存放数据源信息，就是一些公用的数据都要放在 state 中存放，在组件中使用 store.state. 数据名，也可以用 mapState 获取，然后就是 mutations，他是唯一一个可以改变 store 状态的一个方法，在组件中使用 store.commit 来触发事件，也可以用简写方式 mapMutations 触发，还有就是 action 他的功能和 mutations 差不多，但是 actions 可以进行异步的操作，在组件中使用 store.dispatch 来触发事件，或者用简写方式 mapActions，还有 getters 属性，他就和计算属性 computed 差不多，就是把 state 中的数据加工一下，return 出来，我我们直接使用加工过之后的数据，可以用 store.getters. 方法名字或者 mapGetters 来触发，最后一个就是模块化 module，就是可以把 store 分成若干个模块，每个模块都有 state、mutations、actions、getters 属性，他是为了方便我们更好的管理代码。</p>
+<h4 id="6生命周期"><a class="markdownIt-Anchor" href="#6生命周期">#</a> 6. 生命周期</h4>
+<p>vue 的生命周期可以分为 8 个阶段，第一个就是 beforeCreate，组件实例被创建之前，这个时候是没有数据的，然后就是 created，组件实例被创建，这是时候已经有了数据了，我们可以在这里去异步请求接口获取数据，然后就是 beforeMount，这个是组件实例被挂载之前，虚拟的 dom 已经创建，但是真实的 dom 没有被创建，再接着就是 mounted，这个时候组件实例被挂载，真实 dom 创建，页面也渲染出来了，我的项目中我是在 mounted 去异步请求获取数据，在这里还可以执行自定义事件，启动定时器等，然后就是 beforeUpdate，这是被更新之前，然后就是 updated 这是时候数据已经被更新了，然后就是 beforeDestroy，这是组件实例被销毁之前，我们在这里可以清除定时器，什么的，最后就是 destroyed 这个时候组件实例被销毁了。还有两个就是路由里 keep-alive 的两个声明周期钩子，一个是 activeted，他是被 keep-alive 缓存的组件被激活的时候调用，另一个是 deactivated，缓存的组件被停用的时候调用，还有一个就是 errorCapture 用来捕获异常的。</p>
+<h4 id="7computed和watch区别"><a class="markdownIt-Anchor" href="#7computed和watch区别">#</a> 7.computed 和 watch 区别</h4>
+<p>computed 是计算属性，他是支持缓存的。他组件被挂载的时候就会被调用一次，当数据源信息比如 data 里的数据还有 props 接受的数据被更改的时候，会再次被调用，而 watch 是监听属性，watch 需要添加 immediate 才会在挂载时执行一次，他也能实现 computed 的功能，但是 watch 还可以做异步的操作，而 computed 只能做同步的，而且我们可以用 watch 做一些复杂的计算，computed 适合多个数据影响一个数据，就是用在了计算购物车结算总金额的时候，watch 适合一个数据影响多个数据，然后 watch 是用在了搜索的时候。</p>
+<h4 id="8let-const-var的区别"><a class="markdownIt-Anchor" href="#8let-const-var的区别">#</a> 8.let const var 的区别</h4>
+<p>var 存在变量提升，定义之前被使用会提示 undefined，let 和 const 不存在变量提升</p>
+<p>var 不存在块级作用域，let 和 const 存在</p>
+<p>var 不存在作用域死区，let 和 const 存在，当他们被声明那条语句执行了，才可以被使用</p>
+<p>var 声明的变量可以重复声明，但是 let 和 const 不可以</p>
+<p>var 和 let 声明的变量可以被修改，const 声明的常量不可以被修改。</p>
+<p>const 开辟一个新的空间，</p>
+<h4 id="9数组函数"><a class="markdownIt-Anchor" href="#9数组函数">#</a> 9. 数组函数</h4>
+<p>shift（）、unshift（）、pop（）、push（）、reverse（）、sort（）、splice（）、</p>
+<p>forEach（）、filter（）、reduce（）、findIndex（）、indexOf（）、every（）、some（）、map（）、join（）转换成字符串</p>
+<h4 id="10keep-alive"><a class="markdownIt-Anchor" href="#10keep-alive">#</a> 10.keep-alive</h4>
+<p>keep-alive 是 vue 中内置组件，能在组件切换过程中将状态保留在内存中，防止重复传染 DOM,keep-alive 包裹动态组件时，会缓存不活动的组件实例，而不是销毁它们，</p>
+<p>keep-alive 有三个属性</p>
+<p>include 匹配的组件会被缓存</p>
+<p>exclude 匹配的组件不会被缓存</p>
+<p>max 可以设置最多可以缓存多少实例。</p>
+<p>与之对应的有两生命周期钩子，activated 和 deactivated，前者是当 keep-alive 包裹的组件被激活的时候调用，deactivated 是当被 keep-alive 缓存的组件被停用的时候调用。</p>
+<h4 id="11v-if和v-show"><a class="markdownIt-Anchor" href="#11v-if和v-show">#</a> 11.v-if 和 v-show</h4>
+<p>v-if 的切换会销毁和重新构建一个新的 DOM 节点，而 v-show 只是对 DOM 元素设置 css 样式，display：none 和 display：block</p>
+<p>v-if 只有在条件为真的时候才会加载，而 v-show 在初始化的时候会加载，</p>
+<p>v-if 在切换的时候内存消耗高，而 v-show 在初次加载的时候消耗高，</p>
+<p>v-if 适合不频繁的切换，v-show 适合频繁的切换</p>
+<h4 id="12v-if和v-for"><a class="markdownIt-Anchor" href="#12v-if和v-for">#</a> 12.v-if 和 v-for</h4>
+<p>在 vue2 中，v-for 的优先级比 v-if 的高，在 vue3 中，v-if 的优先级比 v-for 高，不推荐一起使用，假如 v-for 要遍历一个 1 万条的数据，他会影响性能。</p>
+<h4 id="13mvvm"><a class="markdownIt-Anchor" href="#13mvvm">#</a> 13.mvvm</h4>
+<p>m 是 model 数据层，是用来存放数据的，v 是 view 视图层， 也就是显示给用户的 ui 界面，然后 vm 就是 view-model 视图模型层，他是连接 model 和 view 的桥梁，mvvm 是支持数据双向绑定的，首先</p>
+<p>-new 一个 vue 实例，然后 compile 去编译解析模板，然后初始化视图，并在 watcher 里绑定一个更新的函数，然后 watcher 在 dep 添加一个函数，使用 observer 劫持监听所有的属性，当数据变化时 observer 去通知 dep，dep 通过 watcher 在 dep 中添加的监听函数，去通知 wacher 有变化，然后 watcher 中更新函数发现 watcher 有变化，通知 updater 去更新视图。</p>
+<h4 id="14路由导航守卫"><a class="markdownIt-Anchor" href="#14路由导航守卫">#</a> <strong>14. 路由导航守卫</strong></h4>
+<p>路由导航守卫有三种，</p>
+<p>全局路由守卫</p>
+<p>beforeEach 在路由跳转前触发，有三个参数 to、from、next，主要是用于登录验证，</p>
+<p>是在 beforeEach 和 组件内 beforeRouteEnter 之后，afterEach 之前调用，</p>
+<p>afterEach 他是在路由跳转完成后触发，参数包括 to,from，他发生在 beforeEach 和 beforeResolve 之后，beforeRouteEnter 之前。</p>
+<p>组件内路由守卫：</p>
+<p>beforeRouteEnter 路由进入之前被调用，参数也是 to、from、next，在全局守卫 beforeEach 和独享守卫 beforeEnter 之后，全局 beforeResolve 和全局 afterEach 之前调用，要注意的是该守卫内访问不到组件的实例，也就是 this 为 undefined，也就是他在 beforeCreate 生命周期前触发。在这个钩子函数中，可以通过传一个回调给 next 来访问组件实例。在导航被确认的时候执行回调，并且把组件实例作为回调方法的参数，可以在这个守卫中请求服务端获取数据，当成功获取并能进入路由时，调用 next 并在回调中通过 vm 访问组件实例进行赋值等操作。</p>
+<p>beforeRouteUpdate 在当前路由改变时，并且该组件被复用（动态路由，）时调用，可以通过 this 访问实例。参数包括 to、from、next，还有是</p>
+<p>beforeRouteLeave 导航离开该组件的对应路由时调用，可以访问组件实例的 this，参数包括 to、from、next。</p>
+<p>独享路由守卫</p>
+<p>beforeEnter， <code>beforeEnter</code>  和  <code>beforeEach</code>  完全相同，如果都设置则在 <code>beforeEach</code>  之后紧随执行，参数 to、from、next</p>
+<p>执行顺序：beforeRouteLeave&gt;beforeEach&gt;beforeRouteUpdate&gt;beforeEnter&gt;beforeRouteEnter&gt;beforeResolve&gt;afterEach&gt;beforeRouteEnter</p>
+<h4 id="15diff算法"><a class="markdownIt-Anchor" href="#15diff算法">#</a> 15.diff 算法</h4>
+<p>他是比较同层的树节点的一种高效算法，他是同层比较，从两端开始向中间靠拢，遵循的是深度优先原则，比如说旧节点 abcd，新节点是 abecd。旧节点和新节点相同就复用了，旧节点有的，新节点没有，直接删除，旧节点没有的，新节点有的，直接添加 appendChild 这个节点。</p>
+<h4 id="16路由传参"><a class="markdownIt-Anchor" href="#16路由传参">#</a> 16. 路由传参</h4>
+<p>有两种传参的方式，一种是 query 传参，通过  <code>router-link</code>  组件的  <code>to</code>  属性实现，该方法的参数可以是一个字符串路径，也可以是数组对象。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//声明式</span></span><br><span class="line">&lt;router-link :to=<span class="string">&quot;&#123;path:&#x27;Child&#x27;,query:&#123;id:123&#125;&#125;&quot;</span>&gt;进入<span class="title class_">Child</span>路由&lt;/router-link&gt;</span><br><span class="line"><span class="comment">//编程式传参(一般通过事件触发)</span></span><br><span class="line"><span class="variable language_">this</span>.<span class="property">$router</span>.<span class="title function_">push</span>(&#123;</span><br><span class="line">	<span class="attr">path</span>:<span class="string">&#x27;/Child&#x27;</span></span><br><span class="line">    <span class="attr">query</span>: &#123;</span><br><span class="line">         <span class="attr">id</span>: m.<span class="property">id</span>,</span><br><span class="line">         <span class="attr">title</span>: m.<span class="property">title</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//获取数据</span></span><br><span class="line"><span class="variable language_">this</span>.<span class="property">$route</span>.<span class="property">query</span>.<span class="property">id</span></span><br></pre></td></tr></table></figure>
+<p>另一种是 <code>params</code>  传参，使用 params 传参时，to 用的是对象的写法，必须使用 name 配置项，to 也可以是字符串就得是路径了</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//声明式</span></span><br><span class="line">&lt;router-link :to=<span class="string">&quot;&#123;name:&#x27;Child&#x27;,params:&#123;id:123&#125;&#125;&quot;</span>&gt;进入<span class="title class_">Child</span>路由&lt;/router-link&gt;</span><br><span class="line"><span class="comment">//父路由编程式传参(一般通过事件触发)</span></span><br><span class="line"><span class="variable language_">this</span>.<span class="property">$router</span>.<span class="title function_">push</span>(&#123;</span><br><span class="line">    <span class="attr">name</span>:<span class="string">&#x27;Child&#x27;</span>,</span><br><span class="line">    <span class="attr">params</span>:&#123;</span><br><span class="line">    	<span class="attr">id</span>:<span class="number">123</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//获取</span></span><br><span class="line"><span class="variable language_">this</span>.<span class="property">$route</span>.<span class="property">params</span>.<span class="property">id</span></span><br></pre></td></tr></table></figure>
+<h4 id="17v-model"><a class="markdownIt-Anchor" href="#17v-model">#</a> 17.v-model</h4>
+<p>1. 在 input 标签里，绑定 v-bind 用来记录值，然后就是再添加 @input，让绑定的 v-bind 值等于 e.target.value</p>
+<p>2. 在 select 标签里，绑定 v-bind 用来记录值，然后就是再添加 @change 事件，让绑定的 v-bind 的值等于 e.target.value</p>
+<h4 id="18插槽"><a class="markdownIt-Anchor" href="#18插槽">#</a> 18. 插槽</h4>
+<p>插槽就是子组件中的提供给父组件使用的一个占位符，用 slot 表示，父组件可以在这个占位符中填充任意代码，然后该内容会将子组件的 slot 给替换掉。</p>
+<p>第一个是默认插槽，他就是子组件里的 slot 没有设置 name，而父组件的内容也没有设置，他会默认把父组件没有设置名字的内容给替换到子组件没有设置 name 的 slot 组件中。</p>
+<p>第二个是具名插槽，就是给插槽起了个名字 就是在 slot 中添加一个 name = 名字，可以放在不同的地方，然后父组件通过 v-slot：名字将指定父组件替换到子组件对应名字的 slot，v-slot 要和 template 一起搭配才可以使用。</p>
+<p>第三个就是作用域插槽，通过插槽可以传数据，可以用来子组件向父组件传值，子组件中在 slot 里把数据名字写上，父组件里通过 scope = 子组件的数据名字，来接受子组件传过来的数据。子组件只用来传数据，父组件用来显示子组件的内容想要展示的样式。</p>
+<h4 id="19动态添加类"><a class="markdownIt-Anchor" href="#19动态添加类">#</a> 19. 动态添加类</h4>
+<p>class 他有一个参数，可以是三种类型，第一种写法是字符串 当名字不确定时，需要动态修改，第二种写法是对象，当要绑定的样式，个数不确定，名字也不确定时，第三种是数组写法，要绑定多个样式，个数确定，名字也确定，但是不确定使不使用的时候。</p>
+<p>style 的用法和 class 一样，传值可以是数组也可以是对象。</p>
+<h4 id="20-0102-03"><a class="markdownIt-Anchor" href="#20-0102-03">#</a> 20.  0.1+0.2 == 0.3</h4>
+<p>0.1 加 0.2 是不等于 0.3 的， 我们进行任何加法运算的时候，首先都会转换成二进制进行计算，而 0.1 和 0.2 转换成二进制，会出现循环，当他们相加的时候，会截取一段进行相加，从而会导致截取后面的部分数据丢失，使得计算结果小于 0.3</p>
+<h4 id="21如何判断一个数据是否一个数组类型"><a class="markdownIt-Anchor" href="#21如何判断一个数据是否一个数组类型">#</a> 21. 如何判断一个数据是否一个数组类型</h4>
+<p>首先，判断一个数据属于什么类型，typeof 没法判断数据，数组是一个特殊的对象，所以我们用 instanceof 方法，去判断他的类型，然后也可由通过它的原型去判断是否为数组，ta 的 constructor 是否等于数组类型。或者是它的–proto–是否等于数组的原型 prototype</p>
+<h4 id="22原型和原型链"><a class="markdownIt-Anchor" href="#22原型和原型链">#</a> 22. 原型和原型链</h4>
+<p>js 的每个函数对象在创建的时候，都会生成一个 prototype 属性，这个属性指向一个对象，这个对象就是此函数的原型。该原型对象中有个属性为 constructor，指向该函数。然后通过构造函数创建出来的实例对象，其本身都有一个属性叫 __ proto __   这个属性会指向该实例对象的构造函数的原型对象，原型对象他是一个对象他也有 __ proto 属性，最终会指向 object 的原型对象，然后 object 的原型对象的 custructor 指向的是 object，object 的 prototype 属性又指向 obejcet 的原型对象，这样就形成了一个类似链条的关系，我们把这个就叫做原型链。</p>
+<p>​	function hanshu(){</p>
+<p>​	}</p>
+<p>​	let a = new hanshu()</p>
+<p>​	hanshu ().prototype = 函数的原型对象</p>
+<p>​	hanshu () = hanshu ().prototype.constructor 函数的原型对象的 constructor</p>
+<p>​	a._ <em>proto</em>_ = hanshu().prototype</p>
+<h4 id="23es6-class"><a class="markdownIt-Anchor" href="#23es6-class">#</a> 23.es6 class</h4>
+<p>class 是构造函数的另一种写法，他必须有 constructor 构造方法，用来做初始化的操作，也可以用 get 和 set 关键字，对某个属性设置存值函数和取值函数。在 class 中的方法前可以加一个 static，使该方法变为静态方法，他不会被继承，可以通过类来直接调用。我们生成的类也需要通过 new 去实例化一个对象，class 之间可以通过 extends 去继承别的类，子类必须要用 super 方法去调用继承父类的方法，</p>
+<h4 id="24es6-的-setmap"><a class="markdownIt-Anchor" href="#24es6-的-setmap">#</a> 24.es6 的 set，map</h4>
+<p>es6 中的 set 和数组类似，set 不可以有重复的元素，所以可以做去重操作，set 本身就是一个构造函数，我们可以使用 new set 去创建一个 set 集合，可以通过 add 方式向 set 集合中添加元素。set 还有 size 方法，用来返回长度，has 方法，判断集合内是否存在某个内容，返回的是布尔值，还有 delete 方法，删除集合内某个元素，返回的也是布尔值，最后一个 clear 方法，直接清空集合内容。我们可以使用。keys，values 和 forEach 方法遍历 set 集合。</p>
+<p>array.from 可以把类数组变成数组</p>
+<p>map 用于存储映射关系，之前我们一直是使用对象来存储映射关系的，之前我们是一直使用对象来存储映射关系的，map 的键和值都可以是任意类型的，map 本身也是一构造函数，也可以通过 new map 去实例化，他的实例有 size 属性，可以显示 map 的成员总数，还有 set 方法，可以设置键名和对应的值，如果键名重复，则更新键值，最后返回整个 map 结构，get 方法用来获取键名对应的值，如果找不到则返回 undefined，has 方法，用来判断某个键是否在 map 中，返回一个布尔值，还有 delete 方法，删除某个键，返回的也是布尔值，最后一个就是 clear，清除 map 的所有成员，map 可以用 keys 和 forEach 遍历。</p>
+<h4 id="25解构赋值"><a class="markdownIt-Anchor" href="#25解构赋值">#</a> 25. 解构赋值</h4>
+<p>es6 允许按照一定的模式，从数组和对象中提取值，对变量进行赋值，这样就称为结构赋值，</p>
+<p>数组的结构赋值，当解构不成功时，变量的值就等于 undefined，解构赋值时允许给变量设置默认值，也是引用解构赋值的其他变量，但是该变量必须是已经声明的，不然就会报错。</p>
+<p>然后对象的解构赋值与数组不同的是，数组是按顺序排列的，变量的取值由它的位置决定，而对象的属性没有顺序。变量必须与属行同名，才可以取到正确的值，字符串，函数参数也可以解构赋值。</p>
+<h4 id="26animation和transition的区别"><a class="markdownIt-Anchor" href="#26animation和transition的区别">#</a> 26.animation 和 transition 的区别</h4>
+<p>1、transition 需要去触发比如：点击事件、鼠标移入事件；而 animation 可以配合 @keyframe 可以不触发事件就触发这个动画</p>
+<p>2、transition 触发一次播放一次；而 animation 则是可以设置很多的属性，比如循环次数，动画结束的状态等等；</p>
+<p>3、transition 关注的是样式属性的变化，属性值和时间的关系是一个三次贝塞尔曲线；而 animation 作用于元素本身而不是样式属性，可以使用关键帧的概念，可以实现更自由的动画效果；</p>
+<p>4、在性能方面：浏览器有一个主线程和排版线程；主线程一般是对 js 运行的、页面布局、生成位图等等，然后把生成好的位图传递给排版线程，而排版线程会通过 GPU 将位图绘制到页面上，也会向主线程请求位图等等；我们在用使用 aniamtion 的时候这样就可以改变很多属性，像我们改变了 width、height、postion 等等这些改变文档流的属性的时候就会引起，页面的回流和重绘，对性能影响就比较大，但是我们用 transition 的时候一般会结合 tansfrom 来进行旋转和缩放等不会生成新的位图，当然也就不会引起页面的重排了。</p>
+<h4 id="27动画-transform-transition-animation"><a class="markdownIt-Anchor" href="#27动画-transform-transition-animation">#</a> 27. 动画 transform、transition、animation</h4>
+<p>transform</p>
+<p>做过轮播图，和钟表，</p>
+<h4 id="28响应式"><a class="markdownIt-Anchor" href="#28响应式">#</a> 28. 响应式</h4>
+<p>响应式页面的设计与开发应当根据用户行为以及设备屏幕不同大小，进行相应的响应和调整。他的原理就是通过媒体查询检测不同的设备屏幕尺寸做处理，为了处理移动端，页面头部必须有 <code>meta</code>  声明 <code>viewport</code></p>
+<ul>
+<li>
+<p>width=device-width: 是自适应手机屏幕的尺寸宽度</p>
+</li>
+<li>
+<p>maximum-scale: 是缩放比例的最大值</p>
+</li>
+<li>
+<p>inital-scale: 是缩放的初始化</p>
+</li>
+<li>
+<p>user-scalable: 是用户的可以缩放的操作</p>
+<p>实现响应式布局的方式有如下：媒体查询、百分比、vw/vh、rem</p>
+</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">//head里配置</span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no”&gt;</span></span></span><br><span class="line"><span class="string"><span class="tag">//css里设置</span></span></span><br><span class="line"><span class="string"><span class="tag">@media screen and (max-width: 1920px)&#123;&#125;</span></span></span><br></pre></td></tr></table></figure>
+<h4 id="29闭包"><a class="markdownIt-Anchor" href="#29闭包">#</a> 29. 闭包</h4>
+<p>闭包可以简单理解成：定义在一个函数内部的函数。由于在 JS 中，变量的作用域属于函数作用域，在函数执行后作用域就会被清理、内存也随之被收回，但是由于闭包是建立在一个函数内部的子函数，由于其可访问上级作用域的原因，即使上级函数执行完，作用域也不会随之销毁，这时的子函数 — 也就是闭包，便拥有了访问上级作用域中的变量的权限，即使上级函数执行完后，作用域内的值也不会被销毁。</p>
+<p>闭包就是定义在函数内部的一个函数，也就是函数内部嵌套函数。函数内部可以引用外部的参数和变量。然后就是参数和变量不会被回收。使用闭包可以避免全局变量的污染；缺点就是会使变量长期驻扎在内存中；会造成内存泄露。应用在 Ajax 请求的成功回调，事件绑定的回调方法， setTimeout 的延时回调。</p>
+<h4 id="30防抖和节流"><a class="markdownIt-Anchor" href="#30防抖和节流">#</a> 30. 防抖和节流</h4>
+<p>防抖和节流本质上是优化高频率执行代码的一种手段，有的事件会一直触发，会导致资源浪费，性能降低。所以采用防抖和节流 的方式来减少调用频率。节流: n 秒内只运行一次，若在 n 秒内重复触发，只有一次生效。防抖: n 秒后再执行该事件，若在 n 秒内被重复触发，则重新计时。防抖关注一定时间连续触发的事件，在一段连续操作结束后，处理回调。而节流，在一段连续操作中，每一段时间只执行一次。</p>
+<h4 id="31深浅拷贝"><a class="markdownIt-Anchor" href="#31深浅拷贝">#</a> 31. 深浅拷贝</h4>
+<p>浅拷贝和深拷贝在拷贝时都会创建一个新的对象</p>
+<p>浅拷贝时，只会拷贝第一层，如果是基本类型，直接拷贝值，如果是引用类型，则拷贝内存地址。如果对象里有引用类型，修改新对象，原对象也会被修改。</p>
+<p>深拷贝时，会开辟一个新的栈，两个对象属性完成相同，但是对应两个不同的地址。修改新对象，不会影响原对象。</p>
+<p>浅拷贝直接用一个 for 循环遍历一次就可以实现，深拷贝则需要用到递归才能实现。</p>
+<p>浅拷贝的方法有： <code>Object.assign、concat、lodash.clone</code></p>
+<p>深拷贝方法有： <code>jQuery.extend()、JSON.stringify()、lodash.cloneDeep()</code></p>
+<p>json.stringify 的缺陷会忽略 undefined 和 symbol 和函数</p>
+<h4 id="33js数据类型"><a class="markdownIt-Anchor" href="#33js数据类型">#</a> 33.js 数据类型</h4>
+<p>基本数据类型：number、string、boolean、undefined、null、symbol，</p>
+<p>引用数据类型：array、object、function</p>
+<h4 id="34隐式转换"><a class="markdownIt-Anchor" href="#34隐式转换">#</a> 34. 隐式转换</h4>
+<p>js 中的隐式转换分为两种，一个是数学运算符中的转换，一个是逻辑语句中的转换，我们在对各种不是 number 类型的使用数学运算符时（- * /) 时，会先将非 Number 类型转换为 Number 类型。</p>
+<p>然后加法的时候，分三种情况，</p>
+<p>一侧是字符串时，会被当做字符串拼接，先把另一侧转为字符串类型。</p>
+<p>一侧是 number 类型，另一侧是基本类型时，则将原、基本类型转换为 number 类型，</p>
+<p>一侧是 number 类型，另一侧是引用类型时，将引用类型和 number 类型转换成字符串后拼接。</p>
+<p>然后就是当字符串和数字、布尔值比较时都会转换为数字，再比较。</p>
+<p>当对象和布尔值、字符串、数字比较时，对象都先转换为字符串，除字符串其他都要转为数字，再比较。</p>
+<h4 id="35跨域"><a class="markdownIt-Anchor" href="#35跨域">#</a> 35. 跨域</h4>
+<p>指的是浏览器不能执行其他网站的脚本。它是由浏览器的同源策略造成的，是浏览器对 javascript 施加的安全限制。</p>
+<p>同源策略：是指协议，域名，端口都要相同，其中有一个不同都会产生跨域；</p>
+<p>document.domin 解决无法读取非同源网页的 cookie 问题，（此方案仅限主域相同，子域不同的跨域应用场景。）</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 两个页面都设置</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="property">domain</span> = <span class="string">&#x27;test.com&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p>还可以使用 window.postMessage ()，它可用于解决以下方面的问题：页面和其打开的新窗口的数据传递，多窗口之间消息传递，页面与嵌套的 iframe 消息传递，上面三个场景的跨域数据传递</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 父窗口打开一个子窗口</span></span><br><span class="line"><span class="keyword">var</span> openWindow = <span class="variable language_">window</span>.<span class="title function_">open</span>(<span class="string">&#x27;http://test2.com&#x27;</span>, <span class="string">&#x27;title&#x27;</span>);</span><br><span class="line"><span class="comment">// 父窗口向子窗口发消息(第一个参数代表发送的内容，第二个参数代表接收消息窗口的url)</span></span><br><span class="line">openWindow.<span class="title function_">postMessage</span>(<span class="string">&#x27;Nice to meet you!&#x27;</span>, <span class="string">&#x27;http://test2.com&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<p>3.JSONP，它是服务器与客户端跨源通信的常用方法，</p>
+<p>原生 js，通过 script 标签使用 src，把请求地址写到这里面</p>
+<p>使用 jquery 通过 ajax 发请求，url 放请求地址，type 请求类型。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">vue中</span><br><span class="line"><span class="variable language_">this</span>.<span class="property">$http</span>.<span class="title function_">jsonp</span>(<span class="string">&#x27;http://www.domain2.com:8080/login&#x27;</span>, &#123;</span><br><span class="line">    <span class="attr">params</span>: &#123;&#125;,</span><br><span class="line">    <span class="attr">jsonp</span>: <span class="string">&#x27;handleCallback&#x27;</span></span><br><span class="line">&#125;).<span class="title function_">then</span>(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(res); </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>4.CORS 是跨域资源分享（Cross-Origin Resource Sharing）的缩写。它是 W3C 标准，属于跨源 AJAX 请求的根本解决方法。</p>
+<p>1、普通跨域请求：只需服务器端设置 Access-Control-Allow-Origin</p>
+<p>2、带 cookie 跨域请求：前后端都需要进行设置<br>
+ 5.vue 中使用 proxy 配置代理，解决跨域问题</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="attr">devServer</span>: &#123;</span><br><span class="line">        <span class="attr">port</span>: <span class="number">8080</span>,</span><br><span class="line">        <span class="attr">proxy</span>: &#123;</span><br><span class="line">            <span class="string">&quot;/api&quot;</span>: &#123;</span><br><span class="line">              <span class="attr">target</span>: <span class="string">&quot;http://192.168.25.20:8088&quot;</span> <span class="comment">// 后端接口</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>还有就是 websocket 和 nginx 反向代理也可以解决跨域问题</p>
+<h4 id="36自定义指令"><a class="markdownIt-Anchor" href="#36自定义指令">#</a> 36. 自定义指令</h4>
+<p>自定义指令可以通过 Vue.directive 方法进行全局注册，它有两个参数，第一个是指令的名字，第二参数是对象数据，也可以是一个指令函数。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 注册一个全局自定义指令 `v-focus`</span></span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">directive</span>(<span class="string">&#x27;focus&#x27;</span>, &#123;</span><br><span class="line">  <span class="comment">// 当被绑定的元素插入到 DOM 中时……</span></span><br><span class="line">  <span class="attr">inserted</span>: <span class="keyword">function</span> (<span class="params">el</span>) &#123;</span><br><span class="line">    <span class="comment">// 聚焦元素</span></span><br><span class="line">    el.<span class="title function_">focus</span>()  <span class="comment">// 页面加载完成之后自动让输入框获取到焦点的小功能</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>局部注册通过在组件 <code>options</code>  选项中设置 <code>directive</code>  属性</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="attr">directives</span>: &#123;</span><br><span class="line">  <span class="attr">focus</span>: &#123;</span><br><span class="line">    <span class="comment">// 指令的定义</span></span><br><span class="line">    <span class="attr">inserted</span>: <span class="keyword">function</span> (<span class="params">el</span>) &#123;</span><br><span class="line">      el.<span class="title function_">focus</span>() <span class="comment">// 页面加载完成之后自动让输入框获取到焦点的小功能</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后在模板中使用 v - 指令名字就可以使用了，</p>
+<p>自定义指令常用的钩子函数有，</p>
+<p>bind 只调用一次，指令与元素成功绑定时调用。</p>
+<p>inserted：指令所在元素被插入页面时调用。</p>
+<p>update：指令所在模板结构被重新解析时调用。</p>
+<p>自定义指令用在判断用户权限，比如说一个数据，管理员可以看到删除按钮，而用户只能看到这条数据。</p>
+<h4 id="37minxs"><a class="markdownIt-Anchor" href="#37minxs">#</a> 37.minxs</h4>
+<p>对于一些在多个页面都会用到的方法和功能可以写在 mixns 中，之后每次用到只需引入 mixin 文件到用到的页面即可实现复用。<br>
+mixin 文件的定义与正常 vue 组件的定义完全一致，都有 created,mounted… 等钩子函数，以及 data,methods 方法用来声明当前用到的数据和方法。minix 会在引入文件 中进行 属性和方法的合并（混入）minxs 优先执行，相同字段名首先会覆盖。相同函数名会合并为一个数组会优先执行 minix。</p>
+<h4 id="38深度监听"><a class="markdownIt-Anchor" href="#38深度监听">#</a> 38. 深度监听</h4>
+<p>watch 里的 deep 属性改为 true，开启深度监听</p>
+<h4 id="39修改element-ui默认样式"><a class="markdownIt-Anchor" href="#39修改element-ui默认样式">#</a> 39. 修改 element-ui 默认样式，</h4>
+<p>组件库中标签名字，就是 class 属性的名字，我们直接在 style 里重新给这个标签设置 css 属性值就可以改变默认样式，有的时候可能需要加上！important。’deep‘</p>
+<h4 id="40封装echarts"><a class="markdownIt-Anchor" href="#40封装echarts">#</a> 40. 封装 echarts</h4>
+<p>选择器权重， id &gt; 类 = 伪类 &gt; 标签 &gt; 伪元素</p>
+<h4 id="41json和map的区别"><a class="markdownIt-Anchor" href="#41json和map的区别">#</a> 41.json 和 map 的区别</h4>
+<p>map 里边的键值可以使任意，json 必须是字符串。</p>
+<h4 id="42call-apply-bind"><a class="markdownIt-Anchor" href="#42call-apply-bind">#</a> 42.call apply bind</h4>
+<p>call、apply、bind 作用是改变函数的 this 指向，</p>
+<p>apply 接受两个参数，第一个参数是 this 参数是函数接受的参数，以数组的形式传入改变 this 指向后原函数会立即执行，且此方法只是临时改变 this 指向一次，当第一个参数为 null、undefined 的时候，默认指向 window。</p>
+<p>call 方法的第一个参数也是 this 的指向，后面传入的是一个参数列表。跟 apply 一样，改变 this 指向后原函数会立即执行，且此方法只是临时改变 this 指向一次。当第一个参数为 null、undefined 的时候，默认指向 window。</p>
+<p>bind 方法和 call 相似，第一参数也是 <code>this</code>  的指向，后面传入的也是一个参数列表 (但是这个参数列表可以分多次传入)。改变 <code>this</code>  指向后不会立即执行，而是返回一个永久改变 <code>this</code>  指向的函数。</p>
+<h4 id="43javascript垃圾回收机制"><a class="markdownIt-Anchor" href="#43javascript垃圾回收机制">#</a> 43.JavaScript 垃圾回收机制</h4>
+<h5 id="1标记清除"><a class="markdownIt-Anchor" href="#1标记清除">#</a> 1. 标记清除：</h5>
+<p>原理：当变量进入环境时，将这个变量标记为 “进入环境”。当变量离开环境时，则将其标记为 “离开环境”。标记 “离开环境” 的就回收内存。</p>
+<p>垃圾回收器，在运行的时候会给存储在内存中的所有变量都加上标记。去掉环境中的变量以及被环境中的变量引用的变量的标记。<br>
+再被加上标记的会被视为准备删除的变量。垃圾回收器完成内存清除工作，销毁那些带标记的值并回收他们所占用的内存空间。</p>
+<h5 id="2引用计数"><a class="markdownIt-Anchor" href="#2引用计数">#</a> 2. 引用计数</h5>
+<p>原理：跟踪记录每个值被引用的次数。</p>
+<p>声明了一个变量并将一个引用类型的值赋值给这个变量，这个引用类型值的引用次数就是 1。<br>
+同一个值又被赋值给另一个变量，这个引用类型值的引用次数加 1。<br>
+当包含这个引用类型值的变量又被赋值成另一个值了，那么这个引用类型值的引用次数减 1。<br>
+当引用次数变成 0 时，说明没办法访问这个值了。<br>
+当垃圾收集器下一次运行时，它就会释放引用次数是 0 的值所占的内存。</p>
+<h4 id="44script标签中defer和anysc属性的区别"><a class="markdownIt-Anchor" href="#44script标签中defer和anysc属性的区别">#</a> 44.Script 标签中 defer 和 anysc 属性的区别</h4>
+<p>defer 是不会阻塞 html 解析的，它是等 DOM 加载完之后再去执行 JavaScript 代码；async 是 JavaScript 下载完成，就会立即执行代码，等待执行完之后才继续解析 HTML。</p>
+<p>在加载多个 JS 脚本的时候，async 是无顺序的加载，而 defer 是有顺序的加载。</p>
+<h4 id="45宏任务与微任务"><a class="markdownIt-Anchor" href="#45宏任务与微任务">#</a> 45. 宏任务与微任务</h4>
+<h5 id="微任务"><a class="markdownIt-Anchor" href="#微任务">#</a> 微任务</h5>
+<p>一个需要异步执行的函数，执行时机是在主函数执行结束之后、当前宏任务结束之前</p>
+<p>常见的微任务有：</p>
+<ul>
+<li>Promise.then</li>
+<li>MutaionObserver</li>
+<li>Object.observe（已废弃；Proxy 对象替代）</li>
+<li>process.nextTick（Node.js）</li>
+</ul>
+<h5 id=""><a class="markdownIt-Anchor" href="#">#</a> <a href="https://vue3js.cn/interview/JavaScript/event_loop.html#%E5%AE%8F%E4%BB%BB%E5%8A%A1">#</a>宏任务</h5>
+<p>宏任务的时间粒度比较大，执行的时间间隔是不能精确控制的，对一些高实时性的需求就不太符合</p>
+<p>常见的宏任务有：</p>
+<ul>
+<li>script (可以理解为外层同步代码)</li>
+<li>setTimeout/setInterval</li>
+<li>UI rendering/UI 事件</li>
+<li>postMessage、MessageChannel</li>
+<li>setImmediate、I/O（Node.js）</li>
+</ul>
+<h4 id="46阻止冒泡事件有三种方法"><a class="markdownIt-Anchor" href="#46阻止冒泡事件有三种方法">#</a> 46. 阻止冒泡事件有三种方法：</h4>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="number">1.</span>event.<span class="title function_">stopPropagation</span>()方法</span><br><span class="line">	$(<span class="string">&#x27;.btn&#x27;</span>).<span class="title function_">click</span>(<span class="keyword">function</span> (<span class="params">even</span>) &#123;</span><br><span class="line">		even.<span class="title function_">stopPropagation</span>();</span><br><span class="line">		<span class="title function_">alert</span>(<span class="string">&#x27;按钮被点击了&#x27;</span>);</span><br><span class="line">	&#125;)</span><br><span class="line">这是阻止</span><br></pre></td></tr></table></figure>
+<p>事件的冒泡方法，不让事件向 documen 上蔓延，但是默认事件任然会执行，当你掉用这个方法的时候，如果点击一个连接，这个连接仍然会被打开。<br>
+例如：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="number">2.</span>event.<span class="title function_">preventDefault</span>()方法</span><br><span class="line">	$(<span class="string">&#x27;.btn&#x27;</span>).<span class="title function_">click</span>(<span class="keyword">function</span> (<span class="params">even</span>) &#123;</span><br><span class="line">		even.<span class="title function_">preventDefault</span>();</span><br><span class="line">		<span class="title function_">alert</span>(<span class="string">&#x27;按钮被点击了&#x27;</span>);</span><br><span class="line">	&#125;)</span><br></pre></td></tr></table></figure>
+<p>这是阻止默认事件的方法，调用此方法是，连接不会被打开，但是会发生冒泡，冒泡会传递到上一层的父元素；</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="number">3.</span><span class="keyword">return</span> <span class="literal">false</span> ；</span><br><span class="line">	$(<span class="string">&#x27;.btn&#x27;</span>).<span class="title function_">click</span>(<span class="keyword">function</span> (<span class="params">even</span>) &#123;</span><br><span class="line">		<span class="title function_">alert</span>(<span class="string">&#x27;按钮被点击了&#x27;</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;)</span><br></pre></td></tr></table></figure>
+<p>这个方法比较暴力，他会同事阻止事件冒泡也会阻止默认事件；写上此代码，连接不会被打开，事件也不会传递到上一层的父元素；可以理解为 return false 就等于同时调用了 event.stopPropagation () 和 event.preventDefault ()</p>
+<h4 id="47返回url"><a class="markdownIt-Anchor" href="#47返回url">#</a> 47. 返回 url</h4>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">		<span class="keyword">var</span> url;	</span><br><span class="line">	url = <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span>; <span class="comment">/* 获取完整URL */</span></span><br><span class="line">	<span class="title function_">alert</span>(url); <span class="comment">/* http://127.0.0.1:8020/Test/index.html#test?name=test */</span></span><br><span class="line"></span><br><span class="line">	url = <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">pathname</span>; <span class="comment">/* 获取文件路径（文件地址） */</span></span><br><span class="line">	<span class="title function_">alert</span>(url); <span class="comment">/* /Test/index.html */</span></span><br><span class="line"></span><br><span class="line">	url = <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">protocol</span>; <span class="comment">/* 获取协议 */</span></span><br><span class="line">	<span class="title function_">alert</span>(url); <span class="comment">/* http */</span></span><br><span class="line"></span><br><span class="line">	url = <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">host</span>; <span class="comment">/* 获取主机地址和端口号 */</span></span><br><span class="line">	<span class="title function_">alert</span>(url); <span class="comment">/* http://127.0.0.1:8020/ */</span></span><br><span class="line"></span><br><span class="line">	url = <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">hostname</span>; <span class="comment">/* 获取主机地址 */</span></span><br><span class="line">	<span class="title function_">alert</span>(url); <span class="comment">/* http://127.0.0.1/ */</span></span><br><span class="line"></span><br><span class="line">	url = <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">port</span>; <span class="comment">/* 获取端口号 */</span></span><br><span class="line">	<span class="title function_">alert</span>(url); <span class="comment">/* 8020 */</span></span><br><span class="line"></span><br><span class="line">	url = <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">hash</span>; <span class="comment">/* 获取锚点（“#”后面的分段） */</span></span><br><span class="line">	<span class="title function_">alert</span>(url); <span class="comment">/* #test?name=test */</span></span><br><span class="line"></span><br><span class="line">	url = <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">search</span>; <span class="comment">/* 获取属性（“?”后面的分段） */</span></span><br><span class="line">	<span class="title function_">alert</span>(url);</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* 如果需要URL中的某一部分，可以自己进行处理 */</span></span><br><span class="line">	url = <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">pathname</span>;</span><br><span class="line">	url = url.<span class="title function_">substring</span>(url.<span class="title function_">lastIndexOf</span>(<span class="string">&#x27;/&#x27;</span>) + <span class="number">1</span>, url.<span class="property">length</span>);</span><br><span class="line">	<span class="title function_">alert</span>(url); <span class="comment">/* /index.html */</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">/* </span></span><br><span class="line"><span class="comment">	 * 如果页面使用了框架（frameset）</span></span><br><span class="line"><span class="comment">	 * 要获取到指定页面的URL</span></span><br><span class="line"><span class="comment">	 * 只要把window换成指定的页面即可</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="comment">/* &#x27;frame&#x27;为指定页面的class名 */</span></span><br><span class="line">	<span class="keyword">var</span> url = <span class="variable language_">window</span>.<span class="property">parent</span>.<span class="property">frames</span>[<span class="string">&#x27;frame&#x27;</span>].<span class="property">location</span>.<span class="property">href</span>;</span><br><span class="line">	<span class="comment">/* 获取当前地址栏中显示的URL */</span></span><br><span class="line">	<span class="keyword">var</span> url = <span class="variable language_">window</span>.<span class="property">parent</span>.<span class="property">location</span>.<span class="property">href</span>;</span><br><span class="line">	<span class="comment">/* window parent 可互换 */</span></span><br><span class="line">	<span class="keyword">var</span> url = parent.<span class="property">window</span>.<span class="property">location</span>.<span class="property">href</span>;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>vue面试题</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>vue2学习</title>
     <url>/2022/07/07/vue2%E5%AD%A6%E4%B9%A0/</url>
     <content><![CDATA[<h4 id="1vue模板语法"><a class="markdownIt-Anchor" href="#1vue模板语法">#</a> 1.Vue 模板语法</h4>
@@ -633,277 +904,6 @@ $
 ]]></content>
       <tags>
         <tag>vue</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>vue面试题</title>
-    <url>/2022/07/07/vue%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
-    <content><![CDATA[<p>echars 使用步骤</p>
-<p>1. 创建一个存放图表的容器，往往使用一个 div 作为容器</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;container&quot;</span> <span class="attr">style</span>=<span class="string">&quot;height: 100%&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>2. 图表初始化，Echarts 绘图时调用 echarts.init () API 实现图表初始化。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> dom = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;container&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> myChart = echarts.<span class="title function_">init</span>(dom);</span><br></pre></td></tr></table></figure>
-<p>3. 设置图表配置项，传入数据</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> option = &#123;</span><br><span class="line">    <span class="attr">xAxis</span>: &#123;</span><br><span class="line">        <span class="attr">type</span>: <span class="string">&#x27;category&#x27;</span>,</span><br><span class="line">        <span class="attr">data</span>: [<span class="string">&#x27;Mon&#x27;</span>, <span class="string">&#x27;Tue&#x27;</span>, <span class="string">&#x27;Wed&#x27;</span>, <span class="string">&#x27;Thu&#x27;</span>, <span class="string">&#x27;Fri&#x27;</span>, <span class="string">&#x27;Sat&#x27;</span>, <span class="string">&#x27;Sun&#x27;</span>]</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">yAxis</span>: &#123;</span><br><span class="line">        <span class="attr">type</span>: <span class="string">&#x27;value&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">series</span>: [&#123;</span><br><span class="line">        <span class="attr">data</span>: [<span class="number">820</span>, <span class="number">932</span>, <span class="number">901</span>, <span class="number">934</span>, <span class="number">1290</span>, <span class="number">1330</span>, <span class="number">1320</span>],<span class="comment">//在这里修改数据</span></span><br><span class="line">        <span class="attr">type</span>: <span class="string">&#x27;line&#x27;</span></span><br><span class="line">    &#125;]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>4. 绘制图表。调用 setOption () API 实现图表绘制。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (option &amp;&amp; <span class="keyword">typeof</span> option === <span class="string">&quot;object&quot;</span>) &#123;</span><br><span class="line">    myChart.<span class="title function_">setOption</span>(option, <span class="literal">true</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>html 块级元素  div 、p、h1-h5、br----------------------<br>
- 行内元素 a、span、strong、b、img、input、select、</p>
-<h4 id="1flex布局"><a class="markdownIt-Anchor" href="#1flex布局">#</a> 1.flex 布局</h4>
-<p>flex 是弹性布局，我们设置为 flex 的元素成为容器，容器内的其他子元素成为项目，容器默认是有两根轴，一个是水平的主轴 main aixs，一个是垂直的交叉轴 cross axis</p>
-<p>容器的属性有 flex-direction：设置项目的排列方向 row row-reserve column column-reverse</p>
-<p>flex-wrap：当子元素超过父容器的长度时，是否换行，wrap nowrap wrap-reverse</p>
-<p>flex-flow 是 flex-direction 和 flex-wrap 的简写</p>
-<p>justify-content：设置项目主轴上对齐方式，flex-start ，flex-end，center，space-between 两端对齐，space-around 中间是边的二倍，space-evenly 间距相等</p>
-<p>align-items：设置项目交叉轴的对齐方式，默认是 stretch，flex-start，flex-end，center，baseline</p>
-<p>align-content：当交叉轴有多余空间时，调整内容的对齐方式。</p>
-<p>项目属性有 order：设置显示顺序，序号越小。排在越前</p>
-<p>flex-grow 项目的放大比例，默认 0 ，</p>
-<p>flex-shrink 项目的缩小比例，默认 1</p>
-<p>flex-basis 项目的默认宽度</p>
-<p>flex 是 flex-grow 和 flex-shrink 和 flex-basis 的简写默认 0 1 auto</p>
-<p>align-self 可以单独设置项目的对齐方式，可覆盖 align-items</p>
-<h4 id="2promise"><a class="markdownIt-Anchor" href="#2promise">#</a> 2.promise</h4>
-<p>promise 是 es6 新增的语法，它是解决异步编程的一种方案，他支持链式调用，可以解决回调地狱问题，promise 有三种状态，padding 进行中，fulfilled 已成功。rejected 已失败。promise 对象他是一个构造函数，他的参数有两个，第一个 resolve 可以把 padding 状态改变为 fulfilled，第二个 reject 他可以把 padding 改成 rejected 状态。promise 对象的实例有三个方法，第一个是 then ()，他是当 promise 的状态改变的时候就会执行这个回调，第二个是 catch () 他是用来捕获错误的回调函数，第三个是 finally 他不管 promise 最后的状态如何，都会执行。promise 还有 all 和 race 方法，他们都是多个 promise 对象组成的一个新的 promise 实例，all 是当所有的请求都成功的时候才会返回成功，race 只要有一个请求成功就会返回成功。</p>
-<h4 id="3组件间的传值"><a class="markdownIt-Anchor" href="#3组件间的传值">#</a> 3. 组件间的传值</h4>
-<p>我们常用的父子组件之间传值是 props，子组件也可以向父组件传值，子组件用 emit 发送，父组件用 on 接受，还有常用的就是 vuex 和全局事件总线在任意组件之间都可以传值，还有就是插槽也可以进行传值，默认和具名插槽可以实现父组件向子组件传值，作用域插槽可以实现子组件向父组件传值。最后 ref 也可以通过属性传值，父组件可以改变子组件中的数据。</p>
-<h4 id="4axios"><a class="markdownIt-Anchor" href="#4axios">#</a> 4.axios</h4>
-<p>axios 的原理就是 ajax，是对 ajax 的封装，他是基于 promise 实现的，符合 es6 语法，我们在项目中可以配置一个全局的 axios，在 main.js 中引入 axios 的包，然后配置</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">axios.defaults.baseURL</span><br></pre></td></tr></table></figure>
-<p>之后在 vue 的原型上给他添加一个属性，</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vue.prototype.$http = axios</span><br></pre></td></tr></table></figure>
-<p>然后我们在组件中就可以使用</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">this.$http.请求方式</span><br></pre></td></tr></table></figure>
-<p>然后还可以配置请求拦截器 request。我们通常的用的请求方式就是 get 和 post，我们也可以把 axios 封装成自己的 api，方便我们以后的调用和修改。比如说就是用户没有登录的时候添加商品，当它点击他添加，先是请求拦截器就是在请求发送之前，在其请求头里给添加一个 token，然后得到服务器相应之后，响应拦截器判断这个 token 是否有值，如果没有，那路由跳转到登录页面。</p>
-<p>原生 ajax，先 new 一个 XMLHttpRequest，然后 open 打开请求地址和方式，然后 onreadystatechange =function（），最后发送 send</p>
-<h4 id="5vuex"><a class="markdownIt-Anchor" href="#5vuex">#</a> 5.vuex</h4>
-<p>vuex 是对 vue 中数据集中管理的一个插件，他一共有 5 个属性，分别是 state，用来存放数据源信息，就是一些公用的数据都要放在 state 中存放，在组件中使用 store.state. 数据名，也可以用 mapState 获取，然后就是 mutations，他是唯一一个可以改变 store 状态的一个方法，在组件中使用 store.commit 来触发事件，也可以用简写方式 mapMutations 触发，还有就是 action 他的功能和 mutations 差不多，但是 actions 可以进行异步的操作，在组件中使用 store.dispatch 来触发事件，或者用简写方式 mapActions，还有 getters 属性，他就和计算属性 computed 差不多，就是把 state 中的数据加工一下，return 出来，我我们直接使用加工过之后的数据，可以用 store.getters. 方法名字或者 mapGetters 来触发，最后一个就是模块化 module，就是可以把 store 分成若干个模块，每个模块都有 state、mutations、actions、getters 属性，他是为了方便我们更好的管理代码。</p>
-<h4 id="6生命周期"><a class="markdownIt-Anchor" href="#6生命周期">#</a> 6. 生命周期</h4>
-<p>vue 的生命周期可以分为 8 个阶段，第一个就是 beforeCreate，组件实例被创建之前，这个时候是没有数据的，然后就是 created，组件实例被创建，这是时候已经有了数据了，我们可以在这里去异步请求接口获取数据，然后就是 beforeMount，这个是组件实例被挂载之前，虚拟的 dom 已经创建，但是真实的 dom 没有被创建，再接着就是 mounted，这个时候组件实例被挂载，真实 dom 创建，页面也渲染出来了，我的项目中我是在 mounted 去异步请求获取数据，在这里还可以执行自定义事件，启动定时器等，然后就是 beforeUpdate，这是被更新之前，然后就是 updated 这是时候数据已经被更新了，然后就是 beforeDestroy，这是组件实例被销毁之前，我们在这里可以清除定时器，什么的，最后就是 destroyed 这个时候组件实例被销毁了。还有两个就是路由里 keep-alive 的两个声明周期钩子，一个是 activeted，他是被 keep-alive 缓存的组件被激活的时候调用，另一个是 deactivated，缓存的组件被停用的时候调用，还有一个就是 errorCapture 用来捕获异常的。</p>
-<h4 id="7computed和watch区别"><a class="markdownIt-Anchor" href="#7computed和watch区别">#</a> 7.computed 和 watch 区别</h4>
-<p>computed 是计算属性，他是支持缓存的。他组件被挂载的时候就会被调用一次，当数据源信息比如 data 里的数据还有 props 接受的数据被更改的时候，会再次被调用，而 watch 是监听属性，watch 需要添加 immediate 才会在挂载时执行一次，他也能实现 computed 的功能，但是 watch 还可以做异步的操作，而 computed 只能做同步的，而且我们可以用 watch 做一些复杂的计算，computed 适合多个数据影响一个数据，就是用在了计算购物车结算总金额的时候，watch 适合一个数据影响多个数据，然后 watch 是用在了搜索的时候。</p>
-<h4 id="8let-const-var的区别"><a class="markdownIt-Anchor" href="#8let-const-var的区别">#</a> 8.let const var 的区别</h4>
-<p>var 存在变量提升，定义之前被使用会提示 undefined，let 和 const 不存在变量提升</p>
-<p>var 不存在块级作用域，let 和 const 存在</p>
-<p>var 不存在作用域死区，let 和 const 存在，当他们被声明那条语句执行了，才可以被使用</p>
-<p>var 声明的变量可以重复声明，但是 let 和 const 不可以</p>
-<p>var 和 let 声明的变量可以被修改，const 声明的常量不可以被修改。</p>
-<p>const 开辟一个新的空间，</p>
-<h4 id="9数组函数"><a class="markdownIt-Anchor" href="#9数组函数">#</a> 9. 数组函数</h4>
-<p>shift（）、unshift（）、pop（）、push（）、reverse（）、sort（）、splice（）、</p>
-<p>forEach（）、filter（）、reduce（）、findIndex（）、indexOf（）、every（）、some（）、map（）、join（）转换成字符串</p>
-<h4 id="10keep-alive"><a class="markdownIt-Anchor" href="#10keep-alive">#</a> 10.keep-alive</h4>
-<p>keep-alive 是 vue 中内置组件，能在组件切换过程中将状态保留在内存中，防止重复传染 DOM,keep-alive 包裹动态组件时，会缓存不活动的组件实例，而不是销毁它们，</p>
-<p>keep-alive 有三个属性</p>
-<p>include 匹配的组件会被缓存</p>
-<p>exclude 匹配的组件不会被缓存</p>
-<p>max 可以设置最多可以缓存多少实例。</p>
-<p>与之对应的有两生命周期钩子，activated 和 deactivated，前者是当 keep-alive 包裹的组件被激活的时候调用，deactivated 是当被 keep-alive 缓存的组件被停用的时候调用。</p>
-<h4 id="11v-if和v-show"><a class="markdownIt-Anchor" href="#11v-if和v-show">#</a> 11.v-if 和 v-show</h4>
-<p>v-if 的切换会销毁和重新构建一个新的 DOM 节点，而 v-show 只是对 DOM 元素设置 css 样式，display：none 和 display：block</p>
-<p>v-if 只有在条件为真的时候才会加载，而 v-show 在初始化的时候会加载，</p>
-<p>v-if 在切换的时候内存消耗高，而 v-show 在初次加载的时候消耗高，</p>
-<p>v-if 适合不频繁的切换，v-show 适合频繁的切换</p>
-<h4 id="12v-if和v-for"><a class="markdownIt-Anchor" href="#12v-if和v-for">#</a> 12.v-if 和 v-for</h4>
-<p>在 vue2 中，v-for 的优先级比 v-if 的高，在 vue3 中，v-if 的优先级比 v-for 高，不推荐一起使用，假如 v-for 要遍历一个 1 万条的数据，他会影响性能。</p>
-<h4 id="13mvvm"><a class="markdownIt-Anchor" href="#13mvvm">#</a> 13.mvvm</h4>
-<p>m 是 model 数据层，是用来存放数据的，v 是 view 视图层， 也就是显示给用户的 ui 界面，然后 vm 就是 view-model 视图模型层，他是连接 model 和 view 的桥梁，mvvm 是支持数据双向绑定的，首先</p>
-<p>-new 一个 vue 实例，然后 compile 去编译解析模板，然后初始化视图，并在 watcher 里绑定一个更新的函数，然后 watcher 在 dep 添加一个函数，使用 observer 劫持监听所有的属性，当数据变化时 observer 去通知 dep，dep 通过 watcher 在 dep 中添加的监听函数，去通知 wacher 有变化，然后 watcher 中更新函数发现 watcher 有变化，通知 updater 去更新视图。</p>
-<h4 id="14路由导航守卫"><a class="markdownIt-Anchor" href="#14路由导航守卫">#</a> <strong>14. 路由导航守卫</strong></h4>
-<p>路由导航守卫有三种，</p>
-<p>全局路由守卫</p>
-<p>beforeEach 在路由跳转前触发，有三个参数 to、from、next，主要是用于登录验证，</p>
-<p>是在 beforeEach 和 组件内 beforeRouteEnter 之后，afterEach 之前调用，</p>
-<p>afterEach 他是在路由跳转完成后触发，参数包括 to,from，他发生在 beforeEach 和 beforeResolve 之后，beforeRouteEnter 之前。</p>
-<p>组件内路由守卫：</p>
-<p>beforeRouteEnter 路由进入之前被调用，参数也是 to、from、next，在全局守卫 beforeEach 和独享守卫 beforeEnter 之后，全局 beforeResolve 和全局 afterEach 之前调用，要注意的是该守卫内访问不到组件的实例，也就是 this 为 undefined，也就是他在 beforeCreate 生命周期前触发。在这个钩子函数中，可以通过传一个回调给 next 来访问组件实例。在导航被确认的时候执行回调，并且把组件实例作为回调方法的参数，可以在这个守卫中请求服务端获取数据，当成功获取并能进入路由时，调用 next 并在回调中通过 vm 访问组件实例进行赋值等操作。</p>
-<p>beforeRouteUpdate 在当前路由改变时，并且该组件被复用（动态路由，）时调用，可以通过 this 访问实例。参数包括 to、from、next，还有是</p>
-<p>beforeRouteLeave 导航离开该组件的对应路由时调用，可以访问组件实例的 this，参数包括 to、from、next。</p>
-<p>独享路由守卫</p>
-<p>beforeEnter， <code>beforeEnter</code>  和  <code>beforeEach</code>  完全相同，如果都设置则在 <code>beforeEach</code>  之后紧随执行，参数 to、from、next</p>
-<p>执行顺序：beforeRouteLeave&gt;beforeEach&gt;beforeRouteUpdate&gt;beforeEnter&gt;beforeRouteEnter&gt;beforeResolve&gt;afterEach&gt;beforeRouteEnter</p>
-<h4 id="15diff算法"><a class="markdownIt-Anchor" href="#15diff算法">#</a> 15.diff 算法</h4>
-<p>他是比较同层的树节点的一种高效算法，他是同层比较，从两端开始向中间靠拢，遵循的是深度优先原则，比如说旧节点 abcd，新节点是 abecd。旧节点和新节点相同就复用了，旧节点有的，新节点没有，直接删除，旧节点没有的，新节点有的，直接添加 appendChild 这个节点。</p>
-<h4 id="16路由传参"><a class="markdownIt-Anchor" href="#16路由传参">#</a> 16. 路由传参</h4>
-<p>有两种传参的方式，一种是 query 传参，通过  <code>router-link</code>  组件的  <code>to</code>  属性实现，该方法的参数可以是一个字符串路径，也可以是数组对象。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//声明式</span></span><br><span class="line">&lt;router-link :to=<span class="string">&quot;&#123;path:&#x27;Child&#x27;,query:&#123;id:123&#125;&#125;&quot;</span>&gt;进入<span class="title class_">Child</span>路由&lt;/router-link&gt;</span><br><span class="line"><span class="comment">//编程式传参(一般通过事件触发)</span></span><br><span class="line"><span class="variable language_">this</span>.<span class="property">$router</span>.<span class="title function_">push</span>(&#123;</span><br><span class="line">	<span class="attr">path</span>:<span class="string">&#x27;/Child&#x27;</span></span><br><span class="line">    <span class="attr">query</span>: &#123;</span><br><span class="line">         <span class="attr">id</span>: m.<span class="property">id</span>,</span><br><span class="line">         <span class="attr">title</span>: m.<span class="property">title</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//获取数据</span></span><br><span class="line"><span class="variable language_">this</span>.<span class="property">$route</span>.<span class="property">query</span>.<span class="property">id</span></span><br></pre></td></tr></table></figure>
-<p>另一种是 <code>params</code>  传参，使用 params 传参时，to 用的是对象的写法，必须使用 name 配置项，to 也可以是字符串就得是路径了</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//声明式</span></span><br><span class="line">&lt;router-link :to=<span class="string">&quot;&#123;name:&#x27;Child&#x27;,params:&#123;id:123&#125;&#125;&quot;</span>&gt;进入<span class="title class_">Child</span>路由&lt;/router-link&gt;</span><br><span class="line"><span class="comment">//父路由编程式传参(一般通过事件触发)</span></span><br><span class="line"><span class="variable language_">this</span>.<span class="property">$router</span>.<span class="title function_">push</span>(&#123;</span><br><span class="line">    <span class="attr">name</span>:<span class="string">&#x27;Child&#x27;</span>,</span><br><span class="line">    <span class="attr">params</span>:&#123;</span><br><span class="line">    	<span class="attr">id</span>:<span class="number">123</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//获取</span></span><br><span class="line"><span class="variable language_">this</span>.<span class="property">$route</span>.<span class="property">params</span>.<span class="property">id</span></span><br></pre></td></tr></table></figure>
-<h4 id="17v-model"><a class="markdownIt-Anchor" href="#17v-model">#</a> 17.v-model</h4>
-<p>1. 在 input 标签里，绑定 v-bind 用来记录值，然后就是再添加 @input，让绑定的 v-bind 值等于 e.target.value</p>
-<p>2. 在 select 标签里，绑定 v-bind 用来记录值，然后就是再添加 @change 事件，让绑定的 v-bind 的值等于 e.target.value</p>
-<h4 id="18插槽"><a class="markdownIt-Anchor" href="#18插槽">#</a> 18. 插槽</h4>
-<p>插槽就是子组件中的提供给父组件使用的一个占位符，用 slot 表示，父组件可以在这个占位符中填充任意代码，然后该内容会将子组件的 slot 给替换掉。</p>
-<p>第一个是默认插槽，他就是子组件里的 slot 没有设置 name，而父组件的内容也没有设置，他会默认把父组件没有设置名字的内容给替换到子组件没有设置 name 的 slot 组件中。</p>
-<p>第二个是具名插槽，就是给插槽起了个名字 就是在 slot 中添加一个 name = 名字，可以放在不同的地方，然后父组件通过 v-slot：名字将指定父组件替换到子组件对应名字的 slot，v-slot 要和 template 一起搭配才可以使用。</p>
-<p>第三个就是作用域插槽，通过插槽可以传数据，可以用来子组件向父组件传值，子组件中在 slot 里把数据名字写上，父组件里通过 scope = 子组件的数据名字，来接受子组件传过来的数据。子组件只用来传数据，父组件用来显示子组件的内容想要展示的样式。</p>
-<h4 id="19动态添加类"><a class="markdownIt-Anchor" href="#19动态添加类">#</a> 19. 动态添加类</h4>
-<p>class 他有一个参数，可以是三种类型，第一种写法是字符串 当名字不确定时，需要动态修改，第二种写法是对象，当要绑定的样式，个数不确定，名字也不确定时，第三种是数组写法，要绑定多个样式，个数确定，名字也确定，但是不确定使不使用的时候。</p>
-<p>style 的用法和 class 一样，传值可以是数组也可以是对象。</p>
-<h4 id="20-0102-03"><a class="markdownIt-Anchor" href="#20-0102-03">#</a> 20.  0.1+0.2 == 0.3</h4>
-<p>0.1 加 0.2 是不等于 0.3 的， 我们进行任何加法运算的时候，首先都会转换成二进制进行计算，而 0.1 和 0.2 转换成二进制，会出现循环，当他们相加的时候，会截取一段进行相加，从而会导致截取后面的部分数据丢失，使得计算结果小于 0.3</p>
-<h4 id="21如何判断一个数据是否一个数组类型"><a class="markdownIt-Anchor" href="#21如何判断一个数据是否一个数组类型">#</a> 21. 如何判断一个数据是否一个数组类型</h4>
-<p>首先，判断一个数据属于什么类型，typeof 没法判断数据，数组是一个特殊的对象，所以我们用 instanceof 方法，去判断他的类型，然后也可由通过它的原型去判断是否为数组，ta 的 constructor 是否等于数组类型。或者是它的–proto–是否等于数组的原型 prototype</p>
-<h4 id="22原型和原型链"><a class="markdownIt-Anchor" href="#22原型和原型链">#</a> 22. 原型和原型链</h4>
-<p>js 的每个函数对象在创建的时候，都会生成一个 prototype 属性，这个属性指向一个对象，这个对象就是此函数的原型。该原型对象中有个属性为 constructor，指向该函数。然后通过构造函数创建出来的实例对象，其本身都有一个属性叫 __ proto __   这个属性会指向该实例对象的构造函数的原型对象，原型对象他是一个对象他也有 __ proto 属性，最终会指向 object 的原型对象，然后 object 的原型对象的 custructor 指向的是 object，object 的 prototype 属性又指向 obejcet 的原型对象，这样就形成了一个类似链条的关系，我们把这个就叫做原型链。</p>
-<p>​	function hanshu(){</p>
-<p>​	}</p>
-<p>​	let a = new hanshu()</p>
-<p>​	hanshu ().prototype = 函数的原型对象</p>
-<p>​	hanshu () = hanshu ().prototype.constructor 函数的原型对象的 constructor</p>
-<p>​	a._ <em>proto</em>_ = hanshu().prototype</p>
-<h4 id="23es6-class"><a class="markdownIt-Anchor" href="#23es6-class">#</a> 23.es6 class</h4>
-<p>class 是构造函数的另一种写法，他必须有 constructor 构造方法，用来做初始化的操作，也可以用 get 和 set 关键字，对某个属性设置存值函数和取值函数。在 class 中的方法前可以加一个 static，使该方法变为静态方法，他不会被继承，可以通过类来直接调用。我们生成的类也需要通过 new 去实例化一个对象，class 之间可以通过 extends 去继承别的类，子类必须要用 super 方法去调用继承父类的方法，</p>
-<h4 id="24es6-的-setmap"><a class="markdownIt-Anchor" href="#24es6-的-setmap">#</a> 24.es6 的 set，map</h4>
-<p>es6 中的 set 和数组类似，set 不可以有重复的元素，所以可以做去重操作，set 本身就是一个构造函数，我们可以使用 new set 去创建一个 set 集合，可以通过 add 方式向 set 集合中添加元素。set 还有 size 方法，用来返回长度，has 方法，判断集合内是否存在某个内容，返回的是布尔值，还有 delete 方法，删除集合内某个元素，返回的也是布尔值，最后一个 clear 方法，直接清空集合内容。我们可以使用。keys，values 和 forEach 方法遍历 set 集合。</p>
-<p>array.from 可以把类数组变成数组</p>
-<p>map 用于存储映射关系，之前我们一直是使用对象来存储映射关系的，之前我们是一直使用对象来存储映射关系的，map 的键和值都可以是任意类型的，map 本身也是一构造函数，也可以通过 new map 去实例化，他的实例有 size 属性，可以显示 map 的成员总数，还有 set 方法，可以设置键名和对应的值，如果键名重复，则更新键值，最后返回整个 map 结构，get 方法用来获取键名对应的值，如果找不到则返回 undefined，has 方法，用来判断某个键是否在 map 中，返回一个布尔值，还有 delete 方法，删除某个键，返回的也是布尔值，最后一个就是 clear，清除 map 的所有成员，map 可以用 keys 和 forEach 遍历。</p>
-<h4 id="25解构赋值"><a class="markdownIt-Anchor" href="#25解构赋值">#</a> 25. 解构赋值</h4>
-<p>es6 允许按照一定的模式，从数组和对象中提取值，对变量进行赋值，这样就称为结构赋值，</p>
-<p>数组的结构赋值，当解构不成功时，变量的值就等于 undefined，解构赋值时允许给变量设置默认值，也是引用解构赋值的其他变量，但是该变量必须是已经声明的，不然就会报错。</p>
-<p>然后对象的解构赋值与数组不同的是，数组是按顺序排列的，变量的取值由它的位置决定，而对象的属性没有顺序。变量必须与属行同名，才可以取到正确的值，字符串，函数参数也可以解构赋值。</p>
-<h4 id="26animation和transition的区别"><a class="markdownIt-Anchor" href="#26animation和transition的区别">#</a> 26.animation 和 transition 的区别</h4>
-<p>1、transition 需要去触发比如：点击事件、鼠标移入事件；而 animation 可以配合 @keyframe 可以不触发事件就触发这个动画</p>
-<p>2、transition 触发一次播放一次；而 animation 则是可以设置很多的属性，比如循环次数，动画结束的状态等等；</p>
-<p>3、transition 关注的是样式属性的变化，属性值和时间的关系是一个三次贝塞尔曲线；而 animation 作用于元素本身而不是样式属性，可以使用关键帧的概念，可以实现更自由的动画效果；</p>
-<p>4、在性能方面：浏览器有一个主线程和排版线程；主线程一般是对 js 运行的、页面布局、生成位图等等，然后把生成好的位图传递给排版线程，而排版线程会通过 GPU 将位图绘制到页面上，也会向主线程请求位图等等；我们在用使用 aniamtion 的时候这样就可以改变很多属性，像我们改变了 width、height、postion 等等这些改变文档流的属性的时候就会引起，页面的回流和重绘，对性能影响就比较大，但是我们用 transition 的时候一般会结合 tansfrom 来进行旋转和缩放等不会生成新的位图，当然也就不会引起页面的重排了。</p>
-<h4 id="27动画-transform-transition-animation"><a class="markdownIt-Anchor" href="#27动画-transform-transition-animation">#</a> 27. 动画 transform、transition、animation</h4>
-<p>transform</p>
-<p>做过轮播图，和钟表，</p>
-<h4 id="28响应式"><a class="markdownIt-Anchor" href="#28响应式">#</a> 28. 响应式</h4>
-<p>响应式页面的设计与开发应当根据用户行为以及设备屏幕不同大小，进行相应的响应和调整。他的原理就是通过媒体查询检测不同的设备屏幕尺寸做处理，为了处理移动端，页面头部必须有 <code>meta</code>  声明 <code>viewport</code></p>
-<ul>
-<li>
-<p>width=device-width: 是自适应手机屏幕的尺寸宽度</p>
-</li>
-<li>
-<p>maximum-scale: 是缩放比例的最大值</p>
-</li>
-<li>
-<p>inital-scale: 是缩放的初始化</p>
-</li>
-<li>
-<p>user-scalable: 是用户的可以缩放的操作</p>
-<p>实现响应式布局的方式有如下：媒体查询、百分比、vw/vh、rem</p>
-</li>
-</ul>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">//head里配置</span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no”&gt;</span></span></span><br><span class="line"><span class="string"><span class="tag">//css里设置</span></span></span><br><span class="line"><span class="string"><span class="tag">@media screen and (max-width: 1920px)&#123;&#125;</span></span></span><br></pre></td></tr></table></figure>
-<h4 id="29闭包"><a class="markdownIt-Anchor" href="#29闭包">#</a> 29. 闭包</h4>
-<p>闭包可以简单理解成：定义在一个函数内部的函数。由于在 JS 中，变量的作用域属于函数作用域，在函数执行后作用域就会被清理、内存也随之被收回，但是由于闭包是建立在一个函数内部的子函数，由于其可访问上级作用域的原因，即使上级函数执行完，作用域也不会随之销毁，这时的子函数 — 也就是闭包，便拥有了访问上级作用域中的变量的权限，即使上级函数执行完后，作用域内的值也不会被销毁。</p>
-<p>闭包就是定义在函数内部的一个函数，也就是函数内部嵌套函数。函数内部可以引用外部的参数和变量。然后就是参数和变量不会被回收。使用闭包可以避免全局变量的污染；缺点就是会使变量长期驻扎在内存中；会造成内存泄露。应用在 Ajax 请求的成功回调，事件绑定的回调方法， setTimeout 的延时回调。</p>
-<h4 id="30防抖和节流"><a class="markdownIt-Anchor" href="#30防抖和节流">#</a> 30. 防抖和节流</h4>
-<p>防抖和节流本质上是优化高频率执行代码的一种手段，有的事件会一直触发，会导致资源浪费，性能降低。所以采用防抖和节流 的方式来减少调用频率。节流: n 秒内只运行一次，若在 n 秒内重复触发，只有一次生效。防抖: n 秒后再执行该事件，若在 n 秒内被重复触发，则重新计时。防抖关注一定时间连续触发的事件，在一段连续操作结束后，处理回调。而节流，在一段连续操作中，每一段时间只执行一次。</p>
-<h4 id="31深浅拷贝"><a class="markdownIt-Anchor" href="#31深浅拷贝">#</a> 31. 深浅拷贝</h4>
-<p>浅拷贝和深拷贝在拷贝时都会创建一个新的对象</p>
-<p>浅拷贝时，只会拷贝第一层，如果是基本类型，直接拷贝值，如果是引用类型，则拷贝内存地址。如果对象里有引用类型，修改新对象，原对象也会被修改。</p>
-<p>深拷贝时，会开辟一个新的栈，两个对象属性完成相同，但是对应两个不同的地址。修改新对象，不会影响原对象。</p>
-<p>浅拷贝直接用一个 for 循环遍历一次就可以实现，深拷贝则需要用到递归才能实现。</p>
-<p>浅拷贝的方法有： <code>Object.assign、concat、lodash.clone</code></p>
-<p>深拷贝方法有： <code>jQuery.extend()、JSON.stringify()、lodash.cloneDeep()</code></p>
-<p>json.stringify 的缺陷会忽略 undefined 和 symbol 和函数</p>
-<h4 id="33js数据类型"><a class="markdownIt-Anchor" href="#33js数据类型">#</a> 33.js 数据类型</h4>
-<p>基本数据类型：number、string、boolean、undefined、null、symbol，</p>
-<p>引用数据类型：array、object、function</p>
-<h4 id="34隐式转换"><a class="markdownIt-Anchor" href="#34隐式转换">#</a> 34. 隐式转换</h4>
-<p>js 中的隐式转换分为两种，一个是数学运算符中的转换，一个是逻辑语句中的转换，我们在对各种不是 number 类型的使用数学运算符时（- * /) 时，会先将非 Number 类型转换为 Number 类型。</p>
-<p>然后加法的时候，分三种情况，</p>
-<p>一侧是字符串时，会被当做字符串拼接，先把另一侧转为字符串类型。</p>
-<p>一侧是 number 类型，另一侧是基本类型时，则将原、基本类型转换为 number 类型，</p>
-<p>一侧是 number 类型，另一侧是引用类型时，将引用类型和 number 类型转换成字符串后拼接。</p>
-<p>然后就是当字符串和数字、布尔值比较时都会转换为数字，再比较。</p>
-<p>当对象和布尔值、字符串、数字比较时，对象都先转换为字符串，除字符串其他都要转为数字，再比较。</p>
-<h4 id="35跨域"><a class="markdownIt-Anchor" href="#35跨域">#</a> 35. 跨域</h4>
-<p>指的是浏览器不能执行其他网站的脚本。它是由浏览器的同源策略造成的，是浏览器对 javascript 施加的安全限制。</p>
-<p>同源策略：是指协议，域名，端口都要相同，其中有一个不同都会产生跨域；</p>
-<p>document.domin 解决无法读取非同源网页的 cookie 问题，（此方案仅限主域相同，子域不同的跨域应用场景。）</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 两个页面都设置</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="property">domain</span> = <span class="string">&#x27;test.com&#x27;</span>;</span><br></pre></td></tr></table></figure>
-<p>还可以使用 window.postMessage ()，它可用于解决以下方面的问题：页面和其打开的新窗口的数据传递，多窗口之间消息传递，页面与嵌套的 iframe 消息传递，上面三个场景的跨域数据传递</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 父窗口打开一个子窗口</span></span><br><span class="line"><span class="keyword">var</span> openWindow = <span class="variable language_">window</span>.<span class="title function_">open</span>(<span class="string">&#x27;http://test2.com&#x27;</span>, <span class="string">&#x27;title&#x27;</span>);</span><br><span class="line"><span class="comment">// 父窗口向子窗口发消息(第一个参数代表发送的内容，第二个参数代表接收消息窗口的url)</span></span><br><span class="line">openWindow.<span class="title function_">postMessage</span>(<span class="string">&#x27;Nice to meet you!&#x27;</span>, <span class="string">&#x27;http://test2.com&#x27;</span>);</span><br></pre></td></tr></table></figure>
-<p>3.JSONP，它是服务器与客户端跨源通信的常用方法，</p>
-<p>原生 js，通过 script 标签使用 src，把请求地址写到这里面</p>
-<p>使用 jquery 通过 ajax 发请求，url 放请求地址，type 请求类型。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">vue中</span><br><span class="line"><span class="variable language_">this</span>.<span class="property">$http</span>.<span class="title function_">jsonp</span>(<span class="string">&#x27;http://www.domain2.com:8080/login&#x27;</span>, &#123;</span><br><span class="line">    <span class="attr">params</span>: &#123;&#125;,</span><br><span class="line">    <span class="attr">jsonp</span>: <span class="string">&#x27;handleCallback&#x27;</span></span><br><span class="line">&#125;).<span class="title function_">then</span>(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(res); </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>4.CORS 是跨域资源分享（Cross-Origin Resource Sharing）的缩写。它是 W3C 标准，属于跨源 AJAX 请求的根本解决方法。</p>
-<p>1、普通跨域请求：只需服务器端设置 Access-Control-Allow-Origin</p>
-<p>2、带 cookie 跨域请求：前后端都需要进行设置<br>
- 5.vue 中使用 proxy 配置代理，解决跨域问题</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="attr">devServer</span>: &#123;</span><br><span class="line">        <span class="attr">port</span>: <span class="number">8080</span>,</span><br><span class="line">        <span class="attr">proxy</span>: &#123;</span><br><span class="line">            <span class="string">&quot;/api&quot;</span>: &#123;</span><br><span class="line">              <span class="attr">target</span>: <span class="string">&quot;http://192.168.25.20:8088&quot;</span> <span class="comment">// 后端接口</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>还有就是 websocket 和 nginx 反向代理也可以解决跨域问题</p>
-<h4 id="36自定义指令"><a class="markdownIt-Anchor" href="#36自定义指令">#</a> 36. 自定义指令</h4>
-<p>自定义指令可以通过 Vue.directive 方法进行全局注册，它有两个参数，第一个是指令的名字，第二参数是对象数据，也可以是一个指令函数。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 注册一个全局自定义指令 `v-focus`</span></span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">directive</span>(<span class="string">&#x27;focus&#x27;</span>, &#123;</span><br><span class="line">  <span class="comment">// 当被绑定的元素插入到 DOM 中时……</span></span><br><span class="line">  <span class="attr">inserted</span>: <span class="keyword">function</span> (<span class="params">el</span>) &#123;</span><br><span class="line">    <span class="comment">// 聚焦元素</span></span><br><span class="line">    el.<span class="title function_">focus</span>()  <span class="comment">// 页面加载完成之后自动让输入框获取到焦点的小功能</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>局部注册通过在组件 <code>options</code>  选项中设置 <code>directive</code>  属性</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="attr">directives</span>: &#123;</span><br><span class="line">  <span class="attr">focus</span>: &#123;</span><br><span class="line">    <span class="comment">// 指令的定义</span></span><br><span class="line">    <span class="attr">inserted</span>: <span class="keyword">function</span> (<span class="params">el</span>) &#123;</span><br><span class="line">      el.<span class="title function_">focus</span>() <span class="comment">// 页面加载完成之后自动让输入框获取到焦点的小功能</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>然后在模板中使用 v - 指令名字就可以使用了，</p>
-<p>自定义指令常用的钩子函数有，</p>
-<p>bind 只调用一次，指令与元素成功绑定时调用。</p>
-<p>inserted：指令所在元素被插入页面时调用。</p>
-<p>update：指令所在模板结构被重新解析时调用。</p>
-<p>自定义指令用在判断用户权限，比如说一个数据，管理员可以看到删除按钮，而用户只能看到这条数据。</p>
-<h4 id="37minxs"><a class="markdownIt-Anchor" href="#37minxs">#</a> 37.minxs</h4>
-<p>对于一些在多个页面都会用到的方法和功能可以写在 mixns 中，之后每次用到只需引入 mixin 文件到用到的页面即可实现复用。<br>
-mixin 文件的定义与正常 vue 组件的定义完全一致，都有 created,mounted… 等钩子函数，以及 data,methods 方法用来声明当前用到的数据和方法。minix 会在引入文件 中进行 属性和方法的合并（混入）minxs 优先执行，相同字段名首先会覆盖。相同函数名会合并为一个数组会优先执行 minix。</p>
-<h4 id="38深度监听"><a class="markdownIt-Anchor" href="#38深度监听">#</a> 38. 深度监听</h4>
-<p>watch 里的 deep 属性改为 true，开启深度监听</p>
-<h4 id="39修改element-ui默认样式"><a class="markdownIt-Anchor" href="#39修改element-ui默认样式">#</a> 39. 修改 element-ui 默认样式，</h4>
-<p>组件库中标签名字，就是 class 属性的名字，我们直接在 style 里重新给这个标签设置 css 属性值就可以改变默认样式，有的时候可能需要加上！important。’deep‘</p>
-<h4 id="40封装echarts"><a class="markdownIt-Anchor" href="#40封装echarts">#</a> 40. 封装 echarts</h4>
-<p>选择器权重， id &gt; 类 = 伪类 &gt; 标签 &gt; 伪元素</p>
-<h4 id="41json和map的区别"><a class="markdownIt-Anchor" href="#41json和map的区别">#</a> 41.json 和 map 的区别</h4>
-<p>map 里边的键值可以使任意，json 必须是字符串。</p>
-<h4 id="42call-apply-bind"><a class="markdownIt-Anchor" href="#42call-apply-bind">#</a> 42.call apply bind</h4>
-<p>call、apply、bind 作用是改变函数的 this 指向，</p>
-<p>apply 接受两个参数，第一个参数是 this 参数是函数接受的参数，以数组的形式传入改变 this 指向后原函数会立即执行，且此方法只是临时改变 this 指向一次，当第一个参数为 null、undefined 的时候，默认指向 window。</p>
-<p>call 方法的第一个参数也是 this 的指向，后面传入的是一个参数列表。跟 apply 一样，改变 this 指向后原函数会立即执行，且此方法只是临时改变 this 指向一次。当第一个参数为 null、undefined 的时候，默认指向 window。</p>
-<p>bind 方法和 call 相似，第一参数也是 <code>this</code>  的指向，后面传入的也是一个参数列表 (但是这个参数列表可以分多次传入)。改变 <code>this</code>  指向后不会立即执行，而是返回一个永久改变 <code>this</code>  指向的函数。</p>
-<h4 id="43javascript垃圾回收机制"><a class="markdownIt-Anchor" href="#43javascript垃圾回收机制">#</a> 43.JavaScript 垃圾回收机制</h4>
-<h5 id="1标记清除"><a class="markdownIt-Anchor" href="#1标记清除">#</a> 1. 标记清除：</h5>
-<p>原理：当变量进入环境时，将这个变量标记为 “进入环境”。当变量离开环境时，则将其标记为 “离开环境”。标记 “离开环境” 的就回收内存。</p>
-<p>垃圾回收器，在运行的时候会给存储在内存中的所有变量都加上标记。去掉环境中的变量以及被环境中的变量引用的变量的标记。<br>
-再被加上标记的会被视为准备删除的变量。垃圾回收器完成内存清除工作，销毁那些带标记的值并回收他们所占用的内存空间。</p>
-<h5 id="2引用计数"><a class="markdownIt-Anchor" href="#2引用计数">#</a> 2. 引用计数</h5>
-<p>原理：跟踪记录每个值被引用的次数。</p>
-<p>声明了一个变量并将一个引用类型的值赋值给这个变量，这个引用类型值的引用次数就是 1。<br>
-同一个值又被赋值给另一个变量，这个引用类型值的引用次数加 1。<br>
-当包含这个引用类型值的变量又被赋值成另一个值了，那么这个引用类型值的引用次数减 1。<br>
-当引用次数变成 0 时，说明没办法访问这个值了。<br>
-当垃圾收集器下一次运行时，它就会释放引用次数是 0 的值所占的内存。</p>
-<h4 id="44script标签中defer和anysc属性的区别"><a class="markdownIt-Anchor" href="#44script标签中defer和anysc属性的区别">#</a> 44.Script 标签中 defer 和 anysc 属性的区别</h4>
-<p>defer 是不会阻塞 html 解析的，它是等 DOM 加载完之后再去执行 JavaScript 代码；async 是 JavaScript 下载完成，就会立即执行代码，等待执行完之后才继续解析 HTML。</p>
-<p>在加载多个 JS 脚本的时候，async 是无顺序的加载，而 defer 是有顺序的加载。</p>
-<h4 id="45宏任务与微任务"><a class="markdownIt-Anchor" href="#45宏任务与微任务">#</a> 45. 宏任务与微任务</h4>
-<h5 id="微任务"><a class="markdownIt-Anchor" href="#微任务">#</a> 微任务</h5>
-<p>一个需要异步执行的函数，执行时机是在主函数执行结束之后、当前宏任务结束之前</p>
-<p>常见的微任务有：</p>
-<ul>
-<li>Promise.then</li>
-<li>MutaionObserver</li>
-<li>Object.observe（已废弃；Proxy 对象替代）</li>
-<li>process.nextTick（Node.js）</li>
-</ul>
-<h5 id=""><a class="markdownIt-Anchor" href="#">#</a> <a href="https://vue3js.cn/interview/JavaScript/event_loop.html#%E5%AE%8F%E4%BB%BB%E5%8A%A1">#</a>宏任务</h5>
-<p>宏任务的时间粒度比较大，执行的时间间隔是不能精确控制的，对一些高实时性的需求就不太符合</p>
-<p>常见的宏任务有：</p>
-<ul>
-<li>script (可以理解为外层同步代码)</li>
-<li>setTimeout/setInterval</li>
-<li>UI rendering/UI 事件</li>
-<li>postMessage、MessageChannel</li>
-<li>setImmediate、I/O（Node.js）</li>
-</ul>
-<h4 id="46阻止冒泡事件有三种方法"><a class="markdownIt-Anchor" href="#46阻止冒泡事件有三种方法">#</a> 46. 阻止冒泡事件有三种方法：</h4>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="number">1.</span>event.<span class="title function_">stopPropagation</span>()方法</span><br><span class="line">	$(<span class="string">&#x27;.btn&#x27;</span>).<span class="title function_">click</span>(<span class="keyword">function</span> (<span class="params">even</span>) &#123;</span><br><span class="line">		even.<span class="title function_">stopPropagation</span>();</span><br><span class="line">		<span class="title function_">alert</span>(<span class="string">&#x27;按钮被点击了&#x27;</span>);</span><br><span class="line">	&#125;)</span><br><span class="line">这是阻止</span><br></pre></td></tr></table></figure>
-<p>事件的冒泡方法，不让事件向 documen 上蔓延，但是默认事件任然会执行，当你掉用这个方法的时候，如果点击一个连接，这个连接仍然会被打开。<br>
-例如：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="number">2.</span>event.<span class="title function_">preventDefault</span>()方法</span><br><span class="line">	$(<span class="string">&#x27;.btn&#x27;</span>).<span class="title function_">click</span>(<span class="keyword">function</span> (<span class="params">even</span>) &#123;</span><br><span class="line">		even.<span class="title function_">preventDefault</span>();</span><br><span class="line">		<span class="title function_">alert</span>(<span class="string">&#x27;按钮被点击了&#x27;</span>);</span><br><span class="line">	&#125;)</span><br></pre></td></tr></table></figure>
-<p>这是阻止默认事件的方法，调用此方法是，连接不会被打开，但是会发生冒泡，冒泡会传递到上一层的父元素；</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="number">3.</span><span class="keyword">return</span> <span class="literal">false</span> ；</span><br><span class="line">	$(<span class="string">&#x27;.btn&#x27;</span>).<span class="title function_">click</span>(<span class="keyword">function</span> (<span class="params">even</span>) &#123;</span><br><span class="line">		<span class="title function_">alert</span>(<span class="string">&#x27;按钮被点击了&#x27;</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;)</span><br></pre></td></tr></table></figure>
-<p>这个方法比较暴力，他会同事阻止事件冒泡也会阻止默认事件；写上此代码，连接不会被打开，事件也不会传递到上一层的父元素；可以理解为 return false 就等于同时调用了 event.stopPropagation () 和 event.preventDefault ()</p>
-<h4 id="47返回url"><a class="markdownIt-Anchor" href="#47返回url">#</a> 47. 返回 url</h4>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">		<span class="keyword">var</span> url;	</span><br><span class="line">	url = <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span>; <span class="comment">/* 获取完整URL */</span></span><br><span class="line">	<span class="title function_">alert</span>(url); <span class="comment">/* http://127.0.0.1:8020/Test/index.html#test?name=test */</span></span><br><span class="line"></span><br><span class="line">	url = <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">pathname</span>; <span class="comment">/* 获取文件路径（文件地址） */</span></span><br><span class="line">	<span class="title function_">alert</span>(url); <span class="comment">/* /Test/index.html */</span></span><br><span class="line"></span><br><span class="line">	url = <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">protocol</span>; <span class="comment">/* 获取协议 */</span></span><br><span class="line">	<span class="title function_">alert</span>(url); <span class="comment">/* http */</span></span><br><span class="line"></span><br><span class="line">	url = <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">host</span>; <span class="comment">/* 获取主机地址和端口号 */</span></span><br><span class="line">	<span class="title function_">alert</span>(url); <span class="comment">/* http://127.0.0.1:8020/ */</span></span><br><span class="line"></span><br><span class="line">	url = <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">hostname</span>; <span class="comment">/* 获取主机地址 */</span></span><br><span class="line">	<span class="title function_">alert</span>(url); <span class="comment">/* http://127.0.0.1/ */</span></span><br><span class="line"></span><br><span class="line">	url = <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">port</span>; <span class="comment">/* 获取端口号 */</span></span><br><span class="line">	<span class="title function_">alert</span>(url); <span class="comment">/* 8020 */</span></span><br><span class="line"></span><br><span class="line">	url = <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">hash</span>; <span class="comment">/* 获取锚点（“#”后面的分段） */</span></span><br><span class="line">	<span class="title function_">alert</span>(url); <span class="comment">/* #test?name=test */</span></span><br><span class="line"></span><br><span class="line">	url = <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">search</span>; <span class="comment">/* 获取属性（“?”后面的分段） */</span></span><br><span class="line">	<span class="title function_">alert</span>(url);</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* 如果需要URL中的某一部分，可以自己进行处理 */</span></span><br><span class="line">	url = <span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">pathname</span>;</span><br><span class="line">	url = url.<span class="title function_">substring</span>(url.<span class="title function_">lastIndexOf</span>(<span class="string">&#x27;/&#x27;</span>) + <span class="number">1</span>, url.<span class="property">length</span>);</span><br><span class="line">	<span class="title function_">alert</span>(url); <span class="comment">/* /index.html */</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">/* </span></span><br><span class="line"><span class="comment">	 * 如果页面使用了框架（frameset）</span></span><br><span class="line"><span class="comment">	 * 要获取到指定页面的URL</span></span><br><span class="line"><span class="comment">	 * 只要把window换成指定的页面即可</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="comment">/* &#x27;frame&#x27;为指定页面的class名 */</span></span><br><span class="line">	<span class="keyword">var</span> url = <span class="variable language_">window</span>.<span class="property">parent</span>.<span class="property">frames</span>[<span class="string">&#x27;frame&#x27;</span>].<span class="property">location</span>.<span class="property">href</span>;</span><br><span class="line">	<span class="comment">/* 获取当前地址栏中显示的URL */</span></span><br><span class="line">	<span class="keyword">var</span> url = <span class="variable language_">window</span>.<span class="property">parent</span>.<span class="property">location</span>.<span class="property">href</span>;</span><br><span class="line">	<span class="comment">/* window parent 可互换 */</span></span><br><span class="line">	<span class="keyword">var</span> url = parent.<span class="property">window</span>.<span class="property">location</span>.<span class="property">href</span>;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <tags>
-        <tag>vue面试题</tag>
       </tags>
   </entry>
 </search>
