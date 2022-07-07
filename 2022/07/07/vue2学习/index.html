@@ -12,9 +12,7 @@
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
       <title>
-      vue2学习 |
-      
-      Hexo
+     leining
       </title>
   <meta name="generator" content="hexo-theme-ayer">
       
@@ -54,6 +52,17 @@
 <body>
   <div id="app">
     
+      <canvas class="fireworks"></canvas>
+      <style>
+        .fireworks {
+          position: fixed;
+          left: 0;
+          top: 0;
+          z-index: 99999;
+          pointer-events: none;
+        }
+      </style>
+      
       
     <main class="content on">
       <section class="outer">
@@ -85,7 +94,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">9.6k</span>
+            <span class="post-count">10k</span>
         </span>
     </span>
 
@@ -94,7 +103,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">41 min</span>
+            <span class="post-count">43 min</span>
         </span>
     </span>
 </div>
@@ -127,15 +136,11 @@
 <p>​	2. 双向数据绑定（v-model）: 数据不仅能从 data 流向页面，还可以从页面流向 data。</p>
 <p>​		备注：双向数据绑定一般用在表单元素上（input，select）</p>
 <p>​					v-model：value 可以简写为 v-model</p>
-<div id="root">
-			单向数据绑定:<input type="text" v-bind:value="name"/><br/>
-			<!-- v-model只能用在表单类的元素中 -->
-			双向数据绑定:<input type="text" v-model:value="name"/>
-		</div>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">&quot;root&quot;</span>&gt;</span><br><span class="line">			单向数据绑定:<span class="language-xml"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">v-bind:value</span>=<span class="string">&quot;name&quot;</span>/&gt;</span></span><span class="language-xml"><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span></span><br><span class="line">			&lt;!-- v-model只能用在表单类的元素中 --&gt;</span><br><span class="line">			双向数据绑定:<span class="language-xml"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">v-model:value</span>=<span class="string">&quot;name&quot;</span>/&gt;</span></span></span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
 <h4 id="3vue事件的基本使用"><a class="markdownIt-Anchor" href="#3vue事件的基本使用">#</a> 3.Vue 事件的基本使用</h4>
 <p>​	1.v-on：xxx 或 @xxx 绑定事件，xxx 是事件名</p>
 <p>​		v-on 缩写</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 完整语法 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">v-on:click</span>=<span class="string">&quot;doSomething&quot;</span>&gt;</span>...<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 缩写 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> @<span class="attr">click</span>=<span class="string">&quot;doSomething&quot;</span>&gt;</span>...<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 动态参数的缩写 (2.6.0+) --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> @[<span class="attr">event</span>]=<span class="string">&quot;doSomething&quot;</span>&gt;</span> ... <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 完整语法 --&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">a</span> <span class="attr">v-on:click</span>=<span class="string">&quot;doSomething&quot;</span>&gt;</span>...<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line">&lt;!-- 缩写 --&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">a</span> @<span class="attr">click</span>=<span class="string">&quot;doSomething&quot;</span>&gt;</span>...<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line">&lt;!-- 动态参数的缩写 (<span class="number">2.6</span><span class="number">.0</span>+) --&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">a</span> @[<span class="attr">event</span>]=<span class="string">&quot;doSomething&quot;</span>&gt;</span> ... <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
 <p>​	2. 事件的回调需要配置在 methods 对象中，最终会在 vm 上</p>
 <p>​	3.methods 中配置的函数，不要使用箭头函数！否则 this 就不是 vm 了</p>
 <p>​	4.methods 中配置的函数，都是被 Vue 所管理的函数，this 的指向是 vm 或组件实例对象</p>
@@ -157,11 +162,7 @@
 <p>​		（2）. 配合 keydown 使用：正常触发事件</p>
 <p>​	4. 可以使用 keyCode 去指定具体的按键（不推荐）</p>
 <p>​	5.Vue.fonfig.keyCodes. 自定义键名 = 键码，可以去定制按键别名</p>
-<div id="root">
-			<h3>你是我的</h3>
-			<input type="text" placeholder="按下回车提示输入" @keyup="showInfo()"/>
-		</div>
-$
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">&quot;root&quot;</span>&gt;</span><br><span class="line">			<span class="language-xml"><span class="tag">&lt;<span class="name">h3</span>&gt;</span>你是我的&#123;&#123;name&#125;&#125;<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span></span><br><span class="line">			<span class="language-xml"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;按下回车提示输入&quot;</span> @<span class="attr">keyup</span>=<span class="string">&quot;showInfo()&quot;</span>/&gt;</span></span></span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
 <h4 id="6vue计算属性"><a class="markdownIt-Anchor" href="#6vue计算属性">#</a> 6.Vue 计算属性</h4>
 <p>​	1. 定义：要用的属性不存在，要通过自己已有的属性计算得出。</p>
 <p>​	2. 原理：底层借助了 Object.defineproperty 方法提供的 getter 和 setter</p>
@@ -172,11 +173,7 @@ $
 <p>​	5. 备注：</p>
 <p>​		1，计算属性最终会出现在 vm 上，直接读取使用即可。</p>
 <p>​		2. 如果计算属性要被修改，必须写 set 函数去相应修改，且 set 中要引起计算时依赖的数据发声改变。</p>
-<div id="root">
-			姓：<input type="text" v-model="firstName"/><br/>
-			名：<input type="text" v-model="lastName"/><br/>
-			姓名：<span></span>
-</div>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">&quot;root&quot;</span>&gt;</span><br><span class="line">			姓：&lt;input type=<span class="string">&quot;text&quot;</span> v-model=<span class="string">&quot;firstName&quot;</span>/&gt;<span class="language-xml"><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span></span><br><span class="line">			名：&lt;input type=<span class="string">&quot;text&quot;</span> v-model=<span class="string">&quot;lastName&quot;</span>/&gt;<span class="language-xml"><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span></span><br><span class="line">			姓名：&lt;span&gt;&#123;&#123;fullName&#125;&#125;&lt;/span&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">computed</span>:&#123;</span><br><span class="line">				<span class="comment">//完整写法</span></span><br><span class="line">				<span class="comment">// fullName:&#123;</span></span><br><span class="line">				<span class="comment">// 	//读取时使用一次，所有依赖数据发生变化时读取一次</span></span><br><span class="line">				<span class="comment">// 	get()&#123;</span></span><br><span class="line">				<span class="comment">// 		return this.firstName + &#x27;-&#x27; + this.lastName</span></span><br><span class="line">				<span class="comment">// 	&#125;,</span></span><br><span class="line">				<span class="comment">// 	set(value)&#123;</span></span><br><span class="line">				<span class="comment">// 		const arr = value.split(&#x27;-&#x27;)</span></span><br><span class="line">				<span class="comment">// 		this.firstName = arr[0]</span></span><br><span class="line">				<span class="comment">// 		this.lastName = arr[1]</span></span><br><span class="line">				<span class="comment">// 	&#125;</span></span><br><span class="line">				<span class="comment">// &#125;,</span></span><br><span class="line">				</span><br><span class="line">				<span class="comment">//简写，只考虑读取的时候</span></span><br><span class="line">				<span class="comment">// fullName()&#123;</span></span><br><span class="line">				<span class="comment">// 	return this.firstName + &#x27;-&#x27; + this.lastName</span></span><br><span class="line">				<span class="comment">// &#125;</span></span><br><span class="line">			&#125;,</span><br></pre></td></tr></table></figure>
 <h4 id="7vue监听属性"><a class="markdownIt-Anchor" href="#7vue监听属性">#</a> 7.Vue 监听属性</h4>
 <p>​	1. 当被监视的属性发声变化时，回调函数自动调用，进行相关操作</p>
@@ -184,10 +181,7 @@ $
 <p>​	3. 监视的两种写法：</p>
 <p>​		（1）new Vue 时传入 watch 配置</p>
 <p>​		（2）通过 vm.watch 监视</p>
-<div id="root">
-			<h2> 今天天气很好</h2>
-			<button @click="changeWeather">切换天气</button>
-		</div>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">&quot;root&quot;</span>&gt;</span><br><span class="line">			<span class="language-xml"><span class="tag">&lt;<span class="name">h2</span>&gt;</span> 今天天气很好&#123;&#123;info&#125;&#125;<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line">			<span class="language-xml"><span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">&quot;changeWeather&quot;</span>&gt;</span>切换天气<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> vm = <span class="keyword">new</span> <span class="title class_">Vue</span>(&#123;</span><br><span class="line">			<span class="attr">el</span>: <span class="string">&#x27;#root&#x27;</span>,</span><br><span class="line">			<span class="attr">data</span>: &#123;</span><br><span class="line">				<span class="attr">isHot</span>: <span class="literal">true</span>,	</span><br><span class="line">		&#125;,</span><br><span class="line">		<span class="attr">computed</span>: &#123;</span><br><span class="line">			<span class="title function_">info</span>(<span class="params"></span>) &#123;</span><br><span class="line">				<span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">isHot</span> ? <span class="string">&#x27;炎热&#x27;</span> : <span class="string">&#x27;凉爽&#x27;</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;,</span><br><span class="line">		<span class="attr">methods</span>: &#123;</span><br><span class="line">			<span class="title function_">changeWeather</span>(<span class="params"></span>) &#123;</span><br><span class="line">				<span class="variable language_">this</span>.<span class="property">isHot</span> = !<span class="variable language_">this</span>.<span class="property">isHot</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;,</span><br><span class="line">		<span class="attr">watch</span>: &#123;</span><br><span class="line">			<span class="comment">// 完整写法</span></span><br><span class="line">			<span class="comment">// isHot: &#123;</span></span><br><span class="line">			<span class="comment">// 	immediate:true //初始化时让handler调用</span></span><br><span class="line">			<span class="comment">// 	deep:true</span></span><br><span class="line">			<span class="comment">// 	handlder(newValue, oldValue) &#123;</span></span><br><span class="line">			<span class="comment">// 		console.log(&quot;isHot被修改了&quot;,newValue, oldValue)</span></span><br><span class="line">			<span class="comment">// 	&#125;</span></span><br><span class="line">			<span class="comment">// &#125;,</span></span><br><span class="line">			<span class="comment">//简写</span></span><br><span class="line">			<span class="title function_">isHot</span>(<span class="params">newVaule, oldValue</span>)&#123;</span><br><span class="line">				<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;isHot被修改了&quot;</span>,newValue, oldValue)</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//正常写法</span></span><br><span class="line">vm.$watch(<span class="string">&#x27;isHot&#x27;</span>, &#123;</span><br><span class="line">	<span class="attr">immediate</span>:<span class="literal">true</span>,</span><br><span class="line">	<span class="attr">deep</span>:<span class="literal">true</span>,</span><br><span class="line">	<span class="title function_">handlder</span>(<span class="params">newValue, oldValue</span>) &#123;</span><br><span class="line">		<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;isHot被修改了&quot;</span>,newValue, oldValue)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//简写</span></span><br><span class="line">vm.$watch(<span class="string">&#x27;isHot&#x27;</span>, <span class="keyword">function</span>(<span class="params">newValue, oldValue</span>)&#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;isHot被修改了&quot;</span>,newValue, oldValue)</span><br><span class="line">&#125;) </span><br></pre></td></tr></table></figure>
 <p>4. 深度监视</p>
@@ -211,14 +205,7 @@ $
 <p>​	2.style 样式</p>
 <p>​		：style=&quot;{fontSize：xxx}&quot; 其中 XXX 是动态值</p>
 <p>​		：style=&quot;[a,b]&quot; 其中 a、b 是样式对象</p>
-<div id="root">
-	<!-- 绑定class样式，字符串写法，适用于要绑定的样式类名不确定，，需要动态绑定-->
-	<div class="basic" :class="mood" @click="changeMood"></div><br /><br />
-		<!-- 绑定class样式，数组写法，适用于要绑定的样式个数不确定，名字也不确定 -->
-		<div class="basic" :class="classArr" ></div><br /><br />
-		<!-- 绑定class样式，对象写法，适用于要绑定的样式个数确定，名字夜确定，但是要动态决定用不用 -->
-		<div class="basic" :class="classObj" ></div><br /><br />
-</div>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">&quot;root&quot;</span>&gt;</span><br><span class="line">	&lt;!-- 绑定<span class="keyword">class</span>样式，字符串写法，适用于要绑定的样式类名不确定，，需要动态绑定--&gt;</span><br><span class="line">	<span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;basic&quot;</span> <span class="attr">:class</span>=<span class="string">&quot;mood&quot;</span> @<span class="attr">click</span>=<span class="string">&quot;changeMood&quot;</span>&gt;</span>&#123;&#123;name&#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><span class="language-xml"><span class="tag">&lt;<span class="name">br</span> /&gt;</span><span class="tag">&lt;<span class="name">br</span> /&gt;</span></span></span><br><span class="line">		&lt;!-- 绑定<span class="keyword">class</span>样式，数组写法，适用于要绑定的样式个数不确定，名字也不确定 --&gt;</span><br><span class="line">		<span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;basic&quot;</span> <span class="attr">:class</span>=<span class="string">&quot;classArr&quot;</span> &gt;</span>&#123;&#123;name&#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><span class="language-xml"><span class="tag">&lt;<span class="name">br</span> /&gt;</span><span class="tag">&lt;<span class="name">br</span> /&gt;</span></span></span><br><span class="line">		&lt;!-- 绑定<span class="keyword">class</span>样式，对象写法，适用于要绑定的样式个数确定，名字夜确定，但是要动态决定用不用 --&gt;</span><br><span class="line">		<span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;basic&quot;</span> <span class="attr">:class</span>=<span class="string">&quot;classObj&quot;</span> &gt;</span>&#123;&#123;name&#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><span class="language-xml"><span class="tag">&lt;<span class="name">br</span> /&gt;</span><span class="tag">&lt;<span class="name">br</span> /&gt;</span></span></span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
 <h4 id="9vue列表渲染-v-for"><a class="markdownIt-Anchor" href="#9vue列表渲染-v-for">#</a> 9.Vue 列表渲染 v-for</h4>
 <p>​	1. 用于展示列表数据</p>
 <p>​	2. 语法：v-for = “(item, index) in xxx” :key=“yyy”</p>
@@ -770,7 +757,7 @@ $
     <ul>
       <li>
         Copyrights &copy;
-        2015-2022
+        2022
         <i class="ri-heart-fill heart_icon"></i> John Doe
       </li>
     </ul>
@@ -1054,11 +1041,13 @@ $
 <script src="/js/busuanzi-2.3.pure.min.js"></script>
  
 <!-- ClickLove -->
- 
-<script src="/js/clickLove.js"></script>
- 
+
 <!-- ClickBoom1 -->
 
+<script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+
+<script src="/js/clickBoom1.js"></script>
+ 
 <!-- ClickBoom2 -->
 
 <!-- CodeCopy -->

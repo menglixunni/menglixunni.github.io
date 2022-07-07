@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-07-07T05:57:47.995Z</updated>
+  <updated>2022-07-07T07:40:18.768Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>echars学习</title>
+    <link href="http://example.com/2022/07/07/echars%E5%AD%A6%E4%B9%A0/"/>
+    <id>http://example.com/2022/07/07/echars%E5%AD%A6%E4%B9%A0/</id>
+    <published>2022-07-07T07:02:31.000Z</published>
+    <updated>2022-07-07T07:40:18.768Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h4 id=&quot;1安装echars&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#1安装echars&quot;&gt;#&lt;/a&gt; 1. 安装 echars&lt;/h4&gt;
+&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>hexo使用</title>
@@ -46,7 +68,7 @@
     <link href="http://example.com/2022/07/07/vue2%E5%AD%A6%E4%B9%A0/"/>
     <id>http://example.com/2022/07/07/vue2%E5%AD%A6%E4%B9%A0/</id>
     <published>2022-07-07T05:45:38.000Z</published>
-    <updated>2022-07-07T06:04:45.715Z</updated>
+    <updated>2022-07-07T08:22:52.313Z</updated>
     
     
       

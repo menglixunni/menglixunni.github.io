@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>
+     leining
+      </title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      <canvas class="fireworks"></canvas>
+      <style>
+        .fireworks {
+          position: fixed;
+          left: 0;
+          top: 0;
+          z-index: 99999;
+          pointer-events: none;
+        }
+      </style>
+      
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-echars学习"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  echars学习
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2022/07/07/echars%E5%AD%A6%E4%B9%A0/" class="article-date">
+  <time datetime="2022-07-07T07:02:31.000Z" itemprop="datePublished">2022-07-07</time>
+</a>   
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">2k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">7 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h4 id="1安装echars"><a class="markdownIt-Anchor" href="#1安装echars">#</a> 1. 安装 echars</h4>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install echarts --save</span><br></pre></td></tr></table></figure>
+<h4 id="2引入使用echars"><a class="markdownIt-Anchor" href="#2引入使用echars">#</a> 2. 引入使用 echars</h4>
+<h5 id="1方法一"><a class="markdownIt-Anchor" href="#1方法一">#</a> 1. 方法一</h5>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.准备好一个容器,必须设置宽度和高度</span></span><br><span class="line">&lt;div id= <span class="string">&#x27;main&#x27;</span>&gt;</span><br><span class="line">    </span><br><span class="line"> &lt;/div&gt;   </span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> echarts <span class="keyword">from</span> <span class="string">&#x27;echarts&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2.基于准备好的dom，初始化echarts实例</span></span><br><span class="line"><span class="keyword">var</span> dom = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;container&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> myChart = echarts.<span class="title function_">init</span>(dom);</span><br><span class="line"><span class="comment">// 3.传入数据</span></span><br><span class="line"><span class="keyword">var</span> option = &#123;</span><br><span class="line">    <span class="attr">xAxis</span>: &#123;</span><br><span class="line">        <span class="attr">type</span>: <span class="string">&#x27;category&#x27;</span>,</span><br><span class="line">        <span class="attr">data</span>: [<span class="string">&#x27;Mon&#x27;</span>, <span class="string">&#x27;Tue&#x27;</span>, <span class="string">&#x27;Wed&#x27;</span>, <span class="string">&#x27;Thu&#x27;</span>, <span class="string">&#x27;Fri&#x27;</span>, <span class="string">&#x27;Sat&#x27;</span>, <span class="string">&#x27;Sun&#x27;</span>]</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">yAxis</span>: &#123;</span><br><span class="line">        <span class="attr">type</span>: <span class="string">&#x27;value&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">series</span>: [&#123;</span><br><span class="line">        <span class="attr">data</span>: [<span class="number">820</span>, <span class="number">932</span>, <span class="number">901</span>, <span class="number">934</span>, <span class="number">1290</span>, <span class="number">1330</span>, <span class="number">1320</span>],<span class="comment">//在这里修改数据</span></span><br><span class="line">        <span class="attr">type</span>: <span class="string">&#x27;line&#x27;</span></span><br><span class="line">    &#125;]</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//4.绘制图表</span></span><br><span class="line"><span class="keyword">if</span> (option &amp;&amp; <span class="keyword">typeof</span> option === <span class="string">&quot;object&quot;</span>) &#123;</span><br><span class="line">    myChart.<span class="title function_">setOption</span>(option, <span class="literal">true</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="2方法二"><a class="markdownIt-Anchor" href="#2方法二">#</a> 2. 方法二</h5>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.准备好一个容器,必须设置宽度和高度</span></span><br><span class="line">&lt;div id= <span class="string">&#x27;main&#x27;</span>&gt;</span><br><span class="line">    </span><br><span class="line"> &lt;/div&gt;   </span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> echarts <span class="keyword">from</span> <span class="string">&#x27;echarts&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2.基于准备好的dom，初始化echarts实例</span></span><br><span class="line"><span class="keyword">var</span> myChart = echarts.<span class="title function_">init</span>(<span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;main&#x27;</span>));</span><br><span class="line"><span class="comment">// 绘制图表</span></span><br><span class="line">myChart.<span class="title function_">setOption</span>(&#123;</span><br><span class="line">  <span class="attr">title</span>: &#123;</span><br><span class="line">    <span class="attr">text</span>: <span class="string">&#x27;ECharts 入门示例&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">tooltip</span>: &#123;&#125;,</span><br><span class="line">  <span class="attr">xAxis</span>: &#123;</span><br><span class="line">    <span class="attr">data</span>: [<span class="string">&#x27;衬衫&#x27;</span>, <span class="string">&#x27;羊毛衫&#x27;</span>, <span class="string">&#x27;雪纺衫&#x27;</span>, <span class="string">&#x27;裤子&#x27;</span>, <span class="string">&#x27;高跟鞋&#x27;</span>, <span class="string">&#x27;袜子&#x27;</span>]</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">yAxis</span>: &#123;&#125;,</span><br><span class="line">  <span class="attr">series</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">name</span>: <span class="string">&#x27;销量&#x27;</span>,</span><br><span class="line">      <span class="attr">type</span>: <span class="string">&#x27;bar&#x27;</span>,</span><br><span class="line">      <span class="attr">data</span>: [<span class="number">5</span>, <span class="number">20</span>, <span class="number">36</span>, <span class="number">10</span>, <span class="number">10</span>, <span class="number">20</span>]</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="3echars中的配置项"><a class="markdownIt-Anchor" href="#3echars中的配置项">#</a> 3.echars 中的配置项</h4>
+<h5 id="1title"><a class="markdownIt-Anchor" href="#1title">#</a> 1.title</h5>
+<p>标题组件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">id：默认不指定</span><br><span class="line">show：true是否显示标题组件</span><br><span class="line">text：&#x27;&#x27;主标题文本（支持换行\n）</span><br><span class="line">link：&#x27;&#x27;主标题文本超链接</span><br></pre></td></tr></table></figure>
+<h5 id="2legend"><a class="markdownIt-Anchor" href="#2legend">#</a> 2.legend</h5>
+<p>图例标签</p>
+<h5 id="3grid"><a class="markdownIt-Anchor" href="#3grid">#</a> 3.grid</h5>
+<p>直角坐标系内绘制网络</p>
+<h5 id="4xaxis"><a class="markdownIt-Anchor" href="#4xaxis">#</a> 4.xAxis</h5>
+<p>直角坐标系 grid 的 x 轴</p>
+<h5 id="5yaxis"><a class="markdownIt-Anchor" href="#5yaxis">#</a> 5.yAxis</h5>
+<p>直角坐标系 grid 的 y 轴</p>
+<h5 id="6polar"><a class="markdownIt-Anchor" href="#6polar">#</a> 6.polar</h5>
+<p>极坐标系，可以用于散点图和折线图</p>
+<h5 id="7radiusaxis"><a class="markdownIt-Anchor" href="#7radiusaxis">#</a> 7.radiusAxis</h5>
+<p>极坐标系的径向轴</p>
+<h5 id="8angleaxis"><a class="markdownIt-Anchor" href="#8angleaxis">#</a> 8.angleAxis</h5>
+<p>极坐标系的角度轴</p>
+<h5 id="9radar"><a class="markdownIt-Anchor" href="#9radar">#</a> 9.radar</h5>
+<p>雷达图坐标系组件</p>
+<h5 id="10datazoom"><a class="markdownIt-Anchor" href="#10datazoom">#</a> 10.dataZoom</h5>
+<p>用于区域缩放</p>
+<h5 id="11visualmap"><a class="markdownIt-Anchor" href="#11visualmap">#</a> 11.visualMap</h5>
+<p>是视觉映射组件，用于进行『视觉编码』</p>
+<h5 id="12tooltip"><a class="markdownIt-Anchor" href="#12tooltip">#</a> 12.tooltip</h5>
+<p>提示框组件</p>
+<h5 id="13axispointer"><a class="markdownIt-Anchor" href="#13axispointer">#</a> 13.axisPointer</h5>
+<p>坐标轴指示器的全局公用设置</p>
+<h5 id="14toolbox"><a class="markdownIt-Anchor" href="#14toolbox">#</a> 14.toolbox</h5>
+<p>工具栏内置有导出图片、数据视图、动态类型转换、数据区域缩放、重置五个工具。</p>
+<h5 id="15brush"><a class="markdownIt-Anchor" href="#15brush">#</a> 15.brush</h5>
+<p><code>brush</code>  是区域选择组件，用户可以选择图中一部分数据，从而便于向用户展示被选中数据，或者他们的一些统计计算结果。</p>
+<h5 id="16geo"><a class="markdownIt-Anchor" href="#16geo">#</a> 16.geo</h5>
+<p>地理坐标系组件。地理坐标系组件用于地图的绘制，支持在地理坐标系上绘制<a target="_blank" rel="noopener" href="https://echarts.apache.org/zh/option.html#series-scatter">散点图</a>，<a target="_blank" rel="noopener" href="https://echarts.apache.org/zh/option.html#series-lines">线集</a>。</p>
+<h5 id="17parallel"><a class="markdownIt-Anchor" href="#17parallel">#</a> 17.parallel</h5>
+<p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Parallel_coordinates">平行坐标系（Parallel Coordinates）</a> 是一种常用的可视化高维数据的图表</p>
+<h5 id="18parallelaxis"><a class="markdownIt-Anchor" href="#18parallelaxis">#</a> 18.parallelAxis</h5>
+<p>这个组件是平行坐标系中的坐标轴</p>
+<h5 id="19singleaxis"><a class="markdownIt-Anchor" href="#19singleaxis">#</a> 19.singleAxis</h5>
+<p>单轴。可以被应用到散点图中展现一维数据，</p>
+<h5 id="20timeline"><a class="markdownIt-Anchor" href="#20timeline">#</a> 20.timeline</h5>
+<p><code>timeline</code>  组件，提供了在多个 ECharts  <code>option</code>  间进行切换、播放等操作的功能</p>
+<h5 id="21graphic"><a class="markdownIt-Anchor" href="#21graphic">#</a> 21.graphic</h5>
+<p><code>graphic</code>  是原生图形元素组件。可以支持的图形元素包括：</p>
+<p><a target="_blank" rel="noopener" href="https://echarts.apache.org/zh/option.html#graphic.elements-image">image</a>, <a target="_blank" rel="noopener" href="https://echarts.apache.org/zh/option.html#graphic.elements-text">text</a>, <a target="_blank" rel="noopener" href="https://echarts.apache.org/zh/option.html#graphic.elements-circle">circle</a>, <a target="_blank" rel="noopener" href="https://echarts.apache.org/zh/option.html#graphic.elements-sector">sector</a>, <a target="_blank" rel="noopener" href="https://echarts.apache.org/zh/option.html#graphic.elements-ring">ring</a>, <a target="_blank" rel="noopener" href="https://echarts.apache.org/zh/option.html#graphic.elements-polygon">polygon</a>, <a target="_blank" rel="noopener" href="https://echarts.apache.org/zh/option.html#graphic.elements-polyline">polyline</a>, <a target="_blank" rel="noopener" href="https://echarts.apache.org/zh/option.html#graphic.elements-rect">rect</a>, <a target="_blank" rel="noopener" href="https://echarts.apache.org/zh/option.html#graphic.elements-line">line</a>, <a target="_blank" rel="noopener" href="https://echarts.apache.org/zh/option.html#graphic.elements-bezierCurve">bezierCurve</a>, <a target="_blank" rel="noopener" href="https://echarts.apache.org/zh/option.html#graphic.elements-arc">arc</a>, <a target="_blank" rel="noopener" href="https://echarts.apache.org/zh/option.html#graphic.elements-group">group</a>,</p>
+<h5 id="22calendar"><a class="markdownIt-Anchor" href="#22calendar">#</a> 22.calendar</h5>
+<p>日历坐标系组件</p>
+<h5 id="23dataset"><a class="markdownIt-Anchor" href="#23dataset">#</a> 23.dataset</h5>
+<p>ECharts 4 开始支持了  <code>数据集</code> （ <code>dataset</code> ）组件用于单独的数据集声明，从而数据可以单独管理，被多个组件复用，并且可以自由指定数据到视觉的映射。这在不少场景下能带来使用上的方便。</p>
+<h5 id="24aria"><a class="markdownIt-Anchor" href="#24aria">#</a> 24.aria</h5>
+<p>W3C 制定了无障碍富互联网应用规范集（<a target="_blank" rel="noopener" href="https://www.w3.org/WAI/intro/aria">WAI-ARIA</a>，the Accessible Rich Internet Applications Suite），致力于使得网页内容和网页应用能够被更多残障人士访问。</p>
+<p>默认关闭，需要通过将 <a target="_blank" rel="noopener" href="https://echarts.apache.org/zh/option.html#aria.enabled">aria.enabled</a> 设置为  <code>true</code>  开启。</p>
+<h5 id="25series"><a class="markdownIt-Anchor" href="#25series">#</a> 25.series</h5>
+<h5 id="26darkmode"><a class="markdownIt-Anchor" href="#26darkmode">#</a> 26.darkMode</h5>
+<p>是否是暗黑模式，默认会根据背景色 <a target="_blank" rel="noopener" href="https://echarts.apache.org/zh/option.html#backgroundColor">backgroundColor</a> 的亮度自动设置。 如果是设置了容器的背景色而无法判断到，就可以使用该配置手动指定，echarts 会根据是否是暗黑模式调整文本等的颜色。</p>
+<h5 id="27color"><a class="markdownIt-Anchor" href="#27color">#</a> 27.color</h5>
+<p>调色盘颜色列表。如果系列没有设置颜色，则会依次循环从该列表中取颜色作为系列颜色。</p>
+<h5 id="28backgroundcolor"><a class="markdownIt-Anchor" href="#28backgroundcolor">#</a> 28.backgroundColor</h5>
+<p>背景色，默认无背景。</p>
+<h5 id="29textstyle"><a class="markdownIt-Anchor" href="#29textstyle">#</a> 29.textStyle</h5>
+<p>全局的字体样式</p>
+<h5 id="30animation"><a class="markdownIt-Anchor" href="#30animation">#</a> 30.animation</h5>
+<p>是否开启动画</p>
+<h5 id="31animationthreshold"><a class="markdownIt-Anchor" href="#31animationthreshold">#</a> 31.animationThreshold</h5>
+<p>是否开启动画的阈值，当单个系列显示的图形数量大于这个阈值时会关闭动画。</p>
+<h5 id="32animationduration"><a class="markdownIt-Anchor" href="#32animationduration">#</a> 32.animationDuration</h5>
+<p>初始动画的时长，支持回调函数，可以通过每个数据返回不同的时长实现更戏剧的初始动画效果：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">animationDuration</span>: <span class="keyword">function</span> (<span class="params">idx</span>) &#123;</span><br><span class="line">    <span class="comment">// 越往后的数据时长越大</span></span><br><span class="line">    <span class="keyword">return</span> idx * <span class="number">100</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="33animationeasing"><a class="markdownIt-Anchor" href="#33animationeasing">#</a> 33.animationEasing</h5>
+<p>初始动画的缓动效果。不同的缓动效果可以参考 <a target="_blank" rel="noopener" href="https://echarts.apache.org/examples/zh/editor.html?c=line-easing">缓动示例</a>。</p>
+<h5 id="34animationdelay"><a class="markdownIt-Anchor" href="#34animationdelay">#</a> 34.animationDelay</h5>
+<p>初始动画的延迟，支持回调函数，可以通过每个数据返回不同的 delay 时间实现更戏剧的初始动画效果。</p>
+<p>如下示例：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">animationDelay</span>: <span class="keyword">function</span> (<span class="params">idx</span>) &#123;</span><br><span class="line">    <span class="comment">// 越往后的数据延迟越大</span></span><br><span class="line">    <span class="keyword">return</span> idx * <span class="number">100</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="35animationdurationupdate"><a class="markdownIt-Anchor" href="#35animationdurationupdate">#</a> 35.animationDurationUpdate</h5>
+<p>数据更新动画的时长。</p>
+<p>支持回调函数，可以通过每个数据返回不同的时长实现更戏剧的更新动画效果：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">animationDurationUpdate</span>: <span class="keyword">function</span> (<span class="params">idx</span>) &#123;</span><br><span class="line">    <span class="comment">// 越往后的数据时长越大</span></span><br><span class="line">    <span class="keyword">return</span> idx * <span class="number">100</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="36animationeasingupdate"><a class="markdownIt-Anchor" href="#36animationeasingupdate">#</a> 36.animationEasingUpdate</h5>
+<p>数据更新动画的缓动效果。</p>
+<h5 id="37animationdelayupdate"><a class="markdownIt-Anchor" href="#37animationdelayupdate">#</a> 37.animationDelayUpdate</h5>
+<p>数据更新动画的延迟，支持回调函数，可以通过每个数据返回不同的 delay 时间实现更戏剧的更新动画效果。</p>
+<p>如下示例：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">animationDelayUpdate</span>: <span class="keyword">function</span> (<span class="params">idx</span>) &#123;</span><br><span class="line">    <span class="comment">// 越往后的数据延迟越大</span></span><br><span class="line">    <span class="keyword">return</span> idx * <span class="number">100</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>也可以看<a target="_blank" rel="noopener" href="https://echarts.apache.org/examples/zh/editor.html?c=bar-animation-delay">该示例</a></p>
+<h5 id="38stateanimation"><a class="markdownIt-Anchor" href="#38stateanimation">#</a> 38.stateAnimation</h5>
+<p>状态切换的动画配置，支持在每个系列里设置单独针对该系列的配置。</p>
+<h5 id="39blendmode"><a class="markdownIt-Anchor" href="#39blendmode">#</a> 39.blendMode</h5>
+<p>图形的混合模式，不同的混合模式见 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/globalCompositeOperation">https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/globalCompositeOperation</a> 。</p>
+<p>默认为  <code>'source-over'</code> 。 支持每个系列单独设置。</p>
+<p><code>'lighter'</code>  也是比较常见的一种混合模式，该模式下图形数量集中的区域会颜色叠加成高亮度的颜色（白色）。常常能起到突出该区域的效果。见示例 <a target="_blank" rel="noopener" href="https://echarts.apache.org/examples/zh/editor.html?c=lines-airline">全球飞行航线</a></p>
+<h5 id="40hoverlayerthreshold"><a class="markdownIt-Anchor" href="#40hoverlayerthreshold">#</a> 40.hoverLayerThreshold</h5>
+<p>图形数量阈值，决定是否开启单独的 hover 层，在整个图表的图形数量大于该阈值时开启单独的 hover 层。</p>
+<p>单独的 hover 层主要是为了在高亮图形的时候不需要重绘整个图表，只需要把高亮的图形放入单独的一个 canvas 层进行绘制，防止在图形数量很多的时候因为高亮重绘所有图形导致卡顿。</p>
+<p>ECharts 2 里是底层强制使用单独的层绘制高亮图形，但是会带来很多问题，比如高亮的图形可能会不正确的遮挡所有其它图形，还有图形有透明度因为高亮和正常图形叠加导致不正确的透明度显示，还有移动端上因为每个图表都要多一个 canvas 带来的额外内存开销。因此 3 里默认不会开启该优化，只有在图形数量特别多，有必要做该优化时才会自动开启。</p>
+<h5 id="41useutc"><a class="markdownIt-Anchor" href="#41useutc">#</a> 41.useUTC</h5>
+<p>是否使用 UTC 时间。</p>
+<ul>
+<li><code>true</code> : 表示  <code>axis.type</code>  为  <code>'time'</code>  时，依据 UTC 时间确定 tick 位置，并且  <code>axisLabel</code>  和  <code>tooltip</code>  默认展示的是 UTC 时间。</li>
+<li><code>false</code> : 表示  <code>axis.type</code>  为  <code>'time'</code>  时，依据本地时间确定 tick 位置，并且  <code>axisLabel</code>  和  <code>tooltip</code>  默认展示的是本地时间。</li>
+</ul>
+<p>默认取值为 false，即使用本地时间。因为考虑到：</p>
+<ul>
+<li>很多情况下，需要展示为本地时间（无论服务器存储的是否为  <code>UTC</code>  时间）。</li>
+<li>如果 data 中的时间为 ‘2012-01-02’ 这样的没有指定时区的时间表达式，往往意为本地时间。默认情况下，时间被展示时需要和输入一致而非有时差。</li>
+</ul>
+<p>注意，这个参数实际影响的是『展示』，而非用户输入的时间值的解析。 关于用户输入的时间值（例如  <code>1491339540396</code> ,  <code>'2013-01-04'</code>  等）的解析，参见 <a target="_blank" rel="noopener" href="https://echarts.apache.org/zh/option.html#series-line.data">date 中时间相关部分</a>。</p>
+<h5 id="42options"><a class="markdownIt-Anchor" href="#42options">#</a> 42.options</h5>
+<p>用于 <a target="_blank" rel="noopener" href="https://echarts.apache.org/zh/option.html#timeline">timeline</a> 的 option 数组。数组的每一项是一个 echarts option ( <code>ECUnitOption</code> )。</p>
+<h5 id="43media"><a class="markdownIt-Anchor" href="#43media">#</a> 43.media</h5>
+<p>请参见 <a target="_blank" rel="noopener" href="https://echarts.apache.org/zh/tutorial.html#%E7%A7%BB%E5%8A%A8%E7%AB%AF%E8%87%AA%E9%80%82%E5%BA%94">移动端自适应</a>。</p>
+ 
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          Donate
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2022/07/07/echars%E5%AD%A6%E4%B9%A0/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+    
+      <a href="/2022/07/07/hexo%E4%BD%BF%E7%94%A8/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">hexo使用</div>
+      </a>
+    
+  </nav>
+
+  
+   
+    
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2022
+        <i class="ri-heart-fill heart_icon"></i> John Doe
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/logo.svg" alt="Hexo"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E6%97%85%E8%A1%8C/">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="http://shenyu-vip.lofter.com">摄影</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2019/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+
+<script src="/js/clickBoom1.js"></script>
+ 
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+ 
+<script src="/js/dz.js"></script>
+ 
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>

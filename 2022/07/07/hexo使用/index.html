@@ -12,9 +12,7 @@
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
       <title>
-      hexo使用 |
-      
-      Hexo
+     leining
       </title>
   <meta name="generator" content="hexo-theme-ayer">
       
@@ -54,6 +52,17 @@
 <body>
   <div id="app">
     
+      <canvas class="fireworks"></canvas>
+      <style>
+        .fireworks {
+          position: fixed;
+          left: 0;
+          top: 0;
+          z-index: 99999;
+          pointer-events: none;
+        }
+      </style>
+      
       
     <main class="content on">
       <section class="outer">
@@ -269,6 +278,15 @@
    
   <nav class="article-nav">
     
+      <a href="/2022/07/07/echars%E5%AD%A6%E4%B9%A0/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            echars学习
+          
+        </div>
+      </a>
+    
     
       <a href="/2022/07/07/vue2%E5%AD%A6%E4%B9%A0/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
@@ -296,7 +314,7 @@
     <ul>
       <li>
         Copyrights &copy;
-        2015-2022
+        2022
         <i class="ri-heart-fill heart_icon"></i> John Doe
       </li>
     </ul>
@@ -580,11 +598,13 @@
 <script src="/js/busuanzi-2.3.pure.min.js"></script>
  
 <!-- ClickLove -->
- 
-<script src="/js/clickLove.js"></script>
- 
+
 <!-- ClickBoom1 -->
 
+<script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+
+<script src="/js/clickBoom1.js"></script>
+ 
 <!-- ClickBoom2 -->
 
 <!-- CodeCopy -->

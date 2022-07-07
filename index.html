@@ -12,8 +12,7 @@
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
       <title>
-      
-      Hexo
+     leining
       </title>
   <meta name="generator" content="hexo-theme-ayer">
       
@@ -53,6 +52,17 @@
 <body>
   <div id="app">
     
+      <canvas class="fireworks"></canvas>
+      <style>
+        .fireworks {
+          position: fixed;
+          left: 0;
+          top: 0;
+          z-index: 99999;
+          pointer-events: none;
+        }
+      </style>
+      
       
     <main class="content on">
       
@@ -68,13 +78,19 @@
       <img src="/images/2.jpg" alt="image frame" />
     </div>
     <div class="cover-inner text-center text-white">
-      <h1><a href="/"雷宁</a></h1>
+      <h1><a href="/"雷宁"</a></h1>
       <div id="subtitle-box">
         
         <span id="subtitle"></span>
         
       </div>
       <div>
+        
+        <img
+          src="/images/logo.svg"
+          class="cover-logo"
+          alt="Hexo"
+        />
         
       </div>
     </div>
@@ -156,6 +172,170 @@
     
     
     
+    
+    <article
+  id="post-echars学习"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2022/07/07/echars%E5%AD%A6%E4%B9%A0/"
+    >echars学习</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2022/07/07/echars%E5%AD%A6%E4%B9%A0/" class="article-date">
+  <time datetime="2022-07-07T07:02:31.000Z" itemprop="datePublished">2022-07-07</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h4 id="1安装echars"><a class="markdownIt-Anchor" href="#1安装echars">#</a> 1. 安装 echars</h4>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install echarts --save</span><br></pre></td></tr></table></figure>
+<h4 id="2引入使用echars"><a class="markdownIt-Anchor" href="#2引入使用echars">#</a> 2. 引入使用 echars</h4>
+<h5 id="1方法一"><a class="markdownIt-Anchor" href="#1方法一">#</a> 1. 方法一</h5>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.准备好一个容器,必须设置宽度和高度</span></span><br><span class="line">&lt;div id= <span class="string">&#x27;main&#x27;</span>&gt;</span><br><span class="line">    </span><br><span class="line"> &lt;/div&gt;   </span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> echarts <span class="keyword">from</span> <span class="string">&#x27;echarts&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2.基于准备好的dom，初始化echarts实例</span></span><br><span class="line"><span class="keyword">var</span> dom = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;container&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> myChart = echarts.<span class="title function_">init</span>(dom);</span><br><span class="line"><span class="comment">// 3.传入数据</span></span><br><span class="line"><span class="keyword">var</span> option = &#123;</span><br><span class="line">    <span class="attr">xAxis</span>: &#123;</span><br><span class="line">        <span class="attr">type</span>: <span class="string">&#x27;category&#x27;</span>,</span><br><span class="line">        <span class="attr">data</span>: [<span class="string">&#x27;Mon&#x27;</span>, <span class="string">&#x27;Tue&#x27;</span>, <span class="string">&#x27;Wed&#x27;</span>, <span class="string">&#x27;Thu&#x27;</span>, <span class="string">&#x27;Fri&#x27;</span>, <span class="string">&#x27;Sat&#x27;</span>, <span class="string">&#x27;Sun&#x27;</span>]</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">yAxis</span>: &#123;</span><br><span class="line">        <span class="attr">type</span>: <span class="string">&#x27;value&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">series</span>: [&#123;</span><br><span class="line">        <span class="attr">data</span>: [<span class="number">820</span>, <span class="number">932</span>, <span class="number">901</span>, <span class="number">934</span>, <span class="number">1290</span>, <span class="number">1330</span>, <span class="number">1320</span>],<span class="comment">//在这里修改数据</span></span><br><span class="line">        <span class="attr">type</span>: <span class="string">&#x27;line&#x27;</span></span><br><span class="line">    &#125;]</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//4.绘制图表</span></span><br><span class="line"><span class="keyword">if</span> (option &amp;&amp; <span class="keyword">typeof</span> option === <span class="string">&quot;object&quot;</span>) &#123;</span><br><span class="line">    myChart.<span class="title function_">setOption</span>(option, <span class="literal">true</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="2方法二"><a class="markdownIt-Anchor" href="#2方法二">#</a> 2. 方法二</h5>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.准备好一个容器,必须设置宽度和高度</span></span><br><span class="line">&lt;div id= <span class="string">&#x27;main&#x27;</span>&gt;</span><br><span class="line">    </span><br><span class="line"> &lt;/div&gt;   </span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> echarts <span class="keyword">from</span> <span class="string">&#x27;echarts&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2.基于准备好的dom，初始化echarts实例</span></span><br><span class="line"><span class="keyword">var</span> myChart = echarts.<span class="title function_">init</span>(<span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;main&#x27;</span>));</span><br><span class="line"><span class="comment">// 绘制图表</span></span><br><span class="line">myChart.<span class="title function_">setOption</span>(&#123;</span><br><span class="line">  <span class="attr">title</span>: &#123;</span><br><span class="line">    <span class="attr">text</span>: <span class="string">&#x27;ECharts 入门示例&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">tooltip</span>: &#123;&#125;,</span><br><span class="line">  <span class="attr">xAxis</span>: &#123;</span><br><span class="line">    <span class="attr">data</span>: [<span class="string">&#x27;衬衫&#x27;</span>, <span class="string">&#x27;羊毛衫&#x27;</span>, <span class="string">&#x27;雪纺衫&#x27;</span>, <span class="string">&#x27;裤子&#x27;</span>, <span class="string">&#x27;高跟鞋&#x27;</span>, <span class="string">&#x27;袜子&#x27;</span>]</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">yAxis</span>: &#123;&#125;,</span><br><span class="line">  <span class="attr">series</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">name</span>: <span class="string">&#x27;销量&#x27;</span>,</span><br><span class="line">      <span class="attr">type</span>: <span class="string">&#x27;bar&#x27;</span>,</span><br><span class="line">      <span class="attr">data</span>: [<span class="number">5</span>, <span class="number">20</span>, <span class="number">36</span>, <span class="number">10</span>, <span class="number">10</span>, <span class="number">20</span>]</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="3echars中的配置项"><a class="markdownIt-Anchor" href="#3echars中的配置项">#</a> 3.echars 中的配置项</h4>
+<h5 id="1title"><a class="markdownIt-Anchor" href="#1title">#</a> 1.title</h5>
+<p>标题组件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">id：默认不指定</span><br><span class="line">show：true是否显示标题组件</span><br><span class="line">text：&#x27;&#x27;主标题文本（支持换行\n）</span><br><span class="line">link：&#x27;&#x27;主标题文本超链接</span><br></pre></td></tr></table></figure>
+<h5 id="2legend"><a class="markdownIt-Anchor" href="#2legend">#</a> 2.legend</h5>
+<p>图例标签</p>
+<h5 id="3grid"><a class="markdownIt-Anchor" href="#3grid">#</a> 3.grid</h5>
+<p>直角坐标系内绘制网络</p>
+<h5 id="4xaxis"><a class="markdownIt-Anchor" href="#4xaxis">#</a> 4.xAxis</h5>
+<p>直角坐标系 grid 的 x 轴</p>
+<h5 id="5yaxis"><a class="markdownIt-Anchor" href="#5yaxis">#</a> 5.yAxis</h5>
+<p>直角坐标系 grid 的 y 轴</p>
+<h5 id="6polar"><a class="markdownIt-Anchor" href="#6polar">#</a> 6.polar</h5>
+<p>极坐标系，可以用于散点图和折线图</p>
+<h5 id="7radiusaxis"><a class="markdownIt-Anchor" href="#7radiusaxis">#</a> 7.radiusAxis</h5>
+<p>极坐标系的径向轴</p>
+<h5 id="8angleaxis"><a class="markdownIt-Anchor" href="#8angleaxis">#</a> 8.angleAxis</h5>
+<p>极坐标系的角度轴</p>
+<h5 id="9radar"><a class="markdownIt-Anchor" href="#9radar">#</a> 9.radar</h5>
+<p>雷达图坐标系组件</p>
+<h5 id="10datazoom"><a class="markdownIt-Anchor" href="#10datazoom">#</a> 10.dataZoom</h5>
+<p>用于区域缩放</p>
+<h5 id="11visualmap"><a class="markdownIt-Anchor" href="#11visualmap">#</a> 11.visualMap</h5>
+<p>是视觉映射组件，用于进行『视觉编码』</p>
+<h5 id="12tooltip"><a class="markdownIt-Anchor" href="#12tooltip">#</a> 12.tooltip</h5>
+<p>提示框组件</p>
+<h5 id="13axispointer"><a class="markdownIt-Anchor" href="#13axispointer">#</a> 13.axisPointer</h5>
+<p>坐标轴指示器的全局公用设置</p>
+<h5 id="14toolbox"><a class="markdownIt-Anchor" href="#14toolbox">#</a> 14.toolbox</h5>
+<p>工具栏内置有导出图片、数据视图、动态类型转换、数据区域缩放、重置五个工具。</p>
+<h5 id="15brush"><a class="markdownIt-Anchor" href="#15brush">#</a> 15.brush</h5>
+<p><code>brush</code>  是区域选择组件，用户可以选择图中一部分数据，从而便于向用户展示被选中数据，或者他们的一些统计计算结果。</p>
+<h5 id="16geo"><a class="markdownIt-Anchor" href="#16geo">#</a> 16.geo</h5>
+<p>地理坐标系组件。地理坐标系组件用于地图的绘制，支持在地理坐标系上绘制<a target="_blank" rel="noopener" href="https://echarts.apache.org/zh/option.html#series-scatter">散点图</a>，<a target="_blank" rel="noopener" href="https://echarts.apache.org/zh/option.html#series-lines">线集</a>。</p>
+<h5 id="17parallel"><a class="markdownIt-Anchor" href="#17parallel">#</a> 17.parallel</h5>
+<p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Parallel_coordinates">平行坐标系（Parallel Coordinates）</a> 是一种常用的可视化高维数据的图表</p>
+<h5 id="18parallelaxis"><a class="markdownIt-Anchor" href="#18parallelaxis">#</a> 18.parallelAxis</h5>
+<p>这个组件是平行坐标系中的坐标轴</p>
+<h5 id="19singleaxis"><a class="markdownIt-Anchor" href="#19singleaxis">#</a> 19.singleAxis</h5>
+<p>单轴。可以被应用到散点图中展现一维数据，</p>
+<h5 id="20timeline"><a class="markdownIt-Anchor" href="#20timeline">#</a> 20.timeline</h5>
+<p><code>timeline</code>  组件，提供了在多个 ECharts  <code>option</code>  间进行切换、播放等操作的功能</p>
+<h5 id="21graphic"><a class="markdownIt-Anchor" href="#21graphic">#</a> 21.graphic</h5>
+<p><code>graphic</code>  是原生图形元素组件。可以支持的图形元素包括：</p>
+<p><a target="_blank" rel="noopener" href="https://echarts.apache.org/zh/option.html#graphic.elements-image">image</a>, <a target="_blank" rel="noopener" href="https://echarts.apache.org/zh/option.html#graphic.elements-text">text</a>, <a target="_blank" rel="noopener" href="https://echarts.apache.org/zh/option.html#graphic.elements-circle">circle</a>, <a target="_blank" rel="noopener" href="https://echarts.apache.org/zh/option.html#graphic.elements-sector">sector</a>, <a target="_blank" rel="noopener" href="https://echarts.apache.org/zh/option.html#graphic.elements-ring">ring</a>, <a target="_blank" rel="noopener" href="https://echarts.apache.org/zh/option.html#graphic.elements-polygon">polygon</a>, <a target="_blank" rel="noopener" href="https://echarts.apache.org/zh/option.html#graphic.elements-polyline">polyline</a>, <a target="_blank" rel="noopener" href="https://echarts.apache.org/zh/option.html#graphic.elements-rect">rect</a>, <a target="_blank" rel="noopener" href="https://echarts.apache.org/zh/option.html#graphic.elements-line">line</a>, <a target="_blank" rel="noopener" href="https://echarts.apache.org/zh/option.html#graphic.elements-bezierCurve">bezierCurve</a>, <a target="_blank" rel="noopener" href="https://echarts.apache.org/zh/option.html#graphic.elements-arc">arc</a>, <a target="_blank" rel="noopener" href="https://echarts.apache.org/zh/option.html#graphic.elements-group">group</a>,</p>
+<h5 id="22calendar"><a class="markdownIt-Anchor" href="#22calendar">#</a> 22.calendar</h5>
+<p>日历坐标系组件</p>
+<h5 id="23dataset"><a class="markdownIt-Anchor" href="#23dataset">#</a> 23.dataset</h5>
+<p>ECharts 4 开始支持了  <code>数据集</code> （ <code>dataset</code> ）组件用于单独的数据集声明，从而数据可以单独管理，被多个组件复用，并且可以自由指定数据到视觉的映射。这在不少场景下能带来使用上的方便。</p>
+<h5 id="24aria"><a class="markdownIt-Anchor" href="#24aria">#</a> 24.aria</h5>
+<p>W3C 制定了无障碍富互联网应用规范集（<a target="_blank" rel="noopener" href="https://www.w3.org/WAI/intro/aria">WAI-ARIA</a>，the Accessible Rich Internet Applications Suite），致力于使得网页内容和网页应用能够被更多残障人士访问。</p>
+<p>默认关闭，需要通过将 <a target="_blank" rel="noopener" href="https://echarts.apache.org/zh/option.html#aria.enabled">aria.enabled</a> 设置为  <code>true</code>  开启。</p>
+<h5 id="25series"><a class="markdownIt-Anchor" href="#25series">#</a> 25.series</h5>
+<h5 id="26darkmode"><a class="markdownIt-Anchor" href="#26darkmode">#</a> 26.darkMode</h5>
+<p>是否是暗黑模式，默认会根据背景色 <a target="_blank" rel="noopener" href="https://echarts.apache.org/zh/option.html#backgroundColor">backgroundColor</a> 的亮度自动设置。 如果是设置了容器的背景色而无法判断到，就可以使用该配置手动指定，echarts 会根据是否是暗黑模式调整文本等的颜色。</p>
+<h5 id="27color"><a class="markdownIt-Anchor" href="#27color">#</a> 27.color</h5>
+<p>调色盘颜色列表。如果系列没有设置颜色，则会依次循环从该列表中取颜色作为系列颜色。</p>
+<h5 id="28backgroundcolor"><a class="markdownIt-Anchor" href="#28backgroundcolor">#</a> 28.backgroundColor</h5>
+<p>背景色，默认无背景。</p>
+<h5 id="29textstyle"><a class="markdownIt-Anchor" href="#29textstyle">#</a> 29.textStyle</h5>
+<p>全局的字体样式</p>
+<h5 id="30animation"><a class="markdownIt-Anchor" href="#30animation">#</a> 30.animation</h5>
+<p>是否开启动画</p>
+<h5 id="31animationthreshold"><a class="markdownIt-Anchor" href="#31animationthreshold">#</a> 31.animationThreshold</h5>
+<p>是否开启动画的阈值，当单个系列显示的图形数量大于这个阈值时会关闭动画。</p>
+<h5 id="32animationduration"><a class="markdownIt-Anchor" href="#32animationduration">#</a> 32.animationDuration</h5>
+<p>初始动画的时长，支持回调函数，可以通过每个数据返回不同的时长实现更戏剧的初始动画效果：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">animationDuration</span>: <span class="keyword">function</span> (<span class="params">idx</span>) &#123;</span><br><span class="line">    <span class="comment">// 越往后的数据时长越大</span></span><br><span class="line">    <span class="keyword">return</span> idx * <span class="number">100</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="33animationeasing"><a class="markdownIt-Anchor" href="#33animationeasing">#</a> 33.animationEasing</h5>
+<p>初始动画的缓动效果。不同的缓动效果可以参考 <a target="_blank" rel="noopener" href="https://echarts.apache.org/examples/zh/editor.html?c=line-easing">缓动示例</a>。</p>
+<h5 id="34animationdelay"><a class="markdownIt-Anchor" href="#34animationdelay">#</a> 34.animationDelay</h5>
+<p>初始动画的延迟，支持回调函数，可以通过每个数据返回不同的 delay 时间实现更戏剧的初始动画效果。</p>
+<p>如下示例：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">animationDelay</span>: <span class="keyword">function</span> (<span class="params">idx</span>) &#123;</span><br><span class="line">    <span class="comment">// 越往后的数据延迟越大</span></span><br><span class="line">    <span class="keyword">return</span> idx * <span class="number">100</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="35animationdurationupdate"><a class="markdownIt-Anchor" href="#35animationdurationupdate">#</a> 35.animationDurationUpdate</h5>
+<p>数据更新动画的时长。</p>
+<p>支持回调函数，可以通过每个数据返回不同的时长实现更戏剧的更新动画效果：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">animationDurationUpdate</span>: <span class="keyword">function</span> (<span class="params">idx</span>) &#123;</span><br><span class="line">    <span class="comment">// 越往后的数据时长越大</span></span><br><span class="line">    <span class="keyword">return</span> idx * <span class="number">100</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="36animationeasingupdate"><a class="markdownIt-Anchor" href="#36animationeasingupdate">#</a> 36.animationEasingUpdate</h5>
+<p>数据更新动画的缓动效果。</p>
+<h5 id="37animationdelayupdate"><a class="markdownIt-Anchor" href="#37animationdelayupdate">#</a> 37.animationDelayUpdate</h5>
+<p>数据更新动画的延迟，支持回调函数，可以通过每个数据返回不同的 delay 时间实现更戏剧的更新动画效果。</p>
+<p>如下示例：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">animationDelayUpdate</span>: <span class="keyword">function</span> (<span class="params">idx</span>) &#123;</span><br><span class="line">    <span class="comment">// 越往后的数据延迟越大</span></span><br><span class="line">    <span class="keyword">return</span> idx * <span class="number">100</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>也可以看<a target="_blank" rel="noopener" href="https://echarts.apache.org/examples/zh/editor.html?c=bar-animation-delay">该示例</a></p>
+<h5 id="38stateanimation"><a class="markdownIt-Anchor" href="#38stateanimation">#</a> 38.stateAnimation</h5>
+<p>状态切换的动画配置，支持在每个系列里设置单独针对该系列的配置。</p>
+<h5 id="39blendmode"><a class="markdownIt-Anchor" href="#39blendmode">#</a> 39.blendMode</h5>
+<p>图形的混合模式，不同的混合模式见 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/globalCompositeOperation">https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/globalCompositeOperation</a> 。</p>
+<p>默认为  <code>'source-over'</code> 。 支持每个系列单独设置。</p>
+<p><code>'lighter'</code>  也是比较常见的一种混合模式，该模式下图形数量集中的区域会颜色叠加成高亮度的颜色（白色）。常常能起到突出该区域的效果。见示例 <a target="_blank" rel="noopener" href="https://echarts.apache.org/examples/zh/editor.html?c=lines-airline">全球飞行航线</a></p>
+<h5 id="40hoverlayerthreshold"><a class="markdownIt-Anchor" href="#40hoverlayerthreshold">#</a> 40.hoverLayerThreshold</h5>
+<p>图形数量阈值，决定是否开启单独的 hover 层，在整个图表的图形数量大于该阈值时开启单独的 hover 层。</p>
+<p>单独的 hover 层主要是为了在高亮图形的时候不需要重绘整个图表，只需要把高亮的图形放入单独的一个 canvas 层进行绘制，防止在图形数量很多的时候因为高亮重绘所有图形导致卡顿。</p>
+<p>ECharts 2 里是底层强制使用单独的层绘制高亮图形，但是会带来很多问题，比如高亮的图形可能会不正确的遮挡所有其它图形，还有图形有透明度因为高亮和正常图形叠加导致不正确的透明度显示，还有移动端上因为每个图表都要多一个 canvas 带来的额外内存开销。因此 3 里默认不会开启该优化，只有在图形数量特别多，有必要做该优化时才会自动开启。</p>
+<h5 id="41useutc"><a class="markdownIt-Anchor" href="#41useutc">#</a> 41.useUTC</h5>
+<p>是否使用 UTC 时间。</p>
+<ul>
+<li><code>true</code> : 表示  <code>axis.type</code>  为  <code>'time'</code>  时，依据 UTC 时间确定 tick 位置，并且  <code>axisLabel</code>  和  <code>tooltip</code>  默认展示的是 UTC 时间。</li>
+<li><code>false</code> : 表示  <code>axis.type</code>  为  <code>'time'</code>  时，依据本地时间确定 tick 位置，并且  <code>axisLabel</code>  和  <code>tooltip</code>  默认展示的是本地时间。</li>
+</ul>
+<p>默认取值为 false，即使用本地时间。因为考虑到：</p>
+<ul>
+<li>很多情况下，需要展示为本地时间（无论服务器存储的是否为  <code>UTC</code>  时间）。</li>
+<li>如果 data 中的时间为 ‘2012-01-02’ 这样的没有指定时区的时间表达式，往往意为本地时间。默认情况下，时间被展示时需要和输入一致而非有时差。</li>
+</ul>
+<p>注意，这个参数实际影响的是『展示』，而非用户输入的时间值的解析。 关于用户输入的时间值（例如  <code>1491339540396</code> ,  <code>'2013-01-04'</code>  等）的解析，参见 <a target="_blank" rel="noopener" href="https://echarts.apache.org/zh/option.html#series-line.data">date 中时间相关部分</a>。</p>
+<h5 id="42options"><a class="markdownIt-Anchor" href="#42options">#</a> 42.options</h5>
+<p>用于 <a target="_blank" rel="noopener" href="https://echarts.apache.org/zh/option.html#timeline">timeline</a> 的 option 数组。数组的每一项是一个 echarts option ( <code>ECUnitOption</code> )。</p>
+<h5 id="43media"><a class="markdownIt-Anchor" href="#43media">#</a> 43.media</h5>
+<p>请参见 <a target="_blank" rel="noopener" href="https://echarts.apache.org/zh/tutorial.html#%E7%A7%BB%E5%8A%A8%E7%AB%AF%E8%87%AA%E9%80%82%E5%BA%94">移动端自适应</a>。</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+   
+    
+</article>
+
     
     <article
   id="post-hexo使用"
@@ -328,15 +508,11 @@
 <p>​	2. 双向数据绑定（v-model）: 数据不仅能从 data 流向页面，还可以从页面流向 data。</p>
 <p>​		备注：双向数据绑定一般用在表单元素上（input，select）</p>
 <p>​					v-model：value 可以简写为 v-model</p>
-<div id="root">
-			单向数据绑定:<input type="text" v-bind:value="name"/><br/>
-			<!-- v-model只能用在表单类的元素中 -->
-			双向数据绑定:<input type="text" v-model:value="name"/>
-		</div>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">&quot;root&quot;</span>&gt;</span><br><span class="line">			单向数据绑定:<span class="language-xml"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">v-bind:value</span>=<span class="string">&quot;name&quot;</span>/&gt;</span></span><span class="language-xml"><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span></span><br><span class="line">			&lt;!-- v-model只能用在表单类的元素中 --&gt;</span><br><span class="line">			双向数据绑定:<span class="language-xml"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">v-model:value</span>=<span class="string">&quot;name&quot;</span>/&gt;</span></span></span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
 <h4 id="3vue事件的基本使用"><a class="markdownIt-Anchor" href="#3vue事件的基本使用">#</a> 3.Vue 事件的基本使用</h4>
 <p>​	1.v-on：xxx 或 @xxx 绑定事件，xxx 是事件名</p>
 <p>​		v-on 缩写</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 完整语法 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">v-on:click</span>=<span class="string">&quot;doSomething&quot;</span>&gt;</span>...<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 缩写 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> @<span class="attr">click</span>=<span class="string">&quot;doSomething&quot;</span>&gt;</span>...<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 动态参数的缩写 (2.6.0+) --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> @[<span class="attr">event</span>]=<span class="string">&quot;doSomething&quot;</span>&gt;</span> ... <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 完整语法 --&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">a</span> <span class="attr">v-on:click</span>=<span class="string">&quot;doSomething&quot;</span>&gt;</span>...<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line">&lt;!-- 缩写 --&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">a</span> @<span class="attr">click</span>=<span class="string">&quot;doSomething&quot;</span>&gt;</span>...<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line">&lt;!-- 动态参数的缩写 (<span class="number">2.6</span><span class="number">.0</span>+) --&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">a</span> @[<span class="attr">event</span>]=<span class="string">&quot;doSomething&quot;</span>&gt;</span> ... <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
 <p>​	2. 事件的回调需要配置在 methods 对象中，最终会在 vm 上</p>
 <p>​	3.methods 中配置的函数，不要使用箭头函数！否则 this 就不是 vm 了</p>
 <p>​	4.methods 中配置的函数，都是被 Vue 所管理的函数，this 的指向是 vm 或组件实例对象</p>
@@ -358,11 +534,7 @@
 <p>​		（2）. 配合 keydown 使用：正常触发事件</p>
 <p>​	4. 可以使用 keyCode 去指定具体的按键（不推荐）</p>
 <p>​	5.Vue.fonfig.keyCodes. 自定义键名 = 键码，可以去定制按键别名</p>
-<div id="root">
-			<h3>你是我的</h3>
-			<input type="text" placeholder="按下回车提示输入" @keyup="showInfo()"/>
-		</div>
-$
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">&quot;root&quot;</span>&gt;</span><br><span class="line">			<span class="language-xml"><span class="tag">&lt;<span class="name">h3</span>&gt;</span>你是我的&#123;&#123;name&#125;&#125;<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span></span><br><span class="line">			<span class="language-xml"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;按下回车提示输入&quot;</span> @<span class="attr">keyup</span>=<span class="string">&quot;showInfo()&quot;</span>/&gt;</span></span></span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
 <h4 id="6vue计算属性"><a class="markdownIt-Anchor" href="#6vue计算属性">#</a> 6.Vue 计算属性</h4>
 <p>​	1. 定义：要用的属性不存在，要通过自己已有的属性计算得出。</p>
 <p>​	2. 原理：底层借助了 Object.defineproperty 方法提供的 getter 和 setter</p>
@@ -373,11 +545,7 @@ $
 <p>​	5. 备注：</p>
 <p>​		1，计算属性最终会出现在 vm 上，直接读取使用即可。</p>
 <p>​		2. 如果计算属性要被修改，必须写 set 函数去相应修改，且 set 中要引起计算时依赖的数据发声改变。</p>
-<div id="root">
-			姓：<input type="text" v-model="firstName"/><br/>
-			名：<input type="text" v-model="lastName"/><br/>
-			姓名：<span></span>
-</div>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">&quot;root&quot;</span>&gt;</span><br><span class="line">			姓：&lt;input type=<span class="string">&quot;text&quot;</span> v-model=<span class="string">&quot;firstName&quot;</span>/&gt;<span class="language-xml"><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span></span><br><span class="line">			名：&lt;input type=<span class="string">&quot;text&quot;</span> v-model=<span class="string">&quot;lastName&quot;</span>/&gt;<span class="language-xml"><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span></span><br><span class="line">			姓名：&lt;span&gt;&#123;&#123;fullName&#125;&#125;&lt;/span&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">computed</span>:&#123;</span><br><span class="line">				<span class="comment">//完整写法</span></span><br><span class="line">				<span class="comment">// fullName:&#123;</span></span><br><span class="line">				<span class="comment">// 	//读取时使用一次，所有依赖数据发生变化时读取一次</span></span><br><span class="line">				<span class="comment">// 	get()&#123;</span></span><br><span class="line">				<span class="comment">// 		return this.firstName + &#x27;-&#x27; + this.lastName</span></span><br><span class="line">				<span class="comment">// 	&#125;,</span></span><br><span class="line">				<span class="comment">// 	set(value)&#123;</span></span><br><span class="line">				<span class="comment">// 		const arr = value.split(&#x27;-&#x27;)</span></span><br><span class="line">				<span class="comment">// 		this.firstName = arr[0]</span></span><br><span class="line">				<span class="comment">// 		this.lastName = arr[1]</span></span><br><span class="line">				<span class="comment">// 	&#125;</span></span><br><span class="line">				<span class="comment">// &#125;,</span></span><br><span class="line">				</span><br><span class="line">				<span class="comment">//简写，只考虑读取的时候</span></span><br><span class="line">				<span class="comment">// fullName()&#123;</span></span><br><span class="line">				<span class="comment">// 	return this.firstName + &#x27;-&#x27; + this.lastName</span></span><br><span class="line">				<span class="comment">// &#125;</span></span><br><span class="line">			&#125;,</span><br></pre></td></tr></table></figure>
 <h4 id="7vue监听属性"><a class="markdownIt-Anchor" href="#7vue监听属性">#</a> 7.Vue 监听属性</h4>
 <p>​	1. 当被监视的属性发声变化时，回调函数自动调用，进行相关操作</p>
@@ -385,10 +553,7 @@ $
 <p>​	3. 监视的两种写法：</p>
 <p>​		（1）new Vue 时传入 watch 配置</p>
 <p>​		（2）通过 vm.watch 监视</p>
-<div id="root">
-			<h2> 今天天气很好</h2>
-			<button @click="changeWeather">切换天气</button>
-		</div>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">&quot;root&quot;</span>&gt;</span><br><span class="line">			<span class="language-xml"><span class="tag">&lt;<span class="name">h2</span>&gt;</span> 今天天气很好&#123;&#123;info&#125;&#125;<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line">			<span class="language-xml"><span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">&quot;changeWeather&quot;</span>&gt;</span>切换天气<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> vm = <span class="keyword">new</span> <span class="title class_">Vue</span>(&#123;</span><br><span class="line">			<span class="attr">el</span>: <span class="string">&#x27;#root&#x27;</span>,</span><br><span class="line">			<span class="attr">data</span>: &#123;</span><br><span class="line">				<span class="attr">isHot</span>: <span class="literal">true</span>,	</span><br><span class="line">		&#125;,</span><br><span class="line">		<span class="attr">computed</span>: &#123;</span><br><span class="line">			<span class="title function_">info</span>(<span class="params"></span>) &#123;</span><br><span class="line">				<span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">isHot</span> ? <span class="string">&#x27;炎热&#x27;</span> : <span class="string">&#x27;凉爽&#x27;</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;,</span><br><span class="line">		<span class="attr">methods</span>: &#123;</span><br><span class="line">			<span class="title function_">changeWeather</span>(<span class="params"></span>) &#123;</span><br><span class="line">				<span class="variable language_">this</span>.<span class="property">isHot</span> = !<span class="variable language_">this</span>.<span class="property">isHot</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;,</span><br><span class="line">		<span class="attr">watch</span>: &#123;</span><br><span class="line">			<span class="comment">// 完整写法</span></span><br><span class="line">			<span class="comment">// isHot: &#123;</span></span><br><span class="line">			<span class="comment">// 	immediate:true //初始化时让handler调用</span></span><br><span class="line">			<span class="comment">// 	deep:true</span></span><br><span class="line">			<span class="comment">// 	handlder(newValue, oldValue) &#123;</span></span><br><span class="line">			<span class="comment">// 		console.log(&quot;isHot被修改了&quot;,newValue, oldValue)</span></span><br><span class="line">			<span class="comment">// 	&#125;</span></span><br><span class="line">			<span class="comment">// &#125;,</span></span><br><span class="line">			<span class="comment">//简写</span></span><br><span class="line">			<span class="title function_">isHot</span>(<span class="params">newVaule, oldValue</span>)&#123;</span><br><span class="line">				<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;isHot被修改了&quot;</span>,newValue, oldValue)</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//正常写法</span></span><br><span class="line">vm.$watch(<span class="string">&#x27;isHot&#x27;</span>, &#123;</span><br><span class="line">	<span class="attr">immediate</span>:<span class="literal">true</span>,</span><br><span class="line">	<span class="attr">deep</span>:<span class="literal">true</span>,</span><br><span class="line">	<span class="title function_">handlder</span>(<span class="params">newValue, oldValue</span>) &#123;</span><br><span class="line">		<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;isHot被修改了&quot;</span>,newValue, oldValue)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//简写</span></span><br><span class="line">vm.$watch(<span class="string">&#x27;isHot&#x27;</span>, <span class="keyword">function</span>(<span class="params">newValue, oldValue</span>)&#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;isHot被修改了&quot;</span>,newValue, oldValue)</span><br><span class="line">&#125;) </span><br></pre></td></tr></table></figure>
 <p>4. 深度监视</p>
@@ -412,14 +577,7 @@ $
 <p>​	2.style 样式</p>
 <p>​		：style=&quot;{fontSize：xxx}&quot; 其中 XXX 是动态值</p>
 <p>​		：style=&quot;[a,b]&quot; 其中 a、b 是样式对象</p>
-<div id="root">
-	<!-- 绑定class样式，字符串写法，适用于要绑定的样式类名不确定，，需要动态绑定-->
-	<div class="basic" :class="mood" @click="changeMood"></div><br /><br />
-		<!-- 绑定class样式，数组写法，适用于要绑定的样式个数不确定，名字也不确定 -->
-		<div class="basic" :class="classArr" ></div><br /><br />
-		<!-- 绑定class样式，对象写法，适用于要绑定的样式个数确定，名字夜确定，但是要动态决定用不用 -->
-		<div class="basic" :class="classObj" ></div><br /><br />
-</div>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">&quot;root&quot;</span>&gt;</span><br><span class="line">	&lt;!-- 绑定<span class="keyword">class</span>样式，字符串写法，适用于要绑定的样式类名不确定，，需要动态绑定--&gt;</span><br><span class="line">	<span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;basic&quot;</span> <span class="attr">:class</span>=<span class="string">&quot;mood&quot;</span> @<span class="attr">click</span>=<span class="string">&quot;changeMood&quot;</span>&gt;</span>&#123;&#123;name&#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><span class="language-xml"><span class="tag">&lt;<span class="name">br</span> /&gt;</span><span class="tag">&lt;<span class="name">br</span> /&gt;</span></span></span><br><span class="line">		&lt;!-- 绑定<span class="keyword">class</span>样式，数组写法，适用于要绑定的样式个数不确定，名字也不确定 --&gt;</span><br><span class="line">		<span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;basic&quot;</span> <span class="attr">:class</span>=<span class="string">&quot;classArr&quot;</span> &gt;</span>&#123;&#123;name&#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><span class="language-xml"><span class="tag">&lt;<span class="name">br</span> /&gt;</span><span class="tag">&lt;<span class="name">br</span> /&gt;</span></span></span><br><span class="line">		&lt;!-- 绑定<span class="keyword">class</span>样式，对象写法，适用于要绑定的样式个数确定，名字夜确定，但是要动态决定用不用 --&gt;</span><br><span class="line">		<span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;basic&quot;</span> <span class="attr">:class</span>=<span class="string">&quot;classObj&quot;</span> &gt;</span>&#123;&#123;name&#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><span class="language-xml"><span class="tag">&lt;<span class="name">br</span> /&gt;</span><span class="tag">&lt;<span class="name">br</span> /&gt;</span></span></span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
 <h4 id="9vue列表渲染-v-for"><a class="markdownIt-Anchor" href="#9vue列表渲染-v-for">#</a> 9.Vue 列表渲染 v-for</h4>
 <p>​	1. 用于展示列表数据</p>
 <p>​	2. 语法：v-for = “(item, index) in xxx” :key=“yyy”</p>
@@ -1195,7 +1353,7 @@ mixin 文件的定义与正常 vue 组件的定义完全一致，都有 created,
     <ul>
       <li>
         Copyrights &copy;
-        2015-2022
+        2022
         <i class="ri-heart-fill heart_icon"></i> John Doe
       </li>
     </ul>
@@ -1463,11 +1621,13 @@ mixin 文件的定义与正常 vue 组件的定义完全一致，都有 created,
 <script src="/js/busuanzi-2.3.pure.min.js"></script>
  
 <!-- ClickLove -->
- 
-<script src="/js/clickLove.js"></script>
- 
+
 <!-- ClickBoom1 -->
 
+<script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+
+<script src="/js/clickBoom1.js"></script>
+ 
 <!-- ClickBoom2 -->
 
 <!-- CodeCopy -->
