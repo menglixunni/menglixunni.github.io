@@ -174,6 +174,390 @@
     
     
     <article
+  id="post-css笔记"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2022/07/08/css%E7%AC%94%E8%AE%B0/"
+    >css笔记</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2022/07/08/css%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time datetime="2022-07-08T00:14:38.000Z" itemprop="datePublished">2022-07-08</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h4 id="1-css有哪些选择器权重如何"><a class="markdownIt-Anchor" href="#1-css有哪些选择器权重如何">#</a> 1. css 有哪些选择器，权重如何</h4>
+<p>通配符 *、id 选择器（#name）、标签选择器 (div)、类选择器 (.name)、伪类选择器 (hover、visited、link、active、focus)、伪元素选择器（before、after）、属性选择器</p>
+<p>important&gt;id &gt; 类 = 伪类 &gt; 标签 = 伪元素 &gt; 通用</p>
+<p>Css2 选择器：元素选择器，id 选择器，群组选择器，类选择器，* 通配符选择器，后代选择器</p>
+<p>Css2 伪类选择器：a:link/visited/hover/active</p>
+<p>Css3 选择器：空格 &gt;  + 相邻兄弟选择器～通用选择器（查找后面所有）</p>
+<p>结构伪类选择器：</p>
+<p>查找第几个 nth-child（n）、查找同一类型第几个 nth-of-type、查找唯一类型 only-of-type</p>
+<dl>
+<dt>属性选择器：根据标签属性查找 [attr=value]</dt>
+<dd>
+<p>root 查找根元素 html 标签</p>
+</dd>
+<dd>
+<p>empty 查找空标签</p>
+</dd>
+</dl>
+<p>目标伪类选择器：（表单）</p>
+<p>：enabled 查找可以使用的标签、：disabled 查找禁止使用的标签、：checked 查找被选中的标签</p>
+<p>伪元素选择器 ：：selection 设置选中文本内容的高亮显示（只能用于背景色和文本颜色）</p>
+<p>否定伪类选择器 not（）</p>
+<p>语言伪类选择器 lang（取值）</p>
+<p>优先级（权重）：</p>
+<p>元素选择器 1</p>
+<p>伪元素选择器 1</p>
+<p>class 选择器 10</p>
+<p>伪类选择器 10</p>
+<p>属性选择器 10</p>
+<p>Id 选择器 100</p>
+<p>内联样式的权重 1000</p>
+<p>包含选择器权重为权重之和</p>
+<p>继承样式权重为 0</p>
+<p>那些属性可以继承：</p>
+<p>Css 继承特性主要是文本方面</p>
+<p>所有元素可继承：visibility 和 cursor</p>
+<p>块级元素可继承：text-indent 和 text-align</p>
+<p>列表元素可继承：list-style，list-style-type，list-style-position，list-style-image</p>
+<p>内联元素可继承：letter-spacing，word-spacing，line-height，color，font，font-family，font-size</p>
+<p>Font-style，font-variant，font-weight，text-decoration，text-transform，direction</p>
+<p>字母间距 段落间距  行高   字体颜色 字体种类 字体大小 字体样式  字体粗细 小型大写字母文本 文本修饰 转换不同元素中的文本 文本方向</p>
+<h4 id="2-float浮动元素引起的问题和解决方法"><a class="markdownIt-Anchor" href="#2-float浮动元素引起的问题和解决方法">#</a> 2. float 浮动元素引起的问题和解决方法</h4>
+<p>float 会形成高度塌陷，怎么解决高度塌陷：</p>
+<p>方法一：添加新空元素，再加上 clear:both</p>
+<p>方法二：父元素定义 overflow:hidden; 形成了 BFC，</p>
+<p>方法三：使用伪元素清除浮动</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container clearfix&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;wrap&quot;</span>&gt;</span>aaa<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">    <span class="selector-class">.clearfix</span><span class="selector-pseudo">:after</span>&#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">content</span>:<span class="string">&quot;&quot;</span>;				<span class="comment">/*设置内容为空*/</span></span></span><br><span class="line"><span class="language-css">        <span class="attribute">height</span>:<span class="number">0</span>;				<span class="comment">/*高度为0*/</span></span></span><br><span class="line"><span class="language-css">        <span class="attribute">width</span>:<span class="number">0</span>;				<span class="comment">/*宽度为0*/</span></span></span><br><span class="line"><span class="language-css">        <span class="attribute">line-height</span>:<span class="number">0</span>;			<span class="comment">/*行高为0*/</span></span></span><br><span class="line"><span class="language-css">        <span class="attribute">display</span>:block;			<span class="comment">/*将文本转为块级元素*/</span></span></span><br><span class="line"><span class="language-css">        <span class="attribute">visibility</span>:hidden;		<span class="comment">/*将元素隐藏*/</span></span></span><br><span class="line"><span class="language-css">        <span class="attribute">clear</span>:both;				<span class="comment">/*清除浮动*/</span></span></span><br><span class="line"><span class="language-css">    &#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="3-positionabsolute和float异同"><a class="markdownIt-Anchor" href="#3-positionabsolute和float异同">#</a> 3. Position：absolute 和 float 异同</h4>
+<p>两者的共同点：对内联元素设置 float 或 absolute 属性，可以让元素脱离文档流（块级元素也可以），并且可以设置其宽高。</p>
+<p>两者的不同点：float 仍会占位置，position 会覆盖文档流中的其他元素。</p>
+<p>在左右布局时用浮动，其他用绝对定位 sition：absolute 浮动不会占位置</p>
+<p>float 浮动的元素可以脱离标准文档流，摆脱块级元素和行内元素的限制，但是没有脱离文本流，因此<strong>仍然会占据位置</strong>，其他的文本内容会按照顺序继续排列。</p>
+<p>不能共存，都能设置为 inline-block，</p>
+<h4 id="4-display值有那些"><a class="markdownIt-Anchor" href="#4-display值有那些">#</a> 4. Display 值有那些</h4>
+<p>none，block, inline-block,inline,flex,table 等</p>
+<h4 id="5-浮动及其工作原理"><a class="markdownIt-Anchor" href="#5-浮动及其工作原理">#</a> 5. 浮动及其工作原理</h4>
+<p>​	浮动的最主要作用是为了实现文字的包裹效果，随时技术的演进，后来实现的效果是为了将大片内容排布到一行上面，实现一个类似于导航栏的效果，然后就可以介绍一下清楚浮动。</p>
+<h4 id="6-css-sprite雪碧图"><a class="markdownIt-Anchor" href="#6-css-sprite雪碧图">#</a> 6. Css Sprite（雪碧图）</h4>
+<p>将页面中的图片汇成一张大图，加快页面加载，雪碧图在 处理小图标问题的时候可以大大减少服务器负担，但是在处理大量图片中，不建议用雪碧图。</p>
+<h4 id="7-displaynone和visibilityhidden的区别"><a class="markdownIt-Anchor" href="#7-displaynone和visibilityhidden的区别">#</a> 7. Display：none 和 visibility：hidden 的区别</h4>
+<p>display: none 隐藏后的元素不占据任何空间，</p>
+<p>visibility: hidden 隐藏后的元素空间依旧保留</p>
+<p>1、visibility 具有继承性，给父元素设置 visibility:hidden; 子元素也会继承这个属性。但是如果重新给子元素设置 visibility: visible, 则子元素又会显示出来。这个和 display: none 有着质的区别</p>
+<p>2、visibility: hidden 不会影响计数器的计数，如图所示，visibility: hidden 虽然让一个元素不见了，但是其计数器仍在运行。这和 display: none 完全不一样</p>
+<h4 id="8-px和rem区别"><a class="markdownIt-Anchor" href="#8-px和rem区别">#</a> 8. Px 和 rem 区别</h4>
+<p>Px 固定长度</p>
+<p>Rem：相对长度，相对于根元素，我们可以这样设置 @root {font-size:12px}，em 是相对于父元素的</p>
+<h4 id="9bfc"><a class="markdownIt-Anchor" href="#9bfc">#</a> 9.BFC</h4>
+<h5 id="1bfc到底是什么东西"><a class="markdownIt-Anchor" href="#1bfc到底是什么东西">#</a> 1.BFC 到底是什么东西</h5>
+<p><code>BFC</code>  全称： <code>Block Formatting Context</code> ， 名为 “块级格式化上下文”。</p>
+<p><code>W3C</code>  官方解释为： <code>BFC</code>  它决定了元素如何对其内容进行定位，以及与其它元素的关系和相互作用，当涉及到可视化布局时， <code>Block Formatting Context</code>  提供了一个环境， <code>HTML</code>  在这个环境中按照一定的规则进行布局。</p>
+<p>简单来说就是， <code>BFC</code>  是一个完全独立的空间（布局环境），让空间里的子元素不会影响到外面的布局。那么怎么使用 <code>BFC</code>  呢， <code>BFC</code>  可以看做是一个 <code>CSS</code>  元素属性</p>
+<h5 id="2怎样触发bfc"><a class="markdownIt-Anchor" href="#2怎样触发bfc">#</a> 2. 怎样触发 BFC</h5>
+<p>这里简单列举几个触发 <code>BFC</code>  使用的 <code>CSS</code>  属性</p>
+<p>overflow: hidden、display: inline-block、position: absolute、position: fixed、display: flex</p>
+<p>1、float 的值不是 none。</p>
+<p>2、position 的值不是 static 或者 relative。</p>
+<p>3、display 的值是 inline-block、table-cell、flex、table-caption 或者 inline-flex</p>
+<p>4、overflow 的值不是 visible</p>
+<h5 id="3bfc的规则"><a class="markdownIt-Anchor" href="#3bfc的规则">#</a> 3.BFC 的规则</h5>
+<p>BFC` 就是一个块级元素，块级元素会在垂直方向一个接一个的排列</p>
+<p>BFC` 就是页面中的一个隔离的独立容器，容器里的标签不会影响到外部标签</p>
+<p>垂直方向的距离由 margin 决定， 属于同一个 <code>BFC</code>  的两个相邻的标签外边距会发生重叠</p>
+<p>计算 <code>BFC</code>  的高度时，浮动元素也参与计算</p>
+<h5 id="4可以解决"><a class="markdownIt-Anchor" href="#4可以解决">#</a> 4. 可以解决：</h5>
+<p>高度塌陷，边距重叠，两栏布局</p>
+<h4 id="10-什么是边距重叠结果是什么"><a class="markdownIt-Anchor" href="#10-什么是边距重叠结果是什么">#</a> 10. 什么是边距重叠，结果是什么</h4>
+<p>两个元素的外边距可能重叠，上一个元素的 margin-bottom 和下一个元素的 margin-top 会发生重叠，</p>
+<p>当一个元素包含在另一个元素中时（假设没有内边距或边框把外边距分隔开），它们的上和 / 或下外边距也会发生合并。</p>
+<p>当一个元素包含在另一个元素中时（假设没有内边距或边框把外边距分隔开），它们的上和 / 或下外边距也会发生合并。</p>
+<p>如果这个外边距遇到另一个元素的外边距，它还会发生合并</p>
+<p>合并后的外边距的高度等于两个发生合并的外边距的高度中的较大者。</p>
+<p>规则同号相加加绝对值，异号相加</p>
+<h4 id="11-css如何隐藏元素"><a class="markdownIt-Anchor" href="#11-css如何隐藏元素">#</a> 11. Css 如何隐藏元素</h4>
+<p>Opacity：0、display：none，visibility：hidden</p>
+<h4 id="12-css画三角形"><a class="markdownIt-Anchor" href="#12-css画三角形">#</a> 12. Css 画三角形</h4>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.trangle</span> &#123;</span><br><span class="line">		<span class="attribute">width</span>: <span class="number">0</span>;</span><br><span class="line">		<span class="attribute">height</span>: <span class="number">0</span>;</span><br><span class="line">		<span class="attribute">border-width</span>: <span class="number">40px</span> <span class="number">40px</span>;</span><br><span class="line">		<span class="attribute">border-style</span>: solid;</span><br><span class="line">		<span class="attribute">border-color</span>: brown greenyellow red;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="13-css画心"><a class="markdownIt-Anchor" href="#13-css画心">#</a> 13. Css 画心</h4>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.heartall</span>&#123;</span><br><span class="line">			<span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">			<span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line">			<span class="attribute">background-color</span>: <span class="number">#ff3161</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="selector-class">.heart</span> &#123;</span><br><span class="line">			<span class="attribute">margin-left</span>: <span class="number">200px</span>;</span><br><span class="line">			<span class="attribute">margin-top</span>: <span class="number">200px</span>;</span><br><span class="line">			<span class="attribute">transform</span>: <span class="built_in">rotate</span>(<span class="number">45deg</span>);</span><br><span class="line">			<span class="attribute">position</span>: relative;</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.hearta</span> &#123;</span><br><span class="line">	<span class="attribute">border-radius</span>: <span class="number">50%</span>;</span><br><span class="line">	<span class="attribute">transform</span>: <span class="built_in">rotate</span>(<span class="number">45deg</span>);</span><br><span class="line">	<span class="attribute">position</span>: absolute;</span><br><span class="line">	<span class="attribute">left</span>: -<span class="number">100px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.heartb</span> &#123;</span><br><span class="line">	<span class="attribute">border-radius</span>: <span class="number">50%</span>;</span><br><span class="line">	<span class="attribute">transform</span>: <span class="built_in">rotate</span>(<span class="number">45deg</span>);</span><br><span class="line">	<span class="attribute">position</span>: absolute;</span><br><span class="line">	<span class="attribute">top</span>: -<span class="number">100px</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;heart heartall&quot;</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;hearta heartall&quot;</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;heartb heartall&quot;</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="14-盒模型的方式"><a class="markdownIt-Anchor" href="#14-盒模型的方式">#</a> 14. 盒模型的方式</h4>
+<h5 id="1css盒子模型封装html元素"><a class="markdownIt-Anchor" href="#1css盒子模型封装html元素">#</a> 1.css 盒子模型封装 html 元素，</h5>
+<p>包括 margin、padding、content、border</p>
+<h5 id="2w3c盒子模型标准盒子模型"><a class="markdownIt-Anchor" href="#2w3c盒子模型标准盒子模型">#</a> 2.w3c 盒子模型（标准盒子模型）</h5>
+<p>width 和 height 指的是内容区域 content 的宽高</p>
+<p>盒子大小 四个相加</p>
+<h5 id="3ie盒子模型-怪异盒子模型"><a class="markdownIt-Anchor" href="#3ie盒子模型-怪异盒子模型">#</a> 3.ie 盒子模型 （怪异盒子模型）</h5>
+<p>width 指的是内容、边框、内边距总的宽度（content +border+padding）</p>
+<p>height 指的是内容、边框、内边距总的高度</p>
+<p>盒子的大小 = width（content + border + padding） + margin</p>
+<h4 id="15-css新特性有哪些"><a class="markdownIt-Anchor" href="#15-css新特性有哪些">#</a> 15. Css 新特性有哪些</h4>
+<p>选择器；first-of-type、last-of-type、only-of-type、only-child、</p>
+<p>样式：boder-radius 圆角边框、box-shadow 阴影、border-image 边框图片</p>
+<p>背景：background-clip 背景画裁剪、background-origin 对齐方式、background-size 背景图片大小；backgroup-position:(雪碧图上) background-break</p>
+<h4 id="16word-wrap"><a class="markdownIt-Anchor" href="#16word-wrap">#</a> 16.word-wrap</h4>
+<p>语法： <code>word-wrap: normal|break-word</code></p>
+<ul>
+<li>normal：使用浏览器默认的换行</li>
+<li>break-all：允许在单词内换行</li>
+</ul>
+<h4 id="17text-overflow"><a class="markdownIt-Anchor" href="#17text-overflow">#</a> 17.text-overflow</h4>
+<p><code>text-overflow</code>  设置或检索当当前行超过指定容器的边界时如何显示，属性有两个值选择：</p>
+<ul>
+<li>clip：修剪文本</li>
+<li>ellipsis：显示省略符号来代表被修剪的文本</li>
+</ul>
+<p><code>text-shadow</code>  可向文本应用阴影。能够规定水平阴影、垂直阴影、模糊距离，以及阴影的颜色</p>
+<p>CSS 里面开始支持对文字的更深层次的渲染，具体有三个属性可供设置：</p>
+<ul>
+<li>text-fill-color: 设置文字内部填充颜色</li>
+<li>text-stroke-color: 设置文字边界填充颜色</li>
+<li>text-stroke-width: 设置文字边界宽度</li>
+</ul>
+<p>css3 <code>新增了新的颜色表示方式</code>  rgba <code>与</code>  hsla</p>
+<ul>
+<li>rgba 分为两部分，rgb 为颜色值，a 为透明度</li>
+<li>hala 分为四部分，h 为色相，s 为饱和度，l 为亮度，a 为透明度</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">transition</span>： CSS属性，花费时间，效果曲线(默认ease)，延迟时间(默认<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<p><code>transform</code>  属性允许你旋转，缩放，倾斜或平移给定元素</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">transform-origin`：转换元素的位置（围绕那个点进行转换），默认值为`(x,y,z):(50%,50%,0)</span><br></pre></td></tr></table></figure>
+<p>使用方式：</p>
+<ul>
+<li>transform: translate (120px, 50%)：位移</li>
+<li>transform: scale (2, 0.5)：缩放</li>
+<li>transform: rotate (0.5turn)：旋转</li>
+<li>transform: skew (30deg, 20deg)：倾斜</li>
+</ul>
+<p>animation 也有很多的属性</p>
+<ul>
+<li>
+<p>animation-name：动画名称</p>
+</li>
+<li>
+<p>animation-duration：动画持续时间</p>
+</li>
+<li>
+<p>animation-timing-function：动画时间函数</p>
+</li>
+<li>
+<p>animation-delay：动画延迟时间</p>
+</li>
+<li>
+<p>animation-iteration-count：动画执行次数，可以设置为一个整数，也可以设置为 infinite，意思是无限循环</p>
+</li>
+<li>
+<p>animation-direction：动画执行方向</p>
+</li>
+<li>
+<p>animation-paly-state：动画播放状态</p>
+</li>
+<li>
+<p>animation-fill-mode：动画填充模式</p>
+</li>
+<li>
+<p>颜色渐变是指在两个颜色之间平稳的过渡， <code>css3</code>  渐变包括</p>
+<ul>
+<li>linear-gradient：线性渐变</li>
+</ul>
+<blockquote>
+<p>background-image: linear-gradient(direction, color-stop1, color-stop2, …);</p>
+</blockquote>
+<ul>
+<li>radial-gradient：径向渐变</li>
+</ul>
+<blockquote>
+<p>linear-gradient(0deg, red, green);</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flex`弹性布局、`Grid</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+</ul>
+<h4 id="18-first-child和first-of-type区别"><a class="markdownIt-Anchor" href="#18-first-child和first-of-type区别">#</a> 18. First-child 和 first-of-type 区别</h4>
+<p>first-child** 用于匹配父元素的第一个子元素，<em> 先选择在排序</em></p>
+<p>first-of-type 选择器匹配属于其父元素的特定类型的首个子元素的每个元素，先排序，再选择</p>
+<h4 id="19-css3动画"><a class="markdownIt-Anchor" href="#19-css3动画">#</a> 19… Css3 动画</h4>
+<h5 id="1transition-实现渐变动画过度"><a class="markdownIt-Anchor" href="#1transition-实现渐变动画过度">#</a> 1.transition 实现渐变动画（过度）</h5>
+<p>property: 填写需要变化的 css 属性</p>
+<p>duration: 完成过渡效果需要的时间单位 (s 或者 ms)</p>
+<p>timing-function: 完成效果的速度曲线</p>
+<p>delay: 动画效果的延迟触发时间</p>
+<h5 id="2transform-转变动画3"><a class="markdownIt-Anchor" href="#2transform-转变动画3">#</a> 2.transform 转变动画 3</h5>
+<p>translate：位移</p>
+<p>scale：缩放</p>
+<p>rotate：旋转</p>
+<p>skew：倾斜</p>
+<h5 id="3animation-实现自定义动画"><a class="markdownIt-Anchor" href="#3animation-实现自定义动画">#</a> 3.animation 实现自定义动画</h5>
+<ul>
+<li>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>属性</td>
+<td>描述</td>
+<td>属性值</td>
+</tr>
+<tr>
+<td>animation-duration</td>
+<td>指定动画完成一个周期所需要时间，单位秒（s）或毫秒（ms），默认是 0</td>
+<td></td>
+</tr>
+<tr>
+<td>animation-timing-function</td>
+<td>指定动画计时函数，即动画的速度曲线，默认是 “ease”</td>
+<td>linear、ease、ease-in、ease-out、ease-in-out</td>
+</tr>
+<tr>
+<td>animation-delay</td>
+<td>指定动画延迟时间，即动画何时开始，默认是 0</td>
+<td></td>
+</tr>
+<tr>
+<td>animation-iteration-count</td>
+<td>指定动画播放的次数，默认是 1</td>
+<td></td>
+</tr>
+<tr>
+<td>animation-direction 指定动画播放的方向</td>
+<td>默认是 normal</td>
+<td>normal、reverse、alternate、alternate-reverse</td>
+</tr>
+<tr>
+<td>animation-fill-mode</td>
+<td>指定动画填充模式。默认是 none</td>
+<td>forwards、backwards、both</td>
+</tr>
+<tr>
+<td>animation-play-state</td>
+<td>指定动画播放状态，正在运行或暂停。默认是 running</td>
+<td>running、pauser</td>
+</tr>
+<tr>
+<td>animation-name</td>
+<td>指定 @keyframes 动画的名称</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<h4 id="20-box-sizing属性"><a class="markdownIt-Anchor" href="#20-box-sizing属性">#</a> 20. Box-sizing 属性</h4>
+<p>规定两个并排的带边框的框</p>
+<p>box-sizing 属性定义如何计算一个元素的总宽度和总高度，主要设置是否需要加上内边距 (padding) 和边框等。</p>
+<p>例如，假如您需要并排放置两个带边框的框，可通过将 box-sizing 设置为 “border-box”。这样就可以让浏览器呈现出带有指定宽度和高度的框，并把边框和内边距放入框中。</p>
+<p>默认情况下，元素的宽度 (width) 和高度 (height) 计算方式如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">width(宽度) + padding(内边距) + border(边框) = 元素实际宽度</span><br><span class="line">height(高度) + padding(内边距) + border(边框) = 元素实际高度</span><br></pre></td></tr></table></figure>
+<h4 id="21css动画的优点"><a class="markdownIt-Anchor" href="#21css动画的优点">#</a> 21…Css 动画的优点</h4>
+<p>浏览器可以对动画进行优化。</p>
+<p>代码相对简单，性能调优方向固定</p>
+<p>对于帧速表现不好的低版本浏览器，CSS3 可以做到自然降级</p>
+<h4 id="22rem的原理"><a class="markdownIt-Anchor" href="#22rem的原理">#</a> 22…Rem 的原理</h4>
+<p><strong>rem</strong> 是（根）字体大小相对单位，也就是说跟当前元素的 font-size 没有关系，而是跟整个 body 的 font-size 有关系。</p>
+<p>Px，绝对长度单位，像素 px 是相对于显示器屏幕分辨率来说的</p>
+<p>em 相对长度单位，相对于当前对象内文本的字体尺寸</p>
+<pre><code> em的值并不是固定的
+
+ em会继承父级元素的字体大小（参考物是父元素的font-size）
+
+ em中所有的字体都是相对于父元素的大小决定的
+</code></pre>
+<h4 id="23-css3如何实现倒影"><a class="markdownIt-Anchor" href="#23-css3如何实现倒影">#</a> 23. Css3 如何实现倒影</h4>
+<p>box-reflect 属性包括 3 个值。</p>
+<h5 id="1-direction-定义方向取值包括-above-below-left-right"><a class="markdownIt-Anchor" href="#1-direction-定义方向取值包括-above-below-left-right">#</a> 1、direction 定义方向，取值包括 above 、 below 、 left 、 right。</h5>
+<p>above：指定倒影在对象的上边</p>
+<p>below：指定倒影在对象的下边</p>
+<p>left：指定倒影在对象的左边</p>
+<p>right：指定倒影在对象的右边</p>
+<h5 id="2-offset定义反射偏移的距离取值包括数值或百分比其中百分比根据对象的尺寸进行确定-默认为0-用长度值来定义倒影与对象之间的间隔-可以为负值-用百分比来定义倒影与对象之间的间隔-可以为负值"><a class="markdownIt-Anchor" href="#2-offset定义反射偏移的距离取值包括数值或百分比其中百分比根据对象的尺寸进行确定-默认为0-用长度值来定义倒影与对象之间的间隔-可以为负值-用百分比来定义倒影与对象之间的间隔-可以为负值">#</a> 2、offset 定义反射偏移的距离，取值包括数值或百分比，其中百分比根据对象的尺寸进行确定。默认为 0。用长度值来定义倒影与对象之间的间隔。可以为负值。用百分比来定义倒影与对象之间的间隔。可以为负值。</h5>
+<h5 id="3-mask-box-image定义遮罩图像该图像将覆盖投影区域-如果省略该参数值则默认为无遮罩图像"><a class="markdownIt-Anchor" href="#3-mask-box-image定义遮罩图像该图像将覆盖投影区域-如果省略该参数值则默认为无遮罩图像">#</a> 3、mask-box-image 定义遮罩图像，该图像将覆盖投影区域。如果省略该参数值，则默认为无遮罩图像。</h5>
+<p>取值：</p>
+<p>none：无遮罩图像：</p>
+<p>使用绝对或相对地址指定遮罩图像。</p>
+<p>使用线性渐变创建遮罩图像。</p>
+<p>使用径向 (放射性) 渐变创建遮罩图像。</p>
+<p>使用重复的线性渐变创建背遮罩像。</p>
+<p>使用重复的径向 (放射性) 渐变创建遮罩图像。</p>
+<h4 id="24-css定位详解"><a class="markdownIt-Anchor" href="#24-css定位详解">#</a> 24. Css 定位详解</h4>
+<p>position</p>
+<p><code>static</code>  是 <code>position</code>  属性的默认值。如果省略 <code>position</code>  属性，浏览器就认为该元素是 <code>static</code>  定位</p>
+<p><code>relative</code>  表示，相对于默认位置（即 <code>static</code>  时的位置）进行偏移，即定位基点是元素的默认位置。</p>
+<p><code>absolute</code>  表示，相对于上级元素（一般是父元素）进行偏移，即定位基点是父元素。</p>
+<p><code>fixed</code>  表示，相对于视口（viewport，浏览器窗口）进行偏移，即定位基点是浏览器窗口。这会导致元素的位置不随页面滚动而变化，好像固定在网页上一样。</p>
+<p><code>sticky</code>  跟前面四个属性值都不一样，它会产生动态效果，很像 <code>relative</code>  和 <code>fixed</code>  的结合：一些时候是 <code>relative</code>  定位（定位基点是自身默认位置），另一些时候自动变成 <code>fixed</code>  定位（定位基点是视口）。</p>
+<h4 id="25-文本换行"><a class="markdownIt-Anchor" href="#25-文本换行">#</a> 25. 文本换行</h4>
+<h5 id="word-break"><a class="markdownIt-Anchor" href="#word-break">#</a> word-break</h5>
+<p>normal: 使用默认断行规则</p>
+<p>break-all: 对于非 CJK 文本，可在任意字符间断行</p>
+<p>keep-all:CJK 文本不断行，非 CJK 文本表现同 normal 一样</p>
+<h4 id="26-省略号表示超出文本的内容"><a class="markdownIt-Anchor" href="#26-省略号表示超出文本的内容">#</a> 26. 省略号表示超出文本的内容</h4>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">overflow: hidden;</span><br><span class="line">text-overflow:ellipsis;</span><br><span class="line">white-space: nowrap;</span><br></pre></td></tr></table></figure>
+<h4 id="27-如何给盒子添加蒙版"><a class="markdownIt-Anchor" href="#27-如何给盒子添加蒙版">#</a> 27. 如何给盒子添加蒙版</h4>
+<p>设置背景颜色，给盒子内元素设置不透明度</p>
+<h4 id="28-css3制作淡入淡出效果"><a class="markdownIt-Anchor" href="#28-css3制作淡入淡出效果">#</a> 28. Css3 制作淡入淡出效果</h4>
+<p>animation 动画：名字，时间，类型、延迟时间、循环次数、等</p>
+<p>@keyFrames 设置几个过度，设置不同的透明度</p>
+<h4 id="29-css设置文本阴影"><a class="markdownIt-Anchor" href="#29-css设置文本阴影">#</a> 29. Css 设置文本阴影</h4>
+<p>text-shadow: 水平、垂直</p>
+<h4 id="30-css设置边框阴影"><a class="markdownIt-Anchor" href="#30-css设置边框阴影">#</a> 30. Css 设置边框阴影</h4>
+<p>box-shadow 水平、垂直</p>
+<h4 id="31css水平和垂直居中"><a class="markdownIt-Anchor" href="#31css水平和垂直居中">#</a> 31.Css 水平和垂直居中</h4>
+<p>文字和盒子的居中</p>
+<h4 id="32如何画一条05px的线"><a class="markdownIt-Anchor" href="#32如何画一条05px的线">#</a> 32. 如何画一条 0.5px 的线</h4>
+<p>先把内容区域变成 200%，然后用 transform:scale (0.5) 将其变成一半，这样子就会画出 0.5px 的线</p>
+<h4 id="33三栏布局方式两边固定中间自适应"><a class="markdownIt-Anchor" href="#33三栏布局方式两边固定中间自适应">#</a> 33. 三栏布局方式两边固定中间自适应</h4>
+<p>1.margin 负值法：左右两栏均左浮动，左右两栏采用负的 margin 值。中间栏被宽度为 100% 的浮动元素包起来</p>
+<p>2. 自身浮动法：左栏左浮动，右栏右浮动，中间栏放最后</p>
+<p>3. 绝对定位法：左右两栏采用绝对定位，分别固定于页面的左右两侧，中间的主体栏用左右 margin 值撑开距离。</p>
+<p>4.flex  左右固定宽  中间 flex：1</p>
+<p>5. 网格布局</p>
+<p>6.table 布局</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/" rel="tag">css</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+    
+</article>
+
+    
+    <article
   id="post-echars学习"
   class="article article-type-post"
   itemscope

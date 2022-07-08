@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-07-07T07:40:18.768Z</updated>
+  <updated>2022-07-08T00:29:04.826Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>css笔记</title>
+    <link href="http://example.com/2022/07/08/css%E7%AC%94%E8%AE%B0/"/>
+    <id>http://example.com/2022/07/08/css%E7%AC%94%E8%AE%B0/</id>
+    <published>2022-07-08T00:14:38.000Z</published>
+    <updated>2022-07-08T00:29:04.826Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h4 id=&quot;1-css有哪些选择器权重如何&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#1-css有哪些选择器权重如何&quot;&gt;#&lt;/a&gt; 1. css 有哪些选择器，权重如何&lt;/h4&gt;
+&lt;p&gt;通配符 *、id 选择器（#name）、标签选择器</summary>
+        
+      
+    
+    
+    
+    
+    <category term="css" scheme="http://example.com/tags/css/"/>
+    
+  </entry>
   
   <entry>
     <title>echars学习</title>
