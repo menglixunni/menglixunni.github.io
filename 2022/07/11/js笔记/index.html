@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>
+     leining
+      </title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+</head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+      <canvas width="1777" height="841"
+        style="position: fixed; left: 0px; top: 0px; z-index: 99999; pointer-events: none;"></canvas>
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-js笔记"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  js笔记
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2022/07/11/js%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time datetime="2022-07-11T00:23:14.000Z" itemprop="datePublished">2022-07-11</time>
+</a>   
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">4.4k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">16 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h4 id="1js基本数据类型有哪些"><a class="markdownIt-Anchor" href="#1js基本数据类型有哪些">#</a> 1.js. 基本数据类型有哪些</h4>
+<p>基本数据类型（值类型）：字符串（String）、数字（Number）、布尔（Boolean）、空（Null）、未定义（Undefined）、</p>
+<p>Symbol（相当于 id 自增 ）、BigInt</p>
+<p>引用类型：对象（Object）、数组（Array）、函数（Function）</p>
+<h4 id="2ajax如何使用"><a class="markdownIt-Anchor" href="#2ajax如何使用">#</a> 2.Ajax 如何使用</h4>
+<p>一个完整的 AJAX 请求包括五个步骤：</p>
+<p>创建 XMLHTTPRequest 对象<br>
+使用 open 方法创建 http 请求，并设置请求地址<br>
+ xhr.open（get/post，url，async，true（异步），false（同步））经常使用前三个参数</p>
+<p>设置发送的数据，用 send 发送请求<br>
+注册事件（给 ajax 设置事件）<br>
+获取响应并更新页面</p>
+<h4 id="3如何判断一个数据是nan"><a class="markdownIt-Anchor" href="#3如何判断一个数据是nan">#</a> 3. 如何判断一个数据是 NaN</h4>
+<p>NaN 非数字 但是用 typeof 检测是 number 类型</p>
+<p>利用 NaN 的定义  用 typeof 判断是否为 number 类型并且判断是否满足 isnan<br>
+ 利用 NaN 是唯一一个不等于任何自身的特点 n！<mark>n<br>
+<a target="_blank" rel="noopener" href="http://xn--ES6Object-sl6n09jd0jv55d4zwclje.is"> 利用 ES6 中提供的 Object.is</a> () 方法（判断两个值是否相等）  n</mark>nan<br>
+Js 中 null 与 undefined 区别<br>
+相同点：用 if 判断时，两者都会被转换成 false</p>
+<p>不同点：</p>
+<p>number 转换的值不同 number（null）为 0   number（undefined）为 NaN</p>
+<p>Null 表示一个值被定义了，但是这个值是空值</p>
+<p>Undefined 变量声明但未赋值</p>
+<h4 id="4闭包是什么有什么特性对页面会有什么影响"><a class="markdownIt-Anchor" href="#4闭包是什么有什么特性对页面会有什么影响">#</a> 4. 闭包是什么？有什么特性？对页面会有什么影响</h4>
+<p>闭包可以简单理解成：定义在一个函数内部的函数。其中一个内部函数在包含它们的外部函数之外被调用时，就会形成闭包。</p>
+<p>特点：</p>
+<p>1. 函数嵌套函数。</p>
+<p>2. 函数内部可以引用外部的参数和变量。</p>
+<p>3. 参数和变量不会被垃圾回收机制回收。</p>
+<p>使用：</p>
+<p>1. 读取函数内部的变量；</p>
+<p>2. 这些变量的值始终保持在内存中，不会在外层函数调用后被自动清除。</p>
+<p>优点：</p>
+<p>1: 变量长期驻扎在内存中；</p>
+<p>2: 避免全局变量的污染；</p>
+<p>3: 私有成员的存在 ；</p>
+<p>缺点：会造成内存泄露</p>
+<h4 id="5js中常见的内存泄漏"><a class="markdownIt-Anchor" href="#5js中常见的内存泄漏">#</a> 5.Js 中常见的内存泄漏：</h4>
+<p>1. 意外的全局变量</p>
+<p>2. 被遗忘的计时器或回调函数</p>
+<p>3. 脱离 DOM 的引用</p>
+<p>4. 闭包</p>
+<h4 id="6事件委托是什么如何确定事件源eventtarget-谁调用谁就是事件源"><a class="markdownIt-Anchor" href="#6事件委托是什么如何确定事件源eventtarget-谁调用谁就是事件源">#</a> 6. 事件委托是什么？如何确定事件源（Event.target  谁调用谁就是事件源）</h4>
+<p>JS 高程上讲：事件委托就是利用事件冒泡，只制定一个时间处理程序，就可以管理某一类型的所有事件。</p>
+<p>事件委托，称事件代理，是 js 中很常用的绑定事件的技巧，事件委托就是把原本需要绑定在子元素的响应事件委托给父元素，让父元素担当事件监听的职务，事件委托的原理是 DOM 元素的事件冒泡</p>
+<h4 id="7什么是事件冒泡"><a class="markdownIt-Anchor" href="#7什么是事件冒泡">#</a> 7. 什么是事件冒泡？</h4>
+<p>一个事件触发后，会在子元素和父元素之间传播，这种传播分为三个阶段，</p>
+<p>捕获阶段（从 window 对象传导到目标节点（从外到里），这个阶段不会响应任何事件），目标阶段，（在目标节点上触发），冒泡阶段（从目标节点传导回 window 对象（从里到外）），事件委托 / 事件代理就是利用事件冒泡的机制把里层需要响应的事件绑定到外层</p>
+<h4 id="9javascript垃圾回收机制"><a class="markdownIt-Anchor" href="#9javascript垃圾回收机制">#</a> 9.JavaScript 垃圾回收机制</h4>
+<h5 id="1标记清除"><a class="markdownIt-Anchor" href="#1标记清除">#</a> 1. 标记清除：</h5>
+<p>原理：当变量进入环境时，将这个变量标记为 “进入环境”。当变量离开环境时，则将其标记为 “离开环境”。标记 “离开环境” 的就回收内存。</p>
+<p>垃圾回收器，在运行的时候会给存储在内存中的所有变量都加上标记。去掉环境中的变量以及被环境中的变量引用的变量的标记。<br>
+再被加上标记的会被视为准备删除的变量。垃圾回收器完成内存清除工作，销毁那些带标记的值并回收他们所占用的内存空间。</p>
+<h5 id="2引用计数"><a class="markdownIt-Anchor" href="#2引用计数">#</a> 2. 引用计数</h5>
+<p>原理：跟踪记录每个值被引用的次数。</p>
+<p>声明了一个变量并将一个引用类型的值赋值给这个变量，这个引用类型值的引用次数就是 1。<br>
+同一个值又被赋值给另一个变量，这个引用类型值的引用次数加 1。<br>
+当包含这个引用类型值的变量又被赋值成另一个值了，那么这个引用类型值的引用次数减 1。<br>
+当引用次数变成 0 时，说明没办法访问这个值了。<br>
+当垃圾收集器下一次运行时，它就会释放引用次数是 0 的值所占的内存。<br>
+（注意：当循环引用的时候就会释放不掉内存。）</p>
+<p>三、如何观察内存泄漏？<br>
+如果连续五次垃圾回收之后，内存占用一次比一次大，就有内存泄漏。这就要求实时查看内存占用。</p>
+<p>可以浏览器查看内存占用。<br>
+通过命令行，命令行可以使用 Node process.memoryUsage 提供的方法。process.memoryUsage 返回一个对象，包含了 Node 进程的内存占用信息。（判断内存泄漏，以 heapUsed 字段为准。）</p>
+<h4 id="10-script标签中defer和anysc属性的区别"><a class="markdownIt-Anchor" href="#10-script标签中defer和anysc属性的区别">#</a> 10. Script 标签中 defer 和 anysc 属性的区别</h4>
+<p>defer 属性表示延迟执行引入的 JavaScript，即这段 JavaScript 加载时 HTML 并未停止解析，这两个过程是并行的。整个 document 解析完毕且 defer-script 也加载完成之后（这两件事情的顺序无关），会执行所有由 defer-script 加载的 JavaScript 代码</p>
+<p>async 属性表示异步执行引入的 JavaScript，即 javaScript 下载时 html 并未停止解析，等到 javaScript 下载完成，html 就停止解析，执行 javaScript 代码，等待 javaScript 执行完毕，浏览器再继续渲染。<br>
+（1) defer 是不会阻塞 html 解析的，它是等 DOM 加载完之后再去执行 JavaScript 代码；async 是 JavaScript 下载完成，就会立即执行代码，等待执行完之后才继续解析 HTML。<br>
+(2) 在加载多个 JS 脚本的时候，async 是无顺序的加载，而 defer 是有顺序的加载。</p>
+<h4 id="11常见的javascript数组函数"><a class="markdownIt-Anchor" href="#11常见的javascript数组函数">#</a> 11. 常见的 JavaScript 数组函数</h4>
+<p><img src="C:%5CUsers%5C17281%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20220402131614815.png" alt="image-20220402131614815"></p>
+<p><img src="C:%5CUsers%5C17281%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20220402131643839.png" alt="image-20220402131643839"></p>
+<p><img src="C:%5CUsers%5C17281%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20220402131718324.png" alt="image-20220402131718324"></p>
+<p><img src="C:%5CUsers%5C17281%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20220402131820234.png" alt="image-20220402131820234"></p>
+<p><img src="C:%5CUsers%5C17281%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20220402131913971.png" alt="image-20220402131913971"></p>
+<h4 id="12-encodeuri和decodeuri的区别是什么"><a class="markdownIt-Anchor" href="#12-encodeuri和decodeuri的区别是什么">#</a> 12. encodeURI () 和 decodeURI () 的区别是什么</h4>
+<p>decodeURI () 函数可对 encodeURI () 函数编码过的 URI 进行解码。decodeURIComponent () 函数可对 encodeURIComponent () 函数编码的 URI 进行解码。</p>
+<p>encodeURIComponent 和 decodeURIComponent 可以编码和<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E8%A7%A3%E7%A0%81&amp;spm=1001.2101.3001.7020">解码</a> URI 特殊字符（如 #，/，￥等），而 decodeURI 则不能。</p>
+<h4 id="13-null和undefined的区别"><a class="markdownIt-Anchor" href="#13-null和undefined的区别">#</a> 13. Null 和 undefined 的区别</h4>
+<p>​         undefined 未定义的值：声明了一个变量，但没有赋值、访问对象上不存在的属性、函数定义了形参，但没有传递实参、使用 void 对表达式求值</p>
+<p>​        null 空值: undefined 表示一个变量自然的、最原始的状态值，而 null 则表示一个变量被人为的设置为空对象，而不是原始状态。所以，在实际使用过程中，为了保证变量所代表的语义，不要对一个变量显式的赋值 undefined，当需要释放一个对象时，直接赋值为 null 即可。</p>
+<h4 id="14-call和apply的区别"><a class="markdownIt-Anchor" href="#14-call和apply的区别">#</a> 14. Call 和 apply 的区别</h4>
+<p>call 和 apply 两个方法最主要的作用就是改变 this 指向。</p>
+<p>call () 方法的作用和 apply () 方法类似，区别就是 <code>call()</code>  方法接受的是参数列表，而 <code>apply()</code>  方法接受的是一个参数数组。</p>
+<h4 id="15-哪些会造成内存泄露"><a class="markdownIt-Anchor" href="#15-哪些会造成内存泄露">#</a> 15. 哪些会造成内存泄露</h4>
+<p>意外的全局变量： 由于使用未声明的变量，而意外的创建了一个全局变量，而使这个变量一直留在内存中无法被回收。<br>
+被遗忘的计时器或回调函数： 设置了 setInterval 定时器，而忘记取消它，如果循环函数有对外部变量的引用的话，那么这个变量会被一直留在内存中，而无法被回收。<br>
+脱离 DOM 的引用： 获取一个 DOM 元素的引用，而后面这个元素被删除，由于一直保留了对这个元素的引用，所以它也无法被回收。<br>
+闭包： 不合理的使用闭包，从而导致某些变量一直被留在内存当中。</p>
+<h4 id="16-如何实现异步编程"><a class="markdownIt-Anchor" href="#16-如何实现异步编程">#</a> 16. 如何实现异步编程</h4>
+<p>回调函数、事件监听、</p>
+<h4 id="17-在js中为什么函数是第一类对象"><a class="markdownIt-Anchor" href="#17-在js中为什么函数是第一类对象">#</a> 17. 在 js 中，为什么函数是第一类对象</h4>
+<p>在 js 中，函数也是对象，函数有对象的所有能力唯一的区别是函数是可调用的（invokable），即函数会被调用以便执行某项动作。</p>
+<p><strong>对象</strong></p>
+<ul>
+<li>对象可以通过字面量来创建。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>对象可以赋值给变量、数组项，或其他对象的属性。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;&#125;    <span class="comment">// 赋值给变量</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> arr = []</span><br><span class="line">arr.<span class="title function_">push</span>(obj)     <span class="comment">// 赋值给数组项</span></span><br><span class="line"></span><br><span class="line">obj.<span class="property">data</span> = &#123;&#125;     <span class="comment">// 赋值给其他对象的属性</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>对象可以作为函数的入参和出参。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span> (obj) &#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    obj</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">fn</span>(&#123; <span class="attr">name</span>: <span class="string">&#x27;lin&#x27;</span>&#125;)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>对象可以动态创建和分配属性。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;&#125;</span><br><span class="line">obj.<span class="property">name</span> = <span class="string">&#x27;lin&#x27;</span></span><br></pre></td></tr></table></figure>
+<p><strong>函数</strong></p>
+<ul>
+<li>函数可以通过字面量来创建。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span> () &#123;&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>函数可以赋值给变量、数组项，或其他对象的属性。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fn = <span class="keyword">function</span> (<span class="params"></span>) &#123;&#125;   <span class="comment">// 赋值给变量</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> arr = []</span><br><span class="line">arr.<span class="title function_">push</span>(fn)     <span class="comment">// 赋值给数组项</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> obj = &#123;&#125;</span><br><span class="line">obj.<span class="property">fn</span> = fn     <span class="comment">// 赋值给其他对象的属性</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>函数可以作为函数的入参和出参，这是 JS 为何有闭包的一个重要原因。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span> (callback) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="title function_">callback</span>()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">fn</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;hello&#x27;</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>函数可以动态创建和分配属性。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span> () &#123;&#125;</span><br><span class="line"></span><br><span class="line">fn.<span class="property">name</span> = <span class="string">&#x27;lin&#x27;</span></span><br><span class="line">fn.<span class="property">age</span> = <span class="number">18</span></span><br></pre></td></tr></table></figure>
+<h4 id="18-函数声明和函数表达式的区别"><a class="markdownIt-Anchor" href="#18-函数声明和函数表达式的区别">#</a> 18. 函数声明和函数表达式的区别</h4>
+<p>函数声明会被提升到作用于的前面，不论代码在什么地方、函数表达式声明不会被提升，自上而下的读取</p>
+<h4 id="19-如何删除一个cookie"><a class="markdownIt-Anchor" href="#19-如何删除一个cookie">#</a> 19. 如何删除一个 cookie</h4>
+<p>javascript 删除 cookie 的方法：首先通过 “setCookie” 设置 cookie；然后通过 “getCookie” 获取 cookie；最后通过 “clearCookie” 删除 cookie 即可。</p>
+<h4 id="20-什么是闭包"><a class="markdownIt-Anchor" href="#20-什么是闭包">#</a> 20. 什么是闭包</h4>
+<p>如果一个函数用到了它作用域外面的变量，那么这个变量和这个函数之间的环境就叫闭包</p>
+<h5 id="1模仿块级作用域"><a class="markdownIt-Anchor" href="#1模仿块级作用域">#</a> 1. 模仿块级作用域</h5>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">X</span>(<span class="params">num</span>) &#123;</span><br><span class="line">    (<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; num.<span class="property">length</span>; i++)&#123;</span><br><span class="line">            num++</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;).<span class="title function_">call</span>() <span class="comment">//声明一个函数立即调用以后，浏览器刷新页面会报错，可以用一个小括号把整段函数包起来。</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(i)<span class="comment">//undefined</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在上面的代码中，闭包就是那个匿名函数，这个闭包可以当函数 X 内部的活动变量，又能保证自己内部的变量在自执行后直接销毁。这种写法经常用在全局环境中，可以避免添加太多全局变量和全局函数，特别是多人合作开发的时候，可以减少因此产生的命名冲突等，避免污染全局环境。</p>
+<h5 id="2储存变量"><a class="markdownIt-Anchor" href="#2储存变量">#</a> 2. 储存变量</h5>
+<p>闭包的另一个特点是可以保存外部函数的变量，内部函数保留了对外部函数的活动变量的引用，所以变量不会被释放。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">S</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">            renturn a</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> d = <span class="title function_">S</span>() <span class="comment">// 100</span></span><br><span class="line"><span class="comment">//这种写法可以用在把一些不经常变动计算起来又比较复杂的值保存起来，节省每次的访问时间。</span></span><br></pre></td></tr></table></figure>
+<h5 id="3封装私有变量"><a class="markdownIt-Anchor" href="#3封装私有变量">#</a> 3. 封装私有变量</h5>
+<p>我们可以把函数当作一个范围，函数内部的变量就是私有变量，在外部无法引用，但是我们可以通过闭包的特点来访问私有变量。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">//变量作用域为函数内部，外部无法访问</span></span><br><span class="line">    <span class="keyword">var</span> name = <span class="string">&quot;default&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        getName : <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> name;</span><br><span class="line">        &#125;,</span><br><span class="line">        setName : <span class="function"><span class="keyword">function</span>(<span class="params">newName</span>)</span>&#123;</span><br><span class="line">            name = newName;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;();</span><br><span class="line"><span class="keyword">print</span>(person.name);<span class="comment">//直接访问，结果为undefined</span></span><br><span class="line"><span class="keyword">print</span>(person.<span class="title function_ invoke__">getName</span>()); <span class="comment">// default</span></span><br><span class="line">person.<span class="title function_ invoke__">setName</span>(<span class="string">&quot;abruzzi&quot;</span>);</span><br><span class="line"><span class="keyword">print</span>(person.<span class="title function_ invoke__">getName</span>()); <span class="comment">// abruzzi</span></span><br></pre></td></tr></table></figure>
+<h4 id="21-判断一个对象是否属于某个类"><a class="markdownIt-Anchor" href="#21-判断一个对象是否属于某个类">#</a> 21. 判断一个对象是否属于某个类</h4>
+<p>typeof 对于判断除了 null 之外的基本类型时准确的，但无法判断 null、object、array 等类型，所以它只在区别对象和原始类型的时候才有用。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="keyword">typeof</span> <span class="number">42</span>) <span class="comment">//number</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="keyword">typeof</span> <span class="string">&#x27;blubber&#x27;</span>)<span class="comment">//string</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="keyword">typeof</span> <span class="literal">true</span>)<span class="comment">//boolean</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="keyword">typeof</span> undeclaredVariable)<span class="comment">//undefined</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>instanceof 运算符用于监测构造函数的 protopyte 属性时否出现在某个实例对象的原型链上。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[] <span class="keyword">instanceof</span> <span class="title class_">Array</span> <span class="comment">//true</span></span><br><span class="line">&#123;&#125; <span class="keyword">instanceof</span> <span class="title class_">Object</span> <span class="comment">//true</span></span><br><span class="line"><span class="keyword">new</span> <span class="title class_">Date</span>() <span class="keyword">instanceof</span> <span class="title class_">Date</span> <span class="comment">//true</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Person</span>(<span class="params"></span>)&#123;&#125;</span><br><span class="line"><span class="keyword">new</span> <span class="title class_">Person</span>() <span class="keyword">instanceof</span> <span class="title class_">Person</span> <span class="comment">//true</span></span><br><span class="line">[] <span class="keyword">instanceof</span> <span class="title class_">Object</span> <span class="comment">//true</span></span><br><span class="line"><span class="keyword">new</span> <span class="title class_">Date</span>() <span class="keyword">instanceof</span> <span class="title class_">Object</span> <span class="comment">//true</span></span><br><span class="line"><span class="keyword">new</span> <span class="title class_">Person</span> <span class="keyword">instanceof</span> <span class="title class_">Object</span> <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<p>constructor 可以用来判断数据类型，但是除了 null、undefined，因为他们不是由对象构建。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//数字</span></span><br><span class="line"><span class="keyword">var</span> num = <span class="number">1</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="keyword">new</span>.<span class="property">constructor</span>)</span><br><span class="line">f <span class="title class_">Number</span>()&#123;[native code]&#125;</span><br><span class="line"><span class="comment">//布尔值</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="literal">true</span>.<span class="property">constructor</span>)</span><br><span class="line">f <span class="title class_">Boolean</span>()&#123;[native code]&#125;</span><br><span class="line"><span class="comment">//字符串</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;&#x27;</span>.<span class="property">constructor</span>)</span><br><span class="line">f <span class="title class_">Boolean</span>()&#123;[native code]&#125;</span><br><span class="line"><span class="comment">//函数</span></span><br><span class="line"><span class="keyword">var</span> func = <span class="keyword">function</span>(<span class="params"></span>)&#123;&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(func.<span class="property">constructor</span>)</span><br><span class="line"><span class="comment">//数组</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>([].<span class="property">constructor</span>)</span><br><span class="line">f <span class="title class_">Array</span>()&#123;[native code]&#125;</span><br><span class="line"><span class="comment">//对象</span></span><br><span class="line"><span class="keyword">var</span> obj=&#123;&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="property">constructor</span>)</span><br><span class="line">f <span class="title class_">Object</span>()&#123;[native code]&#125;</span><br></pre></td></tr></table></figure>
+<p>终极方法，精准判断所有类型 Object.prototypr.toString.call ()</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> toString = <span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">toString</span>;</span><br><span class="line">toString.<span class="title function_">call</span>(<span class="keyword">new</span> <span class="title class_">Date</span>);<span class="comment">//[object Date]</span></span><br><span class="line">toString.<span class="title function_">call</span>(<span class="keyword">new</span> <span class="title class_">String</span>);<span class="comment">//[object String]</span></span><br><span class="line">toString.<span class="title function_">call</span>(<span class="title class_">Math</span>);<span class="comment">//[object Math]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//Since JavaScript 1.8.5</span></span><br><span class="line">toString.<span class="title function_">call</span>(<span class="literal">undefined</span>);<span class="comment">//[object Undefined]</span></span><br><span class="line">toString.<span class="title function_">call</span>(<span class="literal">null</span>);<span class="comment">//[object Null]</span></span><br></pre></td></tr></table></figure>
+<h4 id="22-javascript实现数组合并方法"><a class="markdownIt-Anchor" href="#22-javascript实现数组合并方法">#</a> 22. JavaScript 实现数组合并方法</h4>
+<p>普通数组，用 concat 合并数组，用 set 去重</p>
+<p>数组对象，用 concat 合并，创建新数组对象，遍历去重保存到新数组里</p>
+<h4 id="23-什么是事件代理"><a class="markdownIt-Anchor" href="#23-什么是事件代理">#</a> 23. 什么是事件代理</h4>
+<p>“事件代理” 即是把原本需要绑定在子元素的响应事件（click、keydown…）委托给父元素，让父元素担当事件监听的职务。事件代理的原理是 DOM 元素的事件冒泡。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> item1 = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;goSomewhere&#x27;</span>)</span><br><span class="line"><span class="keyword">var</span> item2 = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;doSomething&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> item3 = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;sayHi&#x27;</span>)</span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>,<span class="keyword">function</span>(<span class="params">event</span>)&#123;</span><br><span class="line">	<span class="keyword">var</span> target = event.<span class="property">target</span></span><br><span class="line">	<span class="keyword">switch</span>(target.<span class="property">id</span>)&#123;</span><br><span class="line">		<span class="keyword">case</span> <span class="string">&#x27;goSomewhere&#x27;</span>:</span><br><span class="line">			<span class="variable language_">document</span>.<span class="property">title</span> = <span class="string">&#x27;事件委托&#x27;</span>;</span><br><span class="line">			<span class="keyword">break</span></span><br><span class="line">		<span class="keyword">case</span> <span class="string">&#x27;doSomething&#x27;</span>:</span><br><span class="line">			location.<span class="property">href</span> = <span class="string">&#x27;http://www.baidu.com&#x27;</span>;</span><br><span class="line">			<span class="keyword">break</span></span><br><span class="line">		<span class="keyword">case</span> <span class="string">&#x27;sayHi&#x27;</span>:</span><br><span class="line">			<span class="title function_">alert</span>(<span class="string">&#x27;hi&#x27;</span>)</span><br><span class="line">			<span class="keyword">break</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="24-327结果是什么"><a class="markdownIt-Anchor" href="#24-327结果是什么">#</a> 24. 3+2+“7” 结果是什么</h4>
+<p>57</p>
+<h4 id="25-javascript里函数参数arguments"><a class="markdownIt-Anchor" href="#25-javascript里函数参数arguments">#</a> 25. JavaScript 里函数参数 arguments</h4>
+<p>Javascrip 中每个函数都会有一个 Arguments 对象实例 arguments，它引用着函数的实参，可以用数组下标的方式 &quot;[]&quot; 引用 arguments 的元素。</p>
+<h4 id="26-如何阻止事件冒泡"><a class="markdownIt-Anchor" href="#26-如何阻止事件冒泡">#</a> 26. 如何阻止事件冒泡</h4>
+<h5 id="1eventstoppropagation方法"><a class="markdownIt-Anchor" href="#1eventstoppropagation方法">#</a> 1.event.stopPropagation () 方法</h5>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&#x27;.btn&#x27;</span>).<span class="title function_">click</span>(<span class="keyword">function</span>(<span class="params">even</span>)&#123;</span><br><span class="line">	even.<span class="title function_">stopPropagetion</span>();</span><br><span class="line">	<span class="title function_">alert</span>(;按钮被点击了)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//这是阻止事件冒泡的方法，不让事件像document上蔓延，但是默认事件仍然会执行，当你调用这个方法的时候，如果点击一个链接，这个链接仍然会被打开。</span></span><br></pre></td></tr></table></figure>
+<h5 id="2eventpreventdefault方法"><a class="markdownIt-Anchor" href="#2eventpreventdefault方法">#</a> 2.event.preventDefault () 方法</h5>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&#x27;.btn&#x27;</span>).<span class="title function_">click</span>(<span class="keyword">function</span>(<span class="params">even</span>)&#123;</span><br><span class="line">	even.<span class="title function_">preventDefault</span>();</span><br><span class="line">	<span class="title function_">alert</span>(;按钮被点击了)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//这是阻止默认事件的方法，调用此方法是，链接不会被打开，但是会发生冒泡，冒泡会传递到上一层的父元素。</span></span><br></pre></td></tr></table></figure>
+<h5 id="3return-false"><a class="markdownIt-Anchor" href="#3return-false">#</a> 3.return false</h5>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&#x27;.btn&#x27;</span>).<span class="title function_">click</span>(<span class="keyword">function</span>(<span class="params">even</span>)&#123;   </span><br><span class="line">    <span class="title function_">alert</span>(;按钮被点击了)</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//这个方法比较暴力，他会同时阻止事件冒泡也会阻止默认事件；写上此代码。链接不会被打开，事件也不会传递到上一层的父元素。</span></span><br></pre></td></tr></table></figure>
+<h4 id="27-什么是事件捕获和事件冒泡"><a class="markdownIt-Anchor" href="#27-什么是事件捕获和事件冒泡">#</a> 27. 什么是事件捕获和事件冒泡</h4>
+<ul>
+<li>事件捕获：由微软公司提出，事件从文档根节点（Document 对象）流向目标节点，途中会经过目标节点的各个父级节点，并在这些节点上触发捕获事件，直至到达事件的目标节点；</li>
+<li>事件冒泡：由网景公司提出，与事件捕获相反，事件会从目标节点流向文档根节点，途中会经过目标节点的各个父级节点，并在这些节点上触发捕获事件，直至到达文档的根节点。整个过程就像水中的气泡一样，从水底向上运动。</li>
+<li>在事件捕获阶段，事件会从 DOM 树的最外层开始，依次经过目标节点的各个父节点，并触发父节点上的事件，直至到达事件的目标节点。</li>
+</ul>
+<h4 id="28-js原型链的理解"><a class="markdownIt-Anchor" href="#28-js原型链的理解">#</a> 28. Js 原型链的理解</h4>
+<p>js 的每个函数对象在创建的时候，都会生成一个 prototype 属性，这个属性指向一个对象，这个对象就是此函数的原型。该原型对象中有个属性为 constructor，指向该函数。然后通过构造函数创建出来的实例对象，其本身都有一个属性叫 __ proto __   这个属性会指向该实例对象的构造函数的原型对象，原型对象他是一个对象他也有 __ proto 属性，最终会指向 object 的原型对象，然后 object 的原型对象的 custructor 指向的是 object，object 的 prototype 属性又指向 obejcet 的原型对象，这样就形成了一个类似链条的关系，我们把这个就叫做原型链。</p>
+<h4 id="29-什么是自执行函数可以用于那些场景"><a class="markdownIt-Anchor" href="#29-什么是自执行函数可以用于那些场景">#</a> 29. 什么是自执行函数，可以用于那些场景</h4>
+<p>自执行函数，可以让函数在定义后立即被执行。主要用于创建一个新的作用域，在此作用域内声明的变量， 不会和其它作用域内的变量冲突或混淆， 大多是以匿名函数方式存在，且立即自动执行。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//两种定义使用方法</span></span><br><span class="line">(<span class="keyword">function</span> <span class="title function_">a</span>(<span class="params"></span>)&#123;&#125;)()</span><br><span class="line"><span class="keyword">var</span> a = (<span class="keyword">function</span>(<span class="params"></span>)&#123;&#125;)()</span><br></pre></td></tr></table></figure>
+<h4 id="30-0102会输出什么为什么"><a class="markdownIt-Anchor" href="#30-0102会输出什么为什么">#</a> 30. 0.1+0.2 会输出什么，为什么</h4>
+<p>计算机在进行运算的时候，会转换成二进制，然后会出现无线循环，然后相加的时候会截取一部分，导致精度缺失，最后结果转成十进制会小于 0.3</p>
+<h4 id="31-什么是跨域"><a class="markdownIt-Anchor" href="#31-什么是跨域">#</a> 31. 什么是跨域</h4>
+<p>浏览器的同源策略造成的，解决方法见<a target="_blank" rel="noopener" href="https://menglixunni.github.io/2022/07/07/vue%E9%9D%A2%E8%AF%95%E9%A2%98/#35%E8%B7%A8%E5%9F%9F"> vue 面试题</a>的 35 题。</p>
+<h4 id="32-ajax是什么如何实现"><a class="markdownIt-Anchor" href="#32-ajax是什么如何实现">#</a> 32. Ajax 是什么，如何实现</h4>
+<p>1.new   XMLHttpRequest  2.open （url，get/post） 3.  statechange 4. send</p>
+<h4 id="33-数组转化成json如何转化回来"><a class="markdownIt-Anchor" href="#33-数组转化成json如何转化回来">#</a> 33. 数组转化成 JSON，如何转化回来</h4>
+<p>var str = JSON.stringify(obj)</p>
+<p>var obj2 = JSON.parse(str)</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2022/07/11/js%E7%AC%94%E8%AE%B0/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript%E3%80%81js/" rel="tag">JavaScript、js</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+    
+      <a href="/2022/07/08/vue%E5%BC%80%E5%8F%91%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">vue开发遇到的问题总结</div>
+      </a>
+    
+  </nav>
+
+  
+   
+    
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2022
+        <i class="ri-heart-fill heart_icon"></i> John Doe
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/logo.svg" alt="Hexo"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E6%97%85%E8%A1%8C/">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="http://shenyu-vip.lofter.com">摄影</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2022/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+ 
+<script src="/js/clickBoom2.js"></script>
+ 
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="86"
+        src="//music.163.com/outchain/player?type=2&id=30903117&auto=1&height=66"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+    
+
+  </div>
+</body>
+
+</html>

@@ -214,7 +214,7 @@
 <p>style 的用法和 class 一样，传值可以是数组也可以是对象。</p>
 <h4 id="20-0102-03"><a class="markdownIt-Anchor" href="#20-0102-03">#</a> 20.  0.1+0.2 == 0.3</h4>
 <p>0.1 加 0.2 是不等于 0.3 的， 我们进行任何加法运算的时候，首先都会转换成二进制进行计算，而 0.1 和 0.2 转换成二进制，会出现循环，当他们相加的时候，会截取一段进行相加，从而会导致截取后面的部分数据丢失，使得计算结果小于 0.3</p>
-<h4 id="21如何判断一个数据是否一个数组类型"><a class="markdownIt-Anchor" href="#21如何判断一个数据是否一个数组类型">#</a> 21. 如何判断一个数据是否一个数组类型</h4>
+<h4 id="21判断数据是否数组类型"><a class="markdownIt-Anchor" href="#21判断数据是否数组类型">#</a> 21. 判断数据是否数组类型</h4>
 <p>首先，判断一个数据属于什么类型，typeof 没法判断数据，数组是一个特殊的对象，所以我们用 instanceof 方法，去判断他的类型，然后也可由通过它的原型去判断是否为数组，ta 的 constructor 是否等于数组类型。或者是它的–proto–是否等于数组的原型 prototype</p>
 <h4 id="22原型和原型链"><a class="markdownIt-Anchor" href="#22原型和原型链">#</a> 22. 原型和原型链</h4>
 <p>js 的每个函数对象在创建的时候，都会生成一个 prototype 属性，这个属性指向一个对象，这个对象就是此函数的原型。该原型对象中有个属性为 constructor，指向该函数。然后通过构造函数创建出来的实例对象，其本身都有一个属性叫 __ proto __   这个属性会指向该实例对象的构造函数的原型对象，原型对象他是一个对象他也有 __ proto 属性，最终会指向 object 的原型对象，然后 object 的原型对象的 custructor 指向的是 object，object 的 prototype 属性又指向 obejcet 的原型对象，这样就形成了一个类似链条的关系，我们把这个就叫做原型链。</p>
@@ -234,12 +234,12 @@
 <p>es6 允许按照一定的模式，从数组和对象中提取值，对变量进行赋值，这样就称为结构赋值，</p>
 <p>数组的结构赋值，当解构不成功时，变量的值就等于 undefined，解构赋值时允许给变量设置默认值，也是引用解构赋值的其他变量，但是该变量必须是已经声明的，不然就会报错。</p>
 <p>然后对象的解构赋值与数组不同的是，数组是按顺序排列的，变量的取值由它的位置决定，而对象的属性没有顺序。变量必须与属行同名，才可以取到正确的值，字符串，函数参数也可以解构赋值。</p>
-<h4 id="26animation和transition的区别"><a class="markdownIt-Anchor" href="#26animation和transition的区别">#</a> 26.animation 和 transition 的区别</h4>
+<h4 id="26animation和transition"><a class="markdownIt-Anchor" href="#26animation和transition">#</a> 26.animation 和 transition</h4>
 <p>1、transition 需要去触发比如：点击事件、鼠标移入事件；而 animation 可以配合 @keyframe 可以不触发事件就触发这个动画</p>
 <p>2、transition 触发一次播放一次；而 animation 则是可以设置很多的属性，比如循环次数，动画结束的状态等等；</p>
 <p>3、transition 关注的是样式属性的变化，属性值和时间的关系是一个三次贝塞尔曲线；而 animation 作用于元素本身而不是样式属性，可以使用关键帧的概念，可以实现更自由的动画效果；</p>
 <p>4、在性能方面：浏览器有一个主线程和排版线程；主线程一般是对 js 运行的、页面布局、生成位图等等，然后把生成好的位图传递给排版线程，而排版线程会通过 GPU 将位图绘制到页面上，也会向主线程请求位图等等；我们在用使用 aniamtion 的时候这样就可以改变很多属性，像我们改变了 width、height、postion 等等这些改变文档流的属性的时候就会引起，页面的回流和重绘，对性能影响就比较大，但是我们用 transition 的时候一般会结合 tansfrom 来进行旋转和缩放等不会生成新的位图，当然也就不会引起页面的重排了。</p>
-<h4 id="27动画-transform-transition-animation"><a class="markdownIt-Anchor" href="#27动画-transform-transition-animation">#</a> 27. 动画 transform、transition、animation</h4>
+<h4 id="27-transform-transition-animation"><a class="markdownIt-Anchor" href="#27-transform-transition-animation">#</a> 27. transform、transition、animation</h4>
 <p>transform</p>
 <p>做过轮播图，和钟表，</p>
 <h4 id="28响应式"><a class="markdownIt-Anchor" href="#28响应式">#</a> 28. 响应式</h4>
@@ -317,7 +317,7 @@
 mixin 文件的定义与正常 vue 组件的定义完全一致，都有 created,mounted… 等钩子函数，以及 data,methods 方法用来声明当前用到的数据和方法。minix 会在引入文件 中进行 属性和方法的合并（混入）minxs 优先执行，相同字段名首先会覆盖。相同函数名会合并为一个数组会优先执行 minix。</p>
 <h4 id="38深度监听"><a class="markdownIt-Anchor" href="#38深度监听">#</a> 38. 深度监听</h4>
 <p>watch 里的 deep 属性改为 true，开启深度监听</p>
-<h4 id="39修改element-ui默认样式"><a class="markdownIt-Anchor" href="#39修改element-ui默认样式">#</a> 39. 修改 element-ui 默认样式，</h4>
+<h4 id="39修改element-ui"><a class="markdownIt-Anchor" href="#39修改element-ui">#</a> 39. 修改 element-ui</h4>
 <p>组件库中标签名字，就是 class 属性的名字，我们直接在 style 里重新给这个标签设置 css 属性值就可以改变默认样式，有的时候可能需要加上！important。’deep‘</p>
 <h4 id="40封装echarts"><a class="markdownIt-Anchor" href="#40封装echarts">#</a> 40. 封装 echarts</h4>
 <p>选择器权重， id &gt; 类 = 伪类 &gt; 标签 &gt; 伪元素</p>
@@ -340,7 +340,7 @@ mixin 文件的定义与正常 vue 组件的定义完全一致，都有 created,
 当包含这个引用类型值的变量又被赋值成另一个值了，那么这个引用类型值的引用次数减 1。<br>
 当引用次数变成 0 时，说明没办法访问这个值了。<br>
 当垃圾收集器下一次运行时，它就会释放引用次数是 0 的值所占的内存。</p>
-<h4 id="44script标签中defer和anysc属性的区别"><a class="markdownIt-Anchor" href="#44script标签中defer和anysc属性的区别">#</a> 44.Script 标签中 defer 和 anysc 属性的区别</h4>
+<h4 id="44js中的defer和anysc"><a class="markdownIt-Anchor" href="#44js中的defer和anysc">#</a> 44.js 中的 defer 和 anysc</h4>
 <p>defer 是不会阻塞 html 解析的，它是等 DOM 加载完之后再去执行 JavaScript 代码；async 是 JavaScript 下载完成，就会立即执行代码，等待执行完之后才继续解析 HTML。</p>
 <p>在加载多个 JS 脚本的时候，async 是无顺序的加载，而 defer 是有顺序的加载。</p>
 <h4 id="45宏任务与微任务"><a class="markdownIt-Anchor" href="#45宏任务与微任务">#</a> 45. 宏任务与微任务</h4>
