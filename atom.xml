@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-07-11T01:24:03.538Z</updated>
+  <updated>2022-07-13T07:06:17.063Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vue3学习</title>
+    <link href="http://example.com/2022/07/13/vue3%E5%AD%A6%E4%B9%A0/"/>
+    <id>http://example.com/2022/07/13/vue3%E5%AD%A6%E4%B9%A0/</id>
+    <published>2022-07-13T06:57:46.000Z</published>
+    <updated>2022-07-13T07:06:17.063Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h4 id=&quot;1ref函数&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#1ref函数&quot;&gt;#&lt;/a&gt; 1.ref 函数&lt;/h4&gt;
+&lt;p&gt;对象类型时 proxy，基本类型时</summary>
+        
+      
+    
+    
+    
+    
+    <category term="vue3" scheme="http://example.com/tags/vue3/"/>
+    
+  </entry>
   
   <entry>
     <title>js笔记</title>
